@@ -1,0 +1,41 @@
+// --------------------------------------------------------
+// columns
+// --------------------------------------------------------
+
+//@mixin col ($cols)
+//  @include tablet
+//    padding: 0
+//    width: 100%
+//  padding: 0 calc(#{$gutter} / 2)
+//  width: calc((#{$cols} / #{$columns}) * 100%)
+//
+//@mixin col--tablet ($cols)
+//  @include tablet
+//    padding: 0
+//    width: calc((#{$cols} / #{$columns}) * 100%)
+//
+//  @include nexus
+//    padding: 0
+//    width: 100%
+//
+//@mixin col--offset ($cols)
+//  @include tablet
+//    margin-left: 0
+//  margin-left: calc((#{$cols} / #{$columns}) * 100%)
+
+@mixin col ($cols)
+  @include tablet
+    flex-basis: 100%
+  flex: 0 1 calc((#{$cols} / #{$columns}) * 100%)
+
+@mixin col--tablet ($cols)
+  @include tablet
+    flex: 0 1 calc((#{$cols} / #{$columns}) * 100%)
+
+  @include nexus
+    flex-basis: 100%
+
+@mixin col--offset ($cols)
+  @include tablet
+    margin-left: 0
+  margin-left: calc(((#{$cols} / #{$columns}) * 100%) + #{$gutter} / 2)

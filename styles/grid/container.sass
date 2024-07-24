@@ -1,0 +1,27 @@
+// --------------------------------------------------------
+// containers
+// --------------------------------------------------------
+
+@mixin container
+  @include desktop
+    max-width: $max-width
+  @include tablet
+    flex-wrap: wrap
+    max-width: calc(100% - 1rem)
+    //padding: unset
+  @include phone-lg
+    max-width: calc(100% - .5rem)
+  display: flex
+  position: relative
+  justify-content: space-between
+  gap: #{$gutter}
+  margin: 0 auto
+  //padding: 0 calc((#{$outside-gutter} / 2) - #{$gutter / 2})
+  width: calc(100% - #{$gutter * 2})
+  max-width: calc(#{$width} + #{$outside-gutter})
+
+@mixin container--large
+  @include container
+  @include desktop
+    max-width: $max-width-large
+  max-width: $width-large

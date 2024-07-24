@@ -1,0 +1,46 @@
+.footer
+  @extend %component-padding--half
+  background-color: #333333
+  color: #f2f2f2
+
+  a
+    @include hover-focus
+      -webkit-text-stroke-width: rem-calc(.3)
+      .footer__header
+        -webkit-text-stroke-width: rem-calc(0)
+    text-decoration: none
+    color: #f2f2f2
+
+    &.footer__link--active
+      pointer-events: none
+      text-decoration: underline
+      -webkit-text-stroke-width: rem-calc(.3)
+
+  &__col
+    @include col(12)
+    display: flex
+    justify-content: space-between
+    gap: rem-calc(20) rem-calc(30)
+
+  &__container
+    @include container
+
+    &--test
+      margin-top: 100px
+      background: white
+      min-height: 200px
+
+  &__menu
+    display: flex
+    flex-shrink: 0
+    flex-wrap: wrap
+    align-items: center
+    gap: rem-calc(20) rem-calc(30)
+    margin: 0 0 rem-calc(24) 0
+    padding: 0
+    width: 100%
+    list-style-type: none
+
+  &__text
+    @include tablet-lg
+      font-size: rem-calc(14)
