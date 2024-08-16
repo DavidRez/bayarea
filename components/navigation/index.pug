@@ -1,10 +1,34 @@
-header.navigation
-  .navigation__container
-    .navigation__col
-      nuxt-link.navigation__links(
-        v-for='(link, i) in links',
-        :key='`link-${i}`',
-        :class=`{ 'navigation__link--active': link.path === $route.path }`,
-        :to='link.path',
-        v-html='link.name'
-      )
+header.navigation(:class="{ 'navigation--scrolling': isScrolling && scrollDir === 'down' }", ref='navbar')
+  NavigationNavigationTopBar(v-if='$store.state.global.add_top_bar' :props='$store.state.global')
+  .navigation__main
+    NavigationNavigationFull(v-if='!$store.state.isTablet && $store.state.global.navigation.layout === "full" && windowWidth > mobileWidth'
+      :links='links'
+      :props='$store.state.global'
+      :setMobileWidth='setMobileWidth'
+      :mobileOn='mobileOn')
+    NavigationNavigationMinimal(v-if='!$store.state.isTablet && $store.state.global.navigation.layout === "minimal" && windowWidth > mobileWidth'
+      :links='links'
+      :props='$store.state.global'
+      :mobileOn='mobileOn'
+      :setMobileWidth='setMobileWidth'
+      :toggleDrawer='throttleToggleDrawer'
+      :drawerOpen='drawerOpen')
+    NavigationNavigationMobile(v-else
+      :props='$store.state.global'
+      :toggleDrawer='throttleToggleDrawer'
+      :drawerOpen='drawerOpen')
+  transition(name='fade')
+    .navigation__overlay(v-if='drawerOpen', @click='closeDrawer')
+  transition(name='drawer-slide')
+    NavigationNavigationDrawer.navigation__drawer(v-if='drawerOpen',
+      :aria-hidden='!drawerOpen',
+      aria-modal='true',
+      :class="{ 'navigation__drawer--active': drawerOpen }",
+      role='dialog',
+      :tabindex='-1'
+      :closeDrawer='closeDrawer'
+      :top='top'
+      :props='$store.state.global'
+      :links='links'
+      ref='navDrawer'
+    )

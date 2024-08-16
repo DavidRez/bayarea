@@ -1,0 +1,14 @@
+nav.navigation-drawer
+  nuxt-link.navigation-drawer__logo(to='/' aria-hidden='true' aria-label='link to home')
+    BaseIcon(name='logo-white')
+  button.navigation-drawer__exit(aria-label='close menu', @click='closeDrawer') Exit
+  .navigation-drawer__group
+    MenuMenuLinks(:props='links' :closeDrawer='closeDrawer' :top='top' light stacked)
+    MenuMenuQuickLinks(:props='props.quick_links' :closeDrawer='closeDrawer' :top='top' light stacked)
+  .navigation-drawer__group
+    .navigation-drawer__title(v-if='props.locations_title') {{ props.locations_title }}
+    MenuMenuContact(:props='props' address phone hours icon light stacked center :title='props.locations.length > 1')
+  .navigation-drawer__group
+    .navigation-drawer__title(v-if='props.social_media_title') {{ props.social_media_title }}
+    MenuMenuSocialMedia(:props='props.social_media' light)
+

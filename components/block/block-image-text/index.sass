@@ -1,0 +1,72 @@
+.block-image-text
+  position: relative
+
+  &__container
+    @include container
+    @include tablet
+      flex-direction: column-reverse
+      gap: 2rem
+    justify-content: space-between
+    gap: 4rem
+
+    &--reverse
+      @include tablet
+        flex-direction: column-reverse
+      flex-direction: row-reverse
+
+  &__col
+    @include phone-land-lg
+      justify-content: flex-start
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    &--media
+      @include col (5)
+      @include phone-land-lg
+        width: 40%
+      @include nexus
+        width: 100%
+      display: flex
+      position: relative
+      align-items: center
+      border: 1px solid $black
+      background: var(--bg-1)
+      padding: 1rem
+      overflow: hidden
+
+    &--content
+      @include col (7)
+      @include phone-land-lg
+        width: 55%
+      @include nexus
+        width: 100%
+      display: flex
+      flex-direction: column
+      justify-content: center
+
+  &__image-container,
+  &__video-container
+    position: relative
+    border: 1px solid $black
+    padding-top: 83%
+    width: 100%
+    overflow: hidden
+
+  &__image
+    @extend %absolute
+
+    &.base-image
+      position: absolute
+      overflow: hidden
+
+    .base-image__image
+      object-fit: cover
+
+  &__video-container
+    padding-top: 65%
+  
+  &__video,
+  &__iframe
+    @extend %absolute
+    object-fit: cover

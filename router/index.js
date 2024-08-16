@@ -10,13 +10,23 @@ const router = [
     navigation: true
   },
   {
+    name: 'Treatments',
+    path: '/treatments',
+    navigation: true
+  },
+  {
+    name: 'New Patients',
+    path: '/new-patients',
+    navigation: true
+  },
+  {
     name: 'Blog',
     path: '/blog',
     navigation: true
   },
   {
-    name: 'Components',
-    path: '/components',
+    name: 'Contact Us',
+    path: '/contact-us',
     navigation: true
   }
 ]

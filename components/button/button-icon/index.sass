@@ -1,0 +1,73 @@
+.button-icon
+
+  &__container
+    @include nexus
+      height: rem-calc(42)
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: .15rem
+    width: fit-content
+    color: var(--primary)
+
+    &:not(:last-of-type)
+      @include tablet
+        margin-bottom: 1rem
+      margin-bottom: 2rem
+
+    .button-icon--light &
+      color: $white
+
+    &--link
+      @include hover-supported
+        .button-icon__icon
+          path
+            stroke: var(--accent1) !important
+        .button-icon__label
+          color: var(--accent1)
+
+        .button-icon--light &
+          .button-icon__icon
+            path
+              stroke: var(--secondary) !important
+          .button-icon__label
+            color: var(--secondary)
+      transition: all .25s ease-in
+      cursor: pointer
+      
+      &:focus-visible
+        @include focus
+
+  &__icon
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-right: 0.5rem
+    width: rem-calc(30)
+    height: rem-calc(30)
+
+    svg
+      @include nexus
+        width: 70%
+        height: 70%
+      max-width: 100%
+      height: 100%
+      overflow: visible
+
+      path
+        transition: all .2s ease
+
+        .button-icon--light &
+          stroke: $white !important
+
+  &__label
+    @extend %button
+    transition: all .2s ease
+    margin-bottom: -4px // modify or remove to center in container, depending on font
+    text-align: left
+    text-transform: none
+    color: var(--text)
+    font-weight: 400
+
+    .button-icon--light &
+      color: $white

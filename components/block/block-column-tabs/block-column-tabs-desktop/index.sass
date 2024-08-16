@@ -1,0 +1,159 @@
+.block-column-tabs-desktop
+
+  &__container
+    @include container
+    justify-content: center
+
+  &__col
+    @include col (12)
+
+  &__tabs
+    display: flex
+    flex-direction: row
+    gap: 0
+    border: 1px solid $white
+    width: fit-content
+
+  &__tab-container
+    display: flex
+    position: relative
+    // float: left
+    // flex: auto
+    flex-direction: row
+    // transition: flex 0s ease 1s
+    background: none
+    cursor: pointer
+    width: fit-content
+    height: 100%
+    overflow: hidden
+
+    &:focus-visible,
+    &:hover
+      border-color: #777
+
+    &:focus,
+    &:focus-visible,
+    &:hover
+      outline: none
+
+    &:not(:first-of-type)
+      // .block-column-tabs-desktop__drawer
+      //   border-left: 1px solid $white
+      .block-column-tabs-desktop__tab
+        border-left: 1px solid $white
+
+    &:not(:last-of-type)
+      // .block-column-tabs-desktop__drawer
+      //   border-left: 1px solid $white
+      // .block-column-tabs-desktop__drawer--active
+      //   border-right: 1px solid $white
+    &:last-of-type
+      .block-column-tabs-desktop__drawer
+        transition: all 1s cubic-bezier(.39, .575, .28, .995) !important
+        border-left: 1px solid transparent
+      // &.block-column-tabs-desktop__tab-container--active
+      //   .block-column-tabs-desktop__tab
+      //     border-right: 1px solid $white
+
+    &--active
+      // flex: 1 0 auto
+      transition: flex 0s ease
+      // background: var(--accent2)
+
+  &__tab
+    position: relative
+    // float: left
+    transition: border-right 1s ease 1s
+    border-right: 1px solid transparent
+    padding: 0.5rem
+    width: 4rem
+    height: 100%
+    text-align: center
+    color: $white
+
+    .block-column-tabs-desktop__tab-container--active &
+      transition: border-right 0s ease
+
+  &__tab-title
+    @extend %subtext
+    position: absolute
+    bottom: 0
+    left: 0
+    transform: rotate(180deg)
+    padding: 1rem
+    width: 100%
+    height: 100%
+    text-align: left
+    text-orientation: mixed
+    writing-mode: vertical-rl
+    color: $white
+
+  &__drawer
+    position: relative
+    // float: left
+    transition: min-width 1s cubic-bezier(.39, .575, .28, .995), border-right 0s ease 1s, border-left 0s ease
+    // border-right: none
+    background: transparent
+    padding: 0
+    height: 100%
+    overflow: hidden
+    pointer-events: none
+    font-weight: 300
+
+    &--active
+      // float: right
+      transition: min-width 1s cubic-bezier(.39, .575, .28, .995)
+      // border-right: 1px solid $white
+      padding: 1rem 0.5rem
+      pointer-events: all
+
+  &__content-container
+    @extend %absolute
+    height: fit-content
+
+  &__content
+    padding: 1rem 0.75rem
+
+  &__title
+    @extend %h3
+    text-align: left
+    color: $white
+    font-weight: 700
+
+  &__body
+    padding-top: rem-calc(8)
+    width: 100%
+    text-align: left
+    color: $white
+
+  &__image
+    @extend %margin-top
+
+    &.base-image
+      position: relative
+      border: 1px solid $black
+      background: var(--bg-1)
+      padding: 1rem
+      width: 80%
+      max-width: rem-calc(400)
+      height: auto
+      overflow: hidden
+
+    .base-image__image
+      position: relative
+      border: 1px solid $black
+      width: 100%
+      height: auto
+
+  &__icon
+    @extend %margin-top
+    &.base-icon
+      width: 100%
+      max-width: rem-calc(200)
+
+      svg
+        width: 100%
+        height: auto
+
+  &__button
+    @extend %button-margin-top

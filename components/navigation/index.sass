@@ -1,19 +1,35 @@
 .navigation
+  position: fixed
+  z-index: 100
+  background: rgba(var(--bg-2-rgb), 0.7)
+  backdrop-filter: blur(6px)
 
-  &__col
-    @include col(12)
-    display: flex
-    justify-content: flex-end
-    gap: rem-calc(24)
+  &__main
+    @include tablet
+      height: rem-calc(80)
+    @include phone-land-lg
+      height: rem-calc(60)
+    @include nexus
+      height: rem-calc(60)
+    transition: all 0.5s ease
+    width: 100vw
+    height: rem-calc(100)
 
-  &__container
-    @include container
-    align-items: center
-    min-height: rem-calc(50)
+  &__overlay
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 99
+    background: rgba(var(--bg-1-rgb), .7)
+    width: 100vw
+    height: 100vh
+    filter: blur(10px)
 
-  a
-    text-decoration: none
-
-    &.navigation__link--active
-      text-decoration: underline
-      pointer-events: none
+  &__drawer
+    position: fixed
+    top: 0
+    right: 0
+    z-index: 100
+    width: 100%
+    max-width: rem-calc(600)
+    height: 100vh

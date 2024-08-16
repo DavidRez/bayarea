@@ -1,0 +1,107 @@
+.block-column-tabs-mobile
+  position: relative
+
+  &__container
+    @include container
+    justify-content: center
+
+  &__col
+    @include col (12)
+
+  &__tabs
+    display: flex
+    flex-direction: column
+    border: 1px solid $white
+    width: 100%
+
+  &__tab-container
+    @include phone-lg
+      padding: .5rem
+    position: relative
+    transition: border-color .2s ease
+    border: none
+    background: transparent
+    cursor: pointer
+    padding: 1rem
+    width: 100%
+
+    &:focus-visible
+      @include focus
+
+    &:not(:last-of-type)
+      border-bottom: 1px solid $white
+
+  &__tab
+    display: flex
+    position: relative
+    flex-wrap: nowrap
+    align-items: center
+    justify-content: space-between
+    width: 100%
+    color: $white
+
+  &__tab-title
+    @extend %subtext
+    text-align: left
+    color: $white
+    font-weight: 700
+
+  &__drawer
+    transition: height 1s cubic-bezier(.39, .575, .28, .995), padding .3s ease-in-out
+    margin: 0 auto
+    background: transparent
+    width: 100%
+    height: 0
+    pointer-events: none
+    overflow: hidden
+    font-weight: 300
+
+    .block-column-tabs-mobile__tab-container--active &
+      pointer-events: all
+
+  &__content
+    position: relative
+    transition: opacity .2s ease
+    opacity: 0
+    padding: 1rem 0.75rem
+
+    .block-column-tabs-mobile__tab-container--active &
+      transition-delay: .2s
+      opacity: 1
+
+  &__body
+    padding-top: rem-calc(8)
+    width: 100%
+    text-align: left
+    color: $white
+
+  &__image
+    @extend %margin-top
+
+    &.base-image
+      position: relative
+      border: 1px solid $black
+      background: var(--bg-1)
+      padding: 1rem
+      width: 80%
+      height: auto
+      overflow: hidden
+
+    .base-image__image
+      position: relative
+      border: 1px solid $black
+      width: 100%
+      height: auto
+
+  &__icon
+    @extend %margin-top
+    &.base-icon
+      width: 100%
+      max-width: rem-calc(200)
+
+      svg
+        width: 100%
+        height: auto
+
+  &__button
+    @extend %button-margin-top

@@ -1,0 +1,15 @@
+section.block-image-text(ref='container')
+  .block-image-text__container(:class='{ "block-image-text__container--reverse": props.reverse }')
+    .block-image-text__col.block-image-text__col--media(ref='col1')
+      .block-image-text__image-container(v-if='props.media_type === "image"')
+        BaseImage.block-image-text__image(v-bind='props.image' forceVisible imageBackground)
+      .block-image-text__video-container(v-if='props.media_type === "video" || props.media_type === "iframe"')
+        video.block-image-text__video(v-if='props.media_type === "video"' :src='props.video.src' :poster='props.video.poster.src'  :alt='props.video.title' muted defaultMuted loop playsinline controls=true)
+        iframe.block-image-text__iframe(v-if='props.media_type === "iframe"'
+          :src='props.iframe.src',
+          frameborder='0', 
+          allow='accelerometer; encrypted-media; gyroscope; picture-in-picture',
+          allowfullscreen='true'
+          :title='props.iframe.title')
+    .block-image-text__col.block-image-text__col--content(ref='col2')
+      BlockContent(:props='props.content' :bgColor='props.background_color')

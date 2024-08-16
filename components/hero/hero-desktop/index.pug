@@ -1,0 +1,29 @@
+section.hero-desktop(:style='{ opacity: compOpacity, paddingTop: paddingTop }' ref='container')
+  .hero-desktop__container
+    BaseImage.hero-desktop__image(v-if='props.media_type === "image"'
+      v-for='(image, i) in props.images'
+      :key='`image-${i}`'
+      :class='{ "hero-desktop__image--active": active === i }'
+      v-bind='Object.assign({}, image.desktop_image, { forceVisible: true, imageBackground: true })'
+      ref='images')
+    video.hero-desktop__video(v-if='props.media_type === "video"'
+      :src='props.video.video.src'
+      :poster='props.video.video.poster.src'
+      :alt='props.video.video.alt'
+      muted defaultMuted loop playsinline controls=false
+      ref='video')
+    BaseIcon.hero-desktop__control(v-if='props.media_type === "video"' :name='play ? "pause" : "play"' @click.native='toggleVideo()')
+    .hero-desktop__content
+      BlockContent(:props='props.content')
+    .hero-desktop__col.hero-desktop__col--social(v-if='props.social_media')
+      a.hero-desktop__social(v-for='(social, i) in props.social_media'
+        :key='`social-${i}`'
+        :href='social.href'
+        :aria-label='`${social.account} opens new tab`'
+        target='_blank')
+        BaseIcon(:name='social.account')
+    .hero-desktop__col.hero-desktop__col--dots(v-if='props.images.length > 1')
+      .hero-desktop__dot(v-for='(dot, i) in props.images'
+        :key='`dot-${i}`'
+        :class='{ "hero-desktop__dot--active": active === i }'
+        @click='makeActive(i)')

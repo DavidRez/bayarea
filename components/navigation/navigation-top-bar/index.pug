@@ -1,0 +1,42 @@
+.navigation-top-bar(ref='main'
+  :class='{ "navigation-top-bar--hover": props.top_bar.type === "announcement" && props.top_bar.announcement.type === "modal", "navigation-top-bar--hide": hideBar }'
+  @click='props.top_bar.type === "announcement" && props.top_bar.announcement.type === "modal" ? openModal() : null'
+  @keyup.enter='props.top_bar.type === "announcement" ? openModal() : null'
+  :tabindex='props.top_bar.type === "announcement" ? 0 : -1'
+  :aria-label='props.top_bar.type === "announcement" ? props.top_bar.announcement.label : null'
+  :aria-haspopup='props.top_bar.type === "announcement" ? true : false')
+  .navigation-top-bar__container
+    .navigation-top-bar__links(v-if='props.top_bar.type === "links"')
+      // single location
+      .navigation-top-bar__links--group(v-if='props.top_bar.include_address && !$store.state.isTablet && props.locations.length === 1')
+        MenuMenuContact(:props='props' inline address icon light)
+      
+      // multiple location
+      .navigation-top-bar__links--group(v-if='props.top_bar.include_address && !$store.state.isTabletLg && props.locations.length > 1')
+        MenuMenuContact(:props='props' inline address icon light)
+      
+      // phone
+      .navigation-top-bar__links--group(v-if='props.top_bar.include_phone_number')
+        BlockSingleContact(:props='props.top_bar.phone.type === "phone-global" ? props.phone : props.top_bar.phone' light :icon='"phone"')
+      
+      // social
+      .navigation-top-bar__links--group(v-if='props.top_bar.include_social_media')
+        MenuMenuSocialMedia(:props='topSocialMedia' light)
+
+    .navigation-top-bar__announcement(v-else-if='props.top_bar.type === "announcement"')
+      a.navigation-top-bar__announcement-text(v-if='props.top_bar.announcement.type === "link"' :href='props.top_bar.announcement.href' :target='props.top_bar.announcement.external_link ? "_target" : null'  v-html='windowWidth > 768 ? props.top_bar.announcement.text : props.top_bar.announcement.mobile_text')
+      .navigation-top-bar__announcement-text(v-else v-html='windowWidth > 768 ? props.top_bar.announcement.text : props.top_bar.announcement.mobile_text')
+    
+    .navigation-top-bar__close(role='button' aria-label='close top bar' @click='closeBar()' @keyup.enter='closeBar()' tabindex='0')
+      span 
+      span
+
+  transition(name='fade')
+    BaseBaseModal.navigation-top-bar__modal(v-if='props.top_bar.type === "announcement" && props.top_bar.announcement.type === "modal" && modalOpen'
+      :modalOpen='modalOpen'
+      @closemodal='modalOpen = $event'
+      role='dialog'
+      aria-labelledby='aria-modal-title'
+      aria-modal='true')
+      h2.navigation-top-bar__modal-title#topbar-modal-title(v-html='props.top_bar.announcement.modal.title')
+      p.navigation-top-bar__modal-body#topbar-modal-body(v-html='props.top_bar.announcement.modal.body')

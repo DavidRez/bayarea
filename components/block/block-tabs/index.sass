@@ -1,0 +1,155 @@
+.block-tabs
+  @include tablet
+    margin-top: 0
+  @include phone-land-lg
+    margin-top: 4rem
+  @include nexus
+    margin-top: 0
+  position: relative
+  margin-top: 4rem
+
+  &__container
+    @include container
+    @include tablet
+      flex-direction: column
+    @include phone-land-lg
+      flex-direction: row
+    @include nexus
+      flex-direction: column
+    align-items: flex-start
+    justify-content: space-between
+  
+    &--reverse
+      flex-direction: row-reverse
+
+  &__media
+    @include col(5)
+    @include tablet
+      flex-basis: unset
+      width: 80%
+    @include phone-land-lg
+      width: 40%
+    @include phone-land
+      width: 40%
+    @include nexus
+      width: 100%
+    position: relative
+    border: 1px solid $black
+    background: var(--bg-1)
+    padding: 1rem
+
+  &__image-container
+    display: flex
+    position: relative
+    align-items: flex-start
+    justify-content: center
+    border: 1px solid $black
+    padding-top: 82%
+    width: 100%
+
+  &__image
+    position: relative
+    width: 100%
+
+  &__image-dynamic
+    position: absolute
+    top: 0
+    left: 0
+    transition: all .25s ease
+    opacity: 0
+    width: 100%
+    height: 100%
+
+    &--active
+      transition: all .25s ease .2s
+      opacity: 1
+
+  &__content
+    @include col(6)
+    @include tablet
+      flex-basis: unset
+      width: 100%
+    @include phone-land-lg
+      flex-basis: unset
+      width: 55%
+    @include phone-land
+      flex-basis: unset
+      width: 55%
+    @include nexus
+      width: 100%
+
+    a
+      @include hover-supported
+        color: var(--text)
+      transition: color .25s ease
+      color: var(--primary)
+
+  &__header
+    @extend %margin-bottom
+  
+  &__tabs
+    display: flex
+    flex-wrap: wrap
+
+  &__tab
+    display: flex
+    position: relative
+    flex-direction: column
+    transition: all .3s ease
+    margin-bottom: 0.5rem
+    border: none
+    background: none
+    cursor: pointer
+    overflow: hidden
+
+    &:focus-visible
+      @include focus
+
+  &__tab-top
+    display: flex
+    align-items: center
+
+  &__tab-number
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-right: 1rem
+    border: 1px solid $black
+    padding: 0.5rem
+
+    span
+      @include tablet
+        width: 1.25rem
+        height: 1.25rem
+        font-size: 1.25rem
+      @include phone-land-lg
+        width: 1.25rem
+        height: 1.25rem
+        font-size: 1.25rem
+      @include nexus
+        width: 1.25rem
+        height: 1.25rem
+        font-size: 1.25rem
+      width: rem-calc(30)
+      height: rem-calc(30)
+      font-family: var(--font-header)
+      font-size: rem-calc(30)
+    
+  &__tab-title
+    position: relative
+    text-align: left
+
+  &__tab-bottom
+    transition: height .3s cubic-bezier(.39, .575, .28, .995), padding .3s ease-in-out
+    opacity: 0
+    margin: 0 auto
+    background: transparent
+    width: 100%
+    height: 0
+    pointer-events: none
+    font-weight: 300
+  
+  &__tab-body
+    position: relative
+    height: fit-content
+    text-align: left

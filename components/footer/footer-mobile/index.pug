@@ -1,0 +1,13 @@
+.footer-mobile
+  nuxt-link.footer-mobile__logo(to='/' aria-hidden='true' aria-label='link to home')
+    BaseIcon(name='logo-white')
+  .footer-mobile__group
+    MenuMenuLinks(:props='links' :top='top' light stacked)
+    MenuMenuQuickLinks(:props='props.quick_links' :top='top' light stacked)
+  .footer-mobile__group
+    .footer-mobile__title(v-if='props.locations_title') {{ props.locations_title }}
+    MenuMenuContact(:props='props' address phone hours icon light stacked center :title='props.locations.length > 1')
+  .footer-mobile__group
+    .footer-mobile__title(v-if='props.social_media_title') {{ props.social_media_title }}
+    MenuMenuSocialMedia(:props='props.social_media' light)
+

@@ -3,6 +3,9 @@
 
 export default {
   google: {
-    families: [ 'Playfair+Display:400,700', 'Open+Sans:300,400,500,700&display=swap' ]
+    families: [ 'League+Spartan:300,400,500,700&display=swap' ]
+  },
+  custom: {
+    families: ['Tangerine']
   }
 }

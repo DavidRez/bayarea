@@ -27,17 +27,13 @@
       color: $white
 
   &__header
-    @include desktop
-      margin-bottom: rem-calc(24)
-    margin-bottom: rem-calc(16)
+    @extend %header-margin-bottom
 
     &--no-margin
       margin-bottom: 0
 
   &__subheader
-    @include desktop
-      margin-bottom: rem-calc(14)
-    margin-bottom: rem-calc(8)
+    @extend %subheader-margin-bottom
 
     &--no-margin
       margin-bottom: 0
@@ -55,14 +51,13 @@
           margin-top: 2rem
 
   &__buttons
+    @extend %button-margin-top
     @include tablet
       gap: 1rem
-      margin-top: 0
     display: flex
     flex-direction: column
     flex-wrap: wrap
     gap: rem-calc(30) #{$gutter}
-    margin-top: rem-calc(24)
 
     &--inline
       @include phone-lg
@@ -115,7 +110,7 @@
         margin-bottom: rem-calc(20)
       margin-bottom: rem-calc(12)
     .block-content__subheader
-      @extend %h4
+      @extend %h3
       @include desktop
         margin-bottom: rem-calc(10)
       margin-bottom: rem-calc(4)

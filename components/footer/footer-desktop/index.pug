@@ -1,0 +1,27 @@
+.footer-desktop
+  .footer-desktop__top
+    nuxt-link.footer-desktop__logo(to='/' aria-hidden='true' aria-label='link to home')
+      BaseIcon(name='logo-white')
+    .footer-desktop__links
+      MenuMenuLinks(:props='links' :top='top' light)
+      MenuMenuQuickLinks(:props='props.quick_links' :top='top' light)
+  .footer-desktop__cols
+    .footer-desktop__col.footer-desktop__col--location
+      .footer-desktop__location(v-for='(location, i) in props.locations' :key='`location-${i}`')
+        .footer-desktop__location-title(v-if='location.title && props.locations.length > 1' v-html='location.title')
+        BlockSingleContact.footer-desktop__location-info(v-if='location.phone.label'
+          :props='location.phone'
+          light
+          center)
+        BlockSingleContact.footer-desktop__location-info(v-else-if='props.locations.length === 1'
+          :props='props.phone'
+          light
+          center)
+        BlockSingleContact.footer-desktop__location-info(v-if='location.address.label'
+          :props='location.address'
+          light
+          center)
+    .footer-desktop__col.footer-desktop__col--social
+      .footer-desktop__title(v-if='props.social_media_title') {{ props.social_media_title }}
+      MenuMenuSocialMedia.footer-desktop__social(:props='props.social_media' light)
+

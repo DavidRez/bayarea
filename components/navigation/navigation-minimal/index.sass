@@ -1,0 +1,39 @@
+.navigation-minimal
+  position: relative
+  width: 100%
+  height: 100%
+
+  &__container
+    @include container--large
+    align-items: center
+    justify-content: space-between
+    height: 100%
+
+  &__logo
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    margin: auto
+    padding: 0.5rem
+    width: fit-content
+    height: 100%
+
+    .base-icon
+      display: flex
+      align-items: center
+      width: fit-content
+      height: 100%
+
+      svg
+        width: auto
+        max-width: rem-calc(300)
+        height: 100%
+
+  &__hamburger
+    @include hamburger-basic(var(--text), .25s, 2rem, 1.25rem)
+    cursor: pointer
+
+    &:focus-visible
+      @include focus

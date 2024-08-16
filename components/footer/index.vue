@@ -8,6 +8,11 @@ export default {
     links () {
       return router
     }
+  },
+  methods: {
+    top () {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 }
 </script>

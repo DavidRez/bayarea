@@ -1,0 +1,26 @@
+section.block-tabs(ref='parent')
+  .block-tabs__container(:class="{ 'block-tabs__container--reverse': props.reverse }" ref='container')
+    .block-tabs__media(ref='image')
+      .block-tabs__image-container
+        BaseImage.block-tabs__image(v-if='props.image_options === "single"'
+          v-bind='props.image')
+        BaseImage.block-tabs__image-dynamic(v-else 
+          v-for='(tab, i) in props.tabs', :key='`image-${i}`',
+          :class='{ "block-tabs__image-dynamic--active": i === expanded }',
+          v-bind='tab.image' forceVisible imageBackground)
+    .block-tabs__content(ref='contentCol')
+      h2.block-tabs__header(v-html='props.header')
+      .block-tabs__tabs
+        button.block-tabs__tab(v-for='(tab, i) in props.tabs', :key='`tab-${i}`'
+          @click='toggleAccordion(i)'
+          ref='content')
+          .block-tabs__tab-top
+            .block-tabs__tab-number(ref='numbers')
+              span {{ i + 1 }}
+            h3.block-tabs__tab-title(v-html='tab.title')
+          .block-tabs__tab-bottom(
+            :aria-hidden=`expanded !== i ? 'true' : 'false'`,
+            :style=`{ height: expanded === i ? bodyHeight + 'px' : 0, opacity: expanded === i ? 1 : 0, paddingLeft: paddingLeft }`,
+            aria-live='polite'
+            role='region')
+            .block-tabs__tab-body(v-html='tab.body' ref='body')

@@ -1,18 +1,18 @@
 footer.footer
   .footer__container
-    .footer__col
-      ul.footer__menu(aria-label='primary menu')
-        li.footer__menu-item(
-          v-for='(link, i) in links',
-          :key='`nav-link-${i}`'
-        )
-          nuxt-link.footer__link(
-            :class=`{ 'footer__link--active': $route.path === link.path }`,
-            :to='link.path'
-          )
-            span(v-html='link.name')
+    FooterFooterMobile(v-if='$store.state.isTablet || $store.state.isPhoneLandLg'
+      :top='top'
+      :props='$store.state.global'
+      :links='links'
+    )
+    FooterFooterDesktop(v-else
+      :props='$store.state.global' 
+      :top='top'
+      :links='links')
   .footer__container
     .footer__col
-      .footer__text(v-html=``) © #{new Date().getFullYear()} {{ $store.state.global.company_name }} | Online Advantage by #[a(:href='"https://www.roostergrin.com/"' target='"_blank"') Rooster Grin Media. ]
+      .footer__text(v-html=``) © #{new Date().getFullYear()} {{ $store.state.global.company_name }}
+      .footer__text.footer__text--mobile {{ " | " }} 
+      .footer__text Online Advantage by #[a(:href='"https://www.roostergrin.com/"' target='"_blank"') Rooster Grin Media ]
       nuxt-link.footer__text(to='/accessibility') Accessibility Statement
       .footer__text.footer__userway#accessibilityWidget(tabindex='0' aria-label='Click Here for Accessibility') Click for Accessibility

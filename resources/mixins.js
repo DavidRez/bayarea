@@ -38,11 +38,11 @@ export const fadeIn = {
   methods: {
     $_fadeIn (
       element,
-      yStart = 0,
       xStart = 0,
+      yStart = 0,
       start = 'top+48',
-      delay = 0,
-      duration = 1
+      duration = 1,
+      delay = 0
     ) {
       this.$CustomEase.create('customEaseOut', '0.23, 1, 0.32, 1')
 
@@ -97,15 +97,7 @@ export const throttle = {
 export const trapFocus = {
   methods: {
     $_trapFocus (element) {
-      const focusableEls = element.querySelectorAll(`
-        a[href]:not([disabled]),
-        button:not([disabled]),
-        textarea:not([disabled]),
-        input[type='text']:not([disabled]),
-        input[type='radio']:not([disabled]),
-        input[type='checkbox']:not([disabled]),
-        select:not([disabled])`
-      )
+      const focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])')
       const firstFocusableEl = focusableEls[0]
       const lastFocusableEL = focusableEls[focusableEls.length - 1]
 
@@ -121,7 +113,7 @@ export const trapFocus = {
         /* eslint-disable */
         if (e.shiftKey) {
           if (document.activeElement === firstFocusableEl) {
-            e.preventDefault()
+              e.preventDefault()
             lastFocusableEL.focus()
           }
         } else {
@@ -132,6 +124,14 @@ export const trapFocus = {
         }
       })
       element.focus()
+    }
+  }
+}
+
+export const removeFocus = {
+  methods: {
+    $_removeFocus () {
+      document.activeElement.blur()
     }
   }
 }

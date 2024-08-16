@@ -1,0 +1,107 @@
+.navigation-top-bar
+  @include nexus
+    transform: translateY(-105%)
+    opacity: 0
+    z-index: -1
+    padding: 0
+    max-height: 0
+  @include phone-land-lg
+    transform: translateY(-105%)
+    opacity: 0
+    z-index: -1
+    padding: 0
+    max-height: 0
+  position: relative
+  transition: transform .4s ease, max-height .4s ease .3s, padding .6s ease .3s, opacity .4s ease
+  z-index: 10
+  background: var(--text)
+  padding: 0.25rem 0
+  width: 100vw
+  height: fit-content
+  max-height: 100vh
+
+  &--hide
+    transform: translateY(-105%)
+    opacity: 0
+    z-index: -1
+    padding: 0
+    max-height: 0
+
+  &--hover
+    @include hover-supported
+      background: var(--accent2)
+      cursor: pointer
+  
+  &__container
+    @include container--large
+    @include tablet-md
+      flex-wrap: nowrap
+    flex-wrap: nowrap
+    align-items: center
+    justify-content: flex-end
+    gap: 1rem
+    
+  &__links
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: flex-end
+    width: 100%
+
+    &--group
+      margin-right: 1rem
+
+  &__announcement
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    width: 100%
+
+    &-text
+      @extend %body
+      color: $white
+      font-variant-numeric: lining-nums
+
+  &__close
+    @include hover-supported
+      span
+        background: var(--secondary)
+    display: block
+    position: relative
+    cursor: pointer
+    width: 1.5rem
+    height: 1.5rem
+  
+    span
+      display: block
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      transition: all .2s ease
+      margin: auto
+      background: $white
+      width: 2px
+      height: 100%
+      transform-origin: center
+
+      &:first-of-type
+        transform: rotate(45deg)
+
+      &:last-of-type
+        transform: rotate(-45deg)
+
+    &:focus-visible
+      @include focus
+
+  &__modal
+    &-title
+      @extend %h2
+      margin-bottom: 2rem
+      text-align: center
+    
+    &-body
+      @extend %body
+      p:not(:last-of-type)
+        margin-bottom: 1rem

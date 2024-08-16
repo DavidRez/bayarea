@@ -1,0 +1,7 @@
+.block-single-contact(:class='{ "block-single-contact--light": light, "block-single-contact--center": center }')
+  a.block-single-contact__container.block-single-contact__container--link(v-if='props.href' :href='props.href' :aria-label='props.aria')
+    BaseIcon.block-single-contact__icon(v-if='icon' :name='icon')
+    span.block-single-contact__label(v-html='props.label')
+  .block-single-contact__container(v-else)
+    BaseIcon.block-single-contact__icon(v-if='icon' :name='icon')
+    span.block-single-contact__label(v-html='props.label')

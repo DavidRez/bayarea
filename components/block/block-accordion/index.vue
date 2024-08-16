@@ -36,11 +36,11 @@ export default {
   methods: {
     handleGsapAnimation () {
       if (this.$refs.gsap1) {
-        this.$_fadeIn(this.$refs.gsap1, 24, 0, 'top+=58', 0, 1.2)
+        this.$_fadeIn(this.$refs.gsap1, 0, 24, 'top+=58', 0, 1.2)
       }
       if (this.$refs.gsap2 && this.$refs.gsap2.length) {
         this.$refs.gsap2.forEach((el, i) => {
-          this.$_fadeIn(el, 24, 0, 'top+=58', 0, 1.2)
+          this.$_fadeIn(el, 0, 24, 'top+=58', 0, 1.2)
         })
       }
     },

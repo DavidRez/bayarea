@@ -1,0 +1,23 @@
+.menu-contact(v-if='loaded' :class='{ "menu-contact--inline": inline, "menu-contact--center": center }')
+  .menu-contact__location(v-for='(location, i) in props.locations' :key='`location-${i}`')
+    .menu-contact__location-title(v-if='title && location.title' v-html='location.title')
+    BlockSingleContact.menu-contact__location-info(v-if='phone && location.phone.label'
+      :props='location.phone'
+      :icon='icon ? "phone" : null'
+      :light='light')
+    BlockSingleContact.menu-contact__location-info(v-else-if='phone && props.locations.length === 1'
+      :props='props.phone'
+      :icon='icon ? "phone" : null'
+      :light='light')
+    BlockSingleContact.menu-contact__location-info(v-if='address && location.address.label'
+      :props='location.address'
+      :icon='icon ? "pin" : null'
+      :light='light')
+    BlockSingleContact.menu-contact__location-info(v-if='email && location.email.label'
+      :props='location.email'
+      :icon='icon ? "mail" : null'
+      :light='light')
+    BlockSingleContact.menu-contact__location-info(v-if='hours && location.hours && locations[i]'
+      :props='{ label: locations[i] }'
+      :icon='icon ? "clock" : null'
+      :light='light')

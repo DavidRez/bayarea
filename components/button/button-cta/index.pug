@@ -1,0 +1,35 @@
+.button-cta(:class='[ "button-cta--" + props.style ]')
+
+  //- Nuxt Link ============================================
+  nuxt-link.button-cta__button(
+    v-if='props.type === `nuxt`',
+    :to=`{ path: props.path, hash: props.hash }`,
+    :aria-label='props.aria',
+  )
+    .button-cta__container
+      span(v-html='props.label')
+    .button-cta__container
+      BaseIcon(name='caret')
+
+  //- Anchor Link ============================================
+  a.button-cta__button(
+    v-else-if='props.type === `anchor`',
+    :href='props.href',
+    :aria-label='props.aria',
+    :target='props.external ? `_blank` : null'
+  )
+    .button-cta__container
+      span(v-html='props.label')
+    .button-cta__container
+      BaseIcon(name='caret')
+
+  //- Custom Link ============================================
+  button.button-cta__button(
+    v-else-if='props.type === `custom`',
+    @click='handleClick',
+    :aria-label='props.aria'
+  )
+    .button-cta__container
+      span(v-html='props.label')
+    .button-cta__container
+      BaseIcon(name='caret')

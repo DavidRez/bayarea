@@ -1,0 +1,23 @@
+.block-column-tabs
+  position: relative
+  background: var(--text)
+
+  &__container
+    @include container
+    justify-content: center
+
+  &__col
+    @include col (12)
+
+  &__header
+    @extend %subtext
+    width: 100%
+    text-align: left
+    color: $white
+
+  &__subheader
+    @extend %h2
+    @extend %header-margin-bottom
+    width: 100%
+    text-align: left
+    color: var(--bg-1)

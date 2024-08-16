@@ -4,39 +4,60 @@
     v-for='(section, i) in props',
     :key='`section-${i}`',
     :class='`component-margins--` + section.component_margins',
-    :id='section.hash'
+    :id='section.hash',
+    :style='{ backgroundColor: section.background_color }'
   )
     .page-sections__section(:id='`${section.acf_fc_layout}-${i}`')
       div(v-if='section.acf_fc_layout === null')
       BlockAccordion(
         v-else-if='section.acf_fc_layout === `accordion`',
         :class='`component-padding--` + section.component_padding',
-        :props='section',
-        :style='{ backgroundColor: section.background_color }'
+        :props='section'
+      )
+      //- BlockColumnTabs(
+      //-   v-else-if='section.acf_fc_layout === `column_tabs`',
+      //-   :class='`component-padding--` + section.component_padding',
+      //-   :props='section'
+      //- )
+      BlockContactBanner(
+        v-else-if='section.acf_fc_layout === `contact_banner`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
       )
       BlockForm(
         v-else-if='section.acf_fc_layout === `form`',
         :class='`component-padding--` + section.component_padding',
-        :props='section',
-        :style='{ backgroundColor: section.background_color }'
+        :props='section'
       )
       BlockGallerySlider(
         v-else-if='section.acf_fc_layout === `gallery_slider`',
         :class='`component-padding--` + section.component_padding',
-        :props='section',
-        :style='{ backgroundColor: section.background_color }'
+        :props='section'
+      )
+      BlockImageText(
+        v-else-if='section.acf_fc_layout === `image_text`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockTabs(
+        v-else-if='section.acf_fc_layout === `tabs`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
       )
       BlockTiles(
         v-else-if='section.acf_fc_layout === `tiles`',
         :class='`component-padding--` + section.component_padding',
-        :props='section',
-        :style='{ backgroundColor: section.background_color }'
+        :props='section'
+      )
+      BlockTitle(
+        v-else-if='section.acf_fc_layout === `title`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
       )
       Hero(
         v-else-if='section.acf_fc_layout === `hero`',
         :class='`component-padding--` + section.component_padding',
-        :props='section',
-        :style='{ backgroundColor: section.background_color }'
+        :props='section'
       )
 
       // devMode is toggled in the global custom-post in the API and is only effective when the site is run locally.

@@ -1,4 +1,4 @@
-%button
+%button-default
   @include focus
   display: flex
   align-items: center
@@ -11,7 +11,7 @@
   font-weight: 700
 
 @mixin button-primary($background, $text)
-  @extend %button
+  @extend %button-default
   @include hover-supported
     background: transparent
     color: $background
@@ -35,7 +35,7 @@
     stroke: $text
 
 @mixin button-secondary($background, $text)
-  @extend %button
+  @extend %button-default
   @include hover-supported
     background: $background
     color: $text
@@ -59,7 +59,7 @@
     stroke: $background
 
 @mixin button-underline($text, $hover)
-  @extend %button
+  @extend %button-default
   @include hover-supported
     color: $hover
     &::after

@@ -1,0 +1,71 @@
+.block-single-contact
+
+  &__container
+    @include nexus
+      height: rem-calc(42)
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: .15rem
+    width: fit-content
+    color: var(--primary)
+
+    &:not(:last-of-type)
+      @include tablet
+        margin-bottom: 1rem
+      margin-bottom: 2rem
+
+    .block-single-contact--light &
+      color: $white
+
+    &--link
+      @include hover-supported
+        .block-single-contact__icon
+          path
+            stroke: var(--secondary) !important
+        .block-single-contact__label
+          color: var(--secondary)
+      transition: all .25s ease-in
+      cursor: pointer
+      
+      &:focus-visible
+        @include focus
+
+  &__icon
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-right: 0.5rem
+    width: rem-calc(30)
+    height: rem-calc(30)
+
+    svg
+      @include nexus
+        width: 70%
+        height: 70%
+      max-width: 100%
+      height: 100%
+      overflow: visible
+
+      path,
+      circle
+        transition: all .2s ease
+
+        .block-single-contact--light &
+          stroke: $white !important
+
+  &__label
+    @extend %body
+    transition: all .2s ease
+    margin-bottom: -4px // modify or remove to center in container, depending on font
+    text-align: left
+    text-transform: none
+    line-height: 1.5rem
+    color: var(--primary)
+    font-weight: 400
+
+    .block-single-contact--light &
+      color: $white
+
+    .block-single-contact--center &
+      text-align: center

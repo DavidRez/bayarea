@@ -1,0 +1,7 @@
+section.block-contact-banner(ref='container')
+  .block-contact-banner__container
+    .block-contact-banner__col
+      .block-contact-banner__header(v-if='props.header' v-html='props.header' :style='{ color: props.text_color }' ref='header')
+      .block-contact-banner__subheader(v-if='props.subheader' v-html='props.subheader' :style='{ color: props.text_color }' ref='subheader')
+      .block-contact-banner__body(v-if='props.body' v-html='props.body' :style='{ color: props.text_color }' ref='body')
+      Button.block-contact-banner__button(v-if='props.button' :props='props.button' ref='button')

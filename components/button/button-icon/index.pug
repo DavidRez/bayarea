@@ -1,0 +1,7 @@
+.button-icon(:class='[ "button-icon--" + props.color ]')
+  a.button-icon__container.button-icon__container--link(v-if='props.href' :href='props.href' :aria-label='props.aria')
+    BaseIcon.button-icon__icon(v-if='props.include_icon && props.icon' :name='props.icon')
+    span.button-icon__label(v-html='props.label')
+  .button-icon__container(v-else)
+    BaseIcon.button-icon__icon(v-if='icon' :name='icon')
+    span.button-icon__label(v-html='props.label')

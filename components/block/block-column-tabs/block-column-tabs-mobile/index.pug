@@ -1,0 +1,32 @@
+.block-column-tabs-mobile
+  .block-column-tabs-mobile__container
+    .block-column-tabs-mobile__col
+      .block-column-tabs-mobile__tabs(ref='gsap1')
+        button.block-column-tabs-mobile__tab-container(
+          v-for=`(tab, i) in props.tabs`,
+          :key='`${tab.title}-${i}`',
+          :aria-controls=`'block-column-tabs-mobile__drawer--' + i`,
+          aria-label='expand section',
+          :class=`{ 'block-column-tabs-mobile__tab-container--active': expanded === i }`,
+          @click='toggleAccordion(i)',
+          ref='gsap2'
+        )
+          .block-column-tabs-mobile__tab
+            h4.block-column-tabs-mobile__tab-title(v-html='tab.title')
+            .block-column-tabs-mobile__tab-number {{ '0' + (i + 1) }}
+          .block-column-tabs-mobile__drawer(
+            :aria-hidden=`expanded !== i ? 'true' : 'false'`,
+            aria-live='polite',
+            :id=`'block-column-tabs-mobile__drawer--' + i`,
+            role='region',
+            :style=`{ height: expanded === i ? accordionBodyHeight + 'px' : 0 }`
+          )
+            .block-column-tabs-mobile__content(:aria-hidden=`expanded !== i ? 'true' : 'false'`, ref='content')
+              .block-column-tabs-mobile__body(v-html='tab.body')
+              BaseImage.block-column-tabs-mobile__image(v-if=`tab.graphic_type === 'image' && tab.image.src`
+                v-bind='tab.image'
+              )
+              BaseIcon.block-column-tabs-mobile__icon(v-if=`tab.graphic_type === 'icon' && tab.icon`
+                :name='tab.icon'
+              )
+              Button.block-column-tabs-mobile__button(v-if='tab.button.label' :props='tab.button')

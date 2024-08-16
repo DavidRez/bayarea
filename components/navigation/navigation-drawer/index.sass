@@ -1,0 +1,56 @@
+.navigation-drawer
+  @include phone-land-lg
+    padding: rem-calc(60) rem-calc(24) rem-calc(90)
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 4rem
+  background: var(--text)
+  padding: rem-calc(60) rem-calc(40) rem-calc(90)
+  overflow-y: auto
+
+  &__logo
+    @include nexus
+      max-width: 75%
+    @include phone-land-lg
+      max-width: 75%
+    display: block
+    width: 100%
+    max-width: rem-calc(300)
+
+    .base-icon,
+    svg
+      width: 100%
+      height: auto
+
+  &__exit
+    @extend %button
+    @include hover-supported
+      color: var(--secondary)
+    position: absolute
+    top: 1rem
+    right: 1rem
+    transition: all .2s ease
+    z-index: 3
+    border: none
+    background: none
+    cursor: pointer
+    color: $white
+
+    &:focus-visible
+      @include focus
+
+  &__group
+    width: fit-content
+    & > *
+      margin: 0 auto
+    & > *:not(:last-of-type)
+      margin-bottom: 2.5rem
+
+  &__title
+    @extend %subtext
+    margin-bottom: 1.5rem !important
+    text-align: center
+    text-transform: uppercase
+    color: $white
+    font-weight: 700

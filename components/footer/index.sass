@@ -1,46 +1,44 @@
 .footer
   @extend %component-padding--half
-  background-color: #333333
+  @include tablet
+    padding-bottom: 4rem
+  background-color: $black
   color: #f2f2f2
 
-  a
+  a,
+  &__userway
     @include hover-focus
-      -webkit-text-stroke-width: rem-calc(.3)
-      .footer__header
-        -webkit-text-stroke-width: rem-calc(0)
+      color: var(--primary)
+    cursor: pointer
     text-decoration: none
-    color: #f2f2f2
+    color: $white
 
-    &.footer__link--active
-      pointer-events: none
-      text-decoration: underline
-      -webkit-text-stroke-width: rem-calc(.3)
+    &:focus-visible
+      @include focus
 
   &__col
     @include col(12)
+    @include tablet
+      flex-direction: column
+      align-items: center
+      gap: 1rem
+    @include phone-land-lg
+      flex-direction: column
+      align-items: center
+      gap: 1rem
     display: flex
     justify-content: space-between
     gap: rem-calc(20) rem-calc(30)
+    margin-top: 3rem
+    border-top: 2px solid $white
+    padding-top: 2rem
 
   &__container
     @include container
 
-    &--test
-      margin-top: 100px
-      background: white
-      min-height: 200px
-
-  &__menu
-    display: flex
-    flex-shrink: 0
-    flex-wrap: wrap
-    align-items: center
-    gap: rem-calc(20) rem-calc(30)
-    margin: 0 0 rem-calc(24) 0
-    padding: 0
-    width: 100%
-    list-style-type: none
-
   &__text
     @include tablet-lg
       font-size: rem-calc(14)
+
+    &--mobile
+      display: none
