@@ -5,7 +5,7 @@
 
 export default {
   components: {
-    BlockButton
+    // BlockButton
   },
   props: {
     props: {
