@@ -1,7 +1,7 @@
 <template lang='pug' src='./index.pug'></template>
 
 <script>
-import BlockButton from '~/components/block/block-button'
+// import BlockButton from '~/components/button'
 
 export default {
   components: {
