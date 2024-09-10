@@ -1,10 +1,10 @@
 <template lang="pug" src="./index.pug"></template>
 
 <script>
-import { debounce } from '~/resources/mixins'
+import { fadeIn, debounce } from '~/resources/mixins'
 
 export default {
-  mixins: [debounce],
+  mixins: [fadeIn, debounce],
   props: {
     props: {
       type: Object,
@@ -86,40 +86,17 @@ export default {
     },
     handleAnimation () {
       this.$nextTick(() => {
-        const container = this.$refs.container
-        const tl = this.$gsap.timeline({
-          scrollTrigger: {
-            trigger: container,
-            start: 'center bottom',
-            toggleActions: 'play none play none'
-          }
-        })
-
         if (this.props.images.length > 1) {
           this.$refs.dots.forEach((dot, i) => {
-            const delay = 0.1 + (0.05 * i)
-            tl.fromTo(dot, {
-              opacity: 0
-            }, {
-              opacity: 1,
-              delay,
-              duration: 0.15,
-              ease: 'customEaseOut'
-            })
+            const delay = 0.1 + (0.25 * i)
+            this.$_fadeIn(dot, 0, 48, '+48', 2, delay)
           })
         }
 
         if (this.props.social_media) {
           this.$refs.icons.forEach((icon, i) => {
-            const delay = 0.1 + (0.05 * i)
-            tl.fromTo(icon, {
-              autoAlpha: 0
-            }, {
-              autoAlpha: 1,
-              delay,
-              duration: 0.15,
-              ease: 'customEaseOut'
-            })
+            const delay = 0.1 + (0.25 * i)
+            this.$_fadeIn(icon, 0, 48, '+48', 2, delay)
           })
         }
       })
