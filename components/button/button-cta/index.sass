@@ -9,9 +9,11 @@
     border: 1px solid var(--text)
     cursor: pointer
 
+    //primary
     .button-cta--primary &
       background: var(--bg-1)
     
+    //secondary
     .button-cta--secondary &
       border: 1px solid $white
       background: var(--text)
@@ -19,50 +21,95 @@
       span
         color: $white
       
-      .button-cta__container:last-of-type
-        border-left: 1px solid $white
+      .button-cta__container:first-of-type
+        border-right: 1px solid $white
 
       svg
         path
           stroke: $white
-  
+        
+    //tertiary
     .button-cta--tertiary &
       background: $white
 
-    &:focus-visible
+    // custom for tiles component
+    .button-cta--tile &
+      strong
+        @extend %subtext
+        color: $white
+      span
+        text-align: left
+        color: $white
+
+    &:focus-visible,
+    &:hover
       @include focus
-
-    @include hover-supported
-      .button-cta--primary &
-        background: var(--primary)
       
-      .button-cta--secondary &
-        border: 1px solid var(--text)
-        background: $white
-        span
-          color: var(--text)
-        .button-cta__container:last-of-type
-          border-left: 1px solid var(--text)
-        path
-          stroke: var(--text)
-
-      .button-cta--tertiary &
-        background: var(--bg-1)
-
       span
         animation: upwards 0.5s forwards 1
 
       .base-icon
         animation: right 0.5s forwards 1
 
+      // primary
+      .button-cta--primary &
+        background: var(--primary)
+      
+      // secondary
+      .button-cta--secondary &
+        border: 1px solid var(--text)
+        background: $white
+        span
+          color: var(--text)
+        .button-cta__container:first-of-type
+          border-right: 1px solid var(--text)
+        path
+          stroke: var(--text)
+
+      // tertiary
+      .button-cta--tertiary &
+        background: var(--bg-1)
+
+        path
+          stroke: var(--text)
+
+      // tile
+      .button-cta--tile &
+        .button-cta__container:first-of-type
+          background: $white
+        
+          span
+            color: var(--accent1)
+        
+        .button-cta__container:last-of-type
+          background: var(--accent1)
+          
+          path
+            stroke: $white
+
   &__container
+    transition: all .25s ease
+    height: 100%
     overflow: hidden
 
     &:first-of-type
+      @include nexus
+        padding: 0.5rem 1rem
+      flex: 2
+      border-right: 1px solid var(--text)
       padding: 1rem 2rem
+  
+      .button-cta--tile &
+        background: var(--accent1)
+
     &:last-of-type
-      border-left: 1px solid var(--text)
-      padding: 1rem
+      display: flex
+      align-items: center
+      justify-content: center
+      width: rem-calc(48)
+  
+      .button-cta--tile &
+        background: $white
 
   span
     @extend %button
@@ -85,6 +132,7 @@
 
       path
         transition: all .2s ease
+
 
   @keyframes upwards
     0%

@@ -1,53 +1,92 @@
 <template lang='pug' src='./index.pug'></template>
 
 <script>
-// import BlockButton from '~/components/button'
+import BlockTilesDesktop from './block-tiles-desktop'
+import BlockTilesMobile from './block-tiles-mobile'
+import { fadeIn } from '~/resources/mixins'
 
 export default {
   components: {
-    // BlockButton
+    BlockTilesDesktop,
+    BlockTilesMobile
   },
+  mixins: [fadeIn],
   props: {
     props: {
       type: Object,
       default: () => ({})
     }
   },
-  data: () => ({
-    slider: false
-  }),
   mounted () {
-    this.setIfSlider()
-    window.addEventListener('resize', () => {
-      this.setIfSlider()
-    })
-  },
-  destroyed () {
-    window.removeEventListener('resize', this.setIfSlider)
+    if (this.$store.state.siteIsLoaded) {
+      this.handleAnimation()
+    } else {
+      this.$store.watch(
+        state => this.$store.state.siteIsLoaded,
+        (newVal) => {
+          if (newVal) {
+            this.handleAnimation()
+          }
+        }
+      )
+    }
   },
   methods: {
-    setIfSlider () {
-      let columnsAtCurrentWidth = this.props.columns
+    handleAnimation () {
+      this.$nextTick(() => {
+        const tlHeader = this.$gsap.timeline({
+          scrollTrigger: {
+            trigger: this.$refs.container,
+            start: '+48 bottom',
+            toggleActions: 'play none play none'
+          }
+        })
+        const tlSubheader = this.$gsap.timeline({
+          scrollTrigger: {
+            trigger: this.$refs.container,
+            start: '+48 bottom',
+            toggleActions: 'play none play none'
+          }
+        })
 
-      if (this.props.overflow === 'slider') {
-        this.slider = true
-
-        if (window.innerWidth <= 480) {
-          columnsAtCurrentWidth = 1
-        } else if (window.innerWidth <= 768) {
-          columnsAtCurrentWidth = 2
-        } else if (window.innerWidth <= 880) {
-          columnsAtCurrentWidth = this.props.columns === '2' ? 2 : 3
-        } else {
-          columnsAtCurrentWidth = +this.props.columns
+        if (this.$refs.header) {
+          const childHeader = new this.$SplitText(this.$refs.header, {
+            type: 'lines',
+            linesClass: 'split-child'
+          })
+          const parentHeader = new this.$SplitText(this.$refs.header, {
+            linesClass: 'split-parent'
+          })
+          if (childHeader && parentHeader && this.animate) {
+            tlHeader.from(childHeader.lines, {
+              yPercent: 100,
+              opacity: 0,
+              duration: 2,
+              stagger: 0.115,
+              ease: 'customEaseOut'
+            })
+          }
         }
-      } else if (window.innerWidth <= 480 && this.props.tiles.length > 3) {
-        this.slider = true
-      }
 
-      if (columnsAtCurrentWidth >= this.props.tiles.length) {
-        this.slider = false
-      }
+        if (this.$refs.subheader) {
+          const childSubheader = new this.$SplitText(this.$refs.subheader, {
+            type: 'lines',
+            linesClass: 'split-child'
+          })
+          const parentSubheader = new this.$SplitText(this.$refs.subheader, {
+            linesClass: 'split-parent'
+          })
+          if (childSubheader && parentSubheader && this.animate) {
+            tlSubheader.from(childSubheader.lines, {
+              yPercent: 100,
+              opacity: 0,
+              duration: 2,
+              stagger: 0.115,
+              ease: 'customEaseOut'
+            })
+          }
+        }
+      })
     }
   }
 }

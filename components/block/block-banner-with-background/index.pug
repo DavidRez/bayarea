@@ -1,0 +1,8 @@
+section.block-banner-with-background(ref='container')
+  .block-banner-with-background__bg(v-if='props.background' :style='{ backgroundImage: `url(${props.background})` }')
+  .block-banner-with-background__container(:class='{ "block-banner-with-background__container--reverse": props.reverse }')
+    .block-banner-with-background__col.block-banner-with-background__col--content(ref='col1')
+      BlockContent(:props='props.content' animate)
+    .block-banner-with-background__col.block-banner-with-background__col--media(ref='col2')
+      .block-banner-with-background__image-container(v-if='props.add_image')
+        BaseImage.block-banner-with-background__image(v-bind='props.image' forceVisible imageBackground)

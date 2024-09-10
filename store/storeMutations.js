@@ -7,7 +7,10 @@ import {
   IS_TABLET_LG,
   IS_TABLET_MD,
   SET_FORMS,
+  SET_BLOG,
   SET_GLOBAL,
+  SET_TESTIMONIALS,
+  SET_TEAM,
   SITE_IS_LOADED,
   VIDEO_LOADING,
   VIEW_MENU
@@ -38,8 +41,17 @@ const stateMutations = () => ({
   [SET_FORMS] (state, data) {
     state.forms = data
   },
+  [SET_BLOG] (state, data) {
+    state.posts = data
+  },
   [SET_GLOBAL] (state, data) {
     state.global = data
+  },
+  [SET_TESTIMONIALS] (state, data) {
+    state.testimonials = data
+  },
+  [SET_TEAM] (state, data) {
+    state.team = data
   },
   [SITE_IS_LOADED] (state, data) {
     state.siteIsLoaded = data

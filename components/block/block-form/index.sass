@@ -2,10 +2,10 @@
 
   &__container
     @include container
+    justify-content: center
 
   &__col
-    &--content
-      @include col (5)
+    @include col (8)
 
-    &--form
-      @include col (7)
+  &__content
+    @extend %margin-bottom--lg

@@ -1,0 +1,56 @@
+section.block-locations-map-multiple-mobile(v-if='props && global')
+  .block-locations-map-multiple-mobile__container
+    .block-locations-map-multiple-mobile__locations(ref='locations')
+      h2.block-locations-map-multiple-mobile__title(ref='title') {{ props.title }}
+      .block-locations-map-multiple-mobile__items
+        button.block-locations-map-multiple-mobile__item-container(
+          v-for=`(item, i) in global.locations`,
+          :key='`${item.title}-${i}`',
+          :aria-controls=`'block-locations-map-multiple-mobile__drawer--' + i`,
+          aria-label='expand section',
+          :class=`{ 'block-locations-map-multiple-mobile__item-container--active': expanded === i }`,
+          @click='toggleAccordion(i)',
+          ref='rows'
+        )
+          .block-locations-map-multiple-mobile__item
+            h3.block-locations-map-multiple-mobile__item-title(v-html='item.title')
+            .block-locations-map-multiple-mobile__cross
+              span
+              span
+          .block-locations-map-multiple-mobile__drawer(
+            :aria-hidden=`expanded !== i ? 'true' : 'false'`,
+            aria-live='polite',
+            :id=`'block-locations-map-multiple-mobile__drawer--' + i`,
+            role='region',
+            :style=`{ height: expanded === i ? accordionBodyHeight + 'px' : 0 }`
+          )
+            .block-locations-map-multiple-mobile__content(:aria-hidden=`expanded !== i ? 'true' : 'false'`, ref='content')
+              .block-locations-map-multiple-mobile__location
+                .block-locations-map-multiple-mobile__location-info
+                  .block-locations-map-multiple-mobile__location-info-title
+                    BaseIcon(name='location-pin')
+                    span Office
+                  a.block-locations-map-multiple-mobile__location-info-link(v-if='global.locations[i].address.label' v-html='global.locations[i].address.label' :href='global.locations[i].address.href' :aria-label='global.locations[i].address.aria' target='_blank')
+                  
+                .block-locations-map-multiple-mobile__location-info
+                  .block-locations-map-multiple-mobile__location-info-title
+                    BaseIcon(name='location-phone')
+                    span Phone
+                  a.block-locations-map-multiple-mobile__location-info-link(v-if='global.locations[i].phone.label' v-html='global.locations[i].phone.label' :href='global.locations[i].phone.href' :aria-label='`call ${global.locations[i].phone.label}`') 
+                  a.block-locations-map-multiple-mobile__location-info-link(v-else v-html='global.phone.label' :href='global.phone.href' :aria-label='`call ${global.phone.label}`')
+                
+                .block-locations-map-multiple-mobile__location-info
+                  .block-locations-map-multiple-mobile__location-info-title
+                    BaseIcon(name='location-mail')
+                    span Email
+                  a.block-locations-map-multiple-mobile__location-info-link(v-if='global.locations[i].email.address' v-html='global.locations[i].email.address' :href='global.locations[i].email.href' :aria-label='`email ${global.locations[i].email.address}`')
+                  a.block-locations-map-multiple-mobile__location-info-link(v-else v-html='global.email' :href='`mailto:${global.email}`' :aria-label='`email ${global.email}`')
+                
+                .block-locations-map-multiple-mobile__location-info
+                  .block-locations-map-multiple-mobile__location-info-title
+                    BaseIcon(name='location-clock')
+                    span Hours
+                  .block-locations-map-multiple-mobile__location-info-text(v-if='global.locations[i].hours'
+                    v-for='(hours, i) in global.locations[i].hours' :key='"location-hours" + i') {{ hours.day + ': ' + hours.time }}
+                  .block-locations-map-multiple-mobile__location-info-text(v-if='global.locations[i].special_note') {{ global.locations[i].special_note }}
+                .block-locations-map-multiple-mobile__location-map(:ref='`map-${i}`' :id='`map-${i}`')

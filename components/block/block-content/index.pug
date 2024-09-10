@@ -9,7 +9,8 @@
       'block-content--header-color-primary': props.header_color === 'primary',
       'block-content--header-color-white': props.header_color === 'white'
     }
-  ]`)
+  ]`
+  ref='container')
   h1.block-content__header(v-if='props.hero_header && props.header', v-html='props.header' ref='header')
   h2.block-content__header(
     v-if='!props.hero_header && props.header', v-html='props.header',

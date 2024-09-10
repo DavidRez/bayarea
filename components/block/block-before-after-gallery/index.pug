@@ -1,0 +1,49 @@
+section.block-before-after-gallery
+  .block-before-after-gallery__container
+    .block-before-after-gallery__col
+      BlockContent.block-before-after-gallery__content(:props='props.content' animate)
+  
+  .block-before-after-gallery__container
+    .block-before-after-gallery__col.block-before-after-gallery__col--gallery(:style='{ height: height }' ref='gallery')
+      .block-before-after-gallery__images(v-for='(pair, i) in props.images'
+        :key='`current image is ${1 + i} of ${props.images.length}`'
+        :class='setClasses(i)'
+        ref='images')
+        .block-before-after-gallery__before
+          .block-before-after-gallery__image-container
+            BaseImage.block-before-after-gallery__image(v-bind='pair.before.image' forceVisible imageBackground)
+          .block-before-after-gallery__title {{ pair.before.title }}
+        .block-before-after-gallery__after
+          .block-before-after-gallery__image-container
+            BaseImage.block-before-after-gallery__image(v-bind='pair.after.image' forceVisible imageBackground)
+          .block-before-after-gallery__title {{ pair.after.title }}
+          
+  .block-before-after-gallery__container
+    .block-before-after-gallery__col
+      // Controls //////////////////////////////////////////////
+      .block-before-after-gallery__controls
+        .block-before-after-gallery__dots
+          .block-before-after-gallery__dot(
+            v-for='(dot, i) in props.images',
+            :key='`testimonial-dot-${i}`',
+            :aria-label='`click dot to go to gallery ${ i + 1 } of ${props.images.length}`',
+            :class="{ 'block-before-after-gallery__dot--active': active === i }",
+            @click='makeActive(i)' @keyup.enter='makeActive(i)'
+            tabindex='0'
+            role='button'
+          )
+        .block-before-after-gallery__buttons
+          button.block-before-after-gallery__button.block-before-after-gallery__button--prev(@click='throttlePrevSlide()' @keyup.enter='throttlePrevSlide()' aria-label='read the previous image')
+            BaseIcon.block-before-after-gallery__icon(name='arrow')
+          button.block-before-after-gallery__button.block-before-after-gallery__button--next(@click='throttleNextSlide()' @keyup.enter='throttleNextSlide()' aria-label='read the next image')
+            BaseIcon.block-before-after-gallery__icon(name='arrow')
+
+  transition(name='fade')
+    BaseBaseModal.block-before-after-gallery__modal(v-if='modalOpen'
+      :modalOpen='modalOpen'
+      @closemodal='modalOpen = $event'
+      role='dialog'
+      aria-labelledby='aria-modal-title'
+      aria-modal='true')
+      BaseImage.block-before-after-gallery__modal-image(v-bind='image')
+

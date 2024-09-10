@@ -1,6 +1,7 @@
 section.block-form
+  .block-form__container
+    .block-form__col
+      BlockContent.block-form__content(v-if='props.content' :props='props.content' animate)
   .block-form__container(v-if='selectedForm')
-    .block-form__col.block-form__col--content
-      BlockContent(:props='selectedForm.content.content')
-    .block-form__col.block-form__col--form
+    .block-form__col
       FormFlexible(:props='props', :selectedForm='selectedForm' )

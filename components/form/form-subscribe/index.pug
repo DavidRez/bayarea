@@ -1,0 +1,21 @@
+.form-subscribe
+  form.form-subscribe__form(@submit.prevent='validate')
+    .form-subscribe__container
+      BlockContent.form-subscribe__content(:props='Object.assign({}, { header: props.form_content.header, body: props.form_content.body, animate })')
+
+      .form-subscribe__group.form-subscribe__group--required
+        .form-subscribe__input-container
+          input.form-subscribe__input(name='clientEmail', v-model='clientEmail', id='subscribe-email' v-validate="'required|email'", :class="{ 'form-subscribe__input--error': errors.has('clientEmail') }" type='email' autocomplete='email', :aria-invalid="errors.has('clientEmail') ? true : false")
+          label.form-subscribe__label(:class="{ 'form-subscribe__label--active': clientEmail }" for='subscribe-email') Email
+          .form-subscribe__error-message(v-show="errors.has('clientEmail')")  Please input a valid Email
+
+        .form-subscribe__group.form-subscribe__group--button
+          ButtonButtonCta.form-subscribe__submit-button(
+            :class=`{
+              'form-subscribe__submit-button--success': formSuccess,
+              'form-subscribe__submit-button--sending': formSubmitted && !formSuccess
+            }`,
+            type='submit'
+            :props='Object.assign({}, { type: "custom", style: "secondary", label: "Subscribe", aria: "Send form" })'
+          )
+        .form-subscribe__disclaimer(v-if='disclaimer') {{ disclaimer }}

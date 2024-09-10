@@ -1,0 +1,12 @@
+section.block-patient-forms(ref='container')
+  .block-patient-forms__container(:class='{ "block-patient-forms__container--reverse": props.reverse }')
+    .block-patient-forms__col.block-patient-forms__col--content(ref='col1')
+      BlockContent(:props='props.content')
+    .block-patient-forms__col.block-patient-forms__col--forms(ref='col2')
+      a.block-patient-forms__form(v-for='form, i in props.forms' 
+        :key='`form-${i}`'
+        :href='form.href'
+        :target='form.external ? "_blank" : null'
+        ref='forms')
+        BaseIcon(name='document')
+        span {{ form.label }}

@@ -1,0 +1,172 @@
+.block-before-after-gallery
+
+  &__container
+    @include container
+    @include tablet-lg
+      flex-wrap: wrap
+
+  &__col
+    @include col (12)
+    @include phone-land-lg
+      width: 100%
+    @include nexus
+      width: 100%
+    display: flex
+
+  &__content
+    @extend %margin-bottom--md
+
+  &__images
+    @include phone-land-lg
+      grid-template-columns: 1fr 1fr
+    @include nexus
+      grid-template-columns: 1fr
+    display: grid
+    position: absolute
+    top: 0
+    left: 150%
+    grid-template-columns: 1fr 1fr
+    transition: left 1s ease
+    gap: 2rem
+    width: 100%
+    overflow: hidden
+
+    &--active
+      left: 0%
+
+    &--next
+      left: 150%
+
+    &--prev
+      left: -150%
+
+  &__before,
+  &__after
+    display: flex
+    flex-direction: column
+    border: 1px solid var(--text)
+    width: 100%
+    height: 100%
+
+  &__image-container
+    position: relative
+    border-bottom: 1px solid var(--text)
+    padding-top: 55%
+    width: 100%
+
+  &__image
+    @extend %absolute
+
+  &__title
+    @extend %subtext
+    display: flex
+    align-items: center
+    justify-content: center
+    background: var(--bg-1)
+    padding: 1rem
+    width: 100%
+    text-align: center
+
+  &__controls
+    @extend %margin-top--md
+    @include nexus
+      flex-direction: column
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 1rem
+    width: 100%
+
+  &__buttons
+    @include nexus
+      display: none
+    display: flex
+
+  &__button
+    @include hover-supported
+      rect
+        fill: var(--primary)
+    display: inline-flex
+    align-items: center
+    border: none
+    background: none
+    cursor: pointer
+    width: 3rem
+    height: 3rem
+
+    &:focus-visible
+      @include focus
+
+  &__icon
+    width: 100%
+
+    &.base-icon
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 100%
+
+    svg
+      width: 100%
+
+    svg,
+    path,
+    rect
+      transition: all .2s ease
+
+    .block-before-after-gallery__button--next &
+      transform: scale(-1)
+
+  &__dots
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    gap: 1rem
+    height: fit-content
+
+  &__dot
+    display: inline-block
+    transform: scale(0.65)
+    transition: all 0.25s ease
+    border-radius: 50%
+    background: var(--accent1)
+    cursor: pointer
+    width: rem-calc(15)
+    height: rem-calc(15)
+
+    &:hover
+      transform: scale(0.8)
+
+    &--active
+      transform: scale(1)
+
+  &__modal-image
+    &.base-image
+      position: relative
+      height: 100%
+
+    .base-image__image
+      position: relative
+      width: auto
+      max-width: 90vw
+      height: 100%
+
+  @keyframes fadeOut
+    0%
+      opacity: 0
+    100%
+      opacity: 1
+
+
+  @keyframes shrinkDown
+    0%
+      opacity: 0
+      transform: scale(1)
+    50%
+      transform: scale(0)
+    100%
+      opacity: 1
+      transform: scale(1)
+
+

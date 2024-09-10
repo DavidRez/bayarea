@@ -35,14 +35,39 @@ export default {
   },
   methods: {
     handleGsapAnimation () {
-      if (this.$refs.gsap1) {
-        this.$_fadeIn(this.$refs.gsap1, 0, 24, 'top+=58', 0, 1.2)
-      }
-      if (this.$refs.gsap2 && this.$refs.gsap2.length) {
-        this.$refs.gsap2.forEach((el, i) => {
-          this.$_fadeIn(el, 0, 24, 'top+=58', 0, 1.2)
+      this.$nextTick(() => {
+        const tl = this.$gsap.timeline({
+          scrollTrigger: {
+            trigger: this.$refs.container,
+            start: 'top+=48 bottom',
+            toggleActions: 'play none play none'
+          }
         })
-      }
+
+        if (this.$refs.title) {
+          const childTitle = new this.$SplitText(this.$refs.title, {
+            type: 'lines',
+            linesClass: 'split-child'
+          })
+          const parentTitle = new this.$SplitText(this.$refs.title, {
+            linesClass: 'split-parent'
+          })
+          if (childTitle && parentTitle) {
+            tl.from(childTitle.lines, {
+              yPercent: 100,
+              opacity: 0,
+              duration: 2,
+              ease: 'customEaseOut'
+            })
+          }
+        }
+
+        if (this.$refs.gsap2 && this.$refs.gsap2.length) {
+          this.$refs.gsap2.forEach((el, i) => {
+            this.$_fadeIn(el, 0, 48, '+58', 1, i * 0.25)
+          })
+        }
+      })
     },
     handleResize (time = 300) {
       setTimeout(() => {

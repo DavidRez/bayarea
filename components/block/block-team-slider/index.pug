@@ -1,0 +1,31 @@
+section.block-team-slider(
+  :class='[ `block-team-slider--padding-${props.padding}` ]',
+  :id='props.hash ? props.hash : null'
+)
+  .block-team-slider__container(v-if='props.content')
+    BlockContent.block-team-slider__content(:props='props.content' animate)
+  .block-team-slider__container(ref='container')
+    .block-team-slider__slider-container(ref='getWidth', :style='{ height }')
+      .block-team-slider__slider(ref='getHeight')
+        .block-team-slider__item(
+          v-for='(item, i) in $store.state.team',
+          :key='`team-${i}`',
+          :aria-label='`team member ${i + 1} of ${$store.state.team.length}`',
+          :class='{ "block-team-slider__item--active": active === i }'
+          @click='$store.state.isTabletLg || $store.state.isPhoneLandLg ? makeActive(i) : null'
+          role='group',
+          :style='{ width }'
+        )
+          .block-team-slider__item-box(tabindex='0')
+            .block-team-slider__item-image-container
+              BaseImage.block-team-slider__item-image(
+                :alt='"headshot of " + item.name',
+                :src='item.image.src',
+                :webp='item.image.webp'
+              )
+              .block-team-slider__item-overlay
+                .block-team-slider__item-bio(v-html='item.bio')
+            .block-team-slider__item-content
+              .block-team-slider__item-name(v-html='item.name')
+              .block-team-slider__item-position(v-html='item.position')
+    //- BaseIcon.block-team-slider__arrow(name='arrow')

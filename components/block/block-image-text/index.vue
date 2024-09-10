@@ -46,45 +46,13 @@ export default {
           }
         })
 
-        if (this.props.reverse_layout) {
-          tl.fromTo(this.$refs.col1, {
-            y: '48',
-            opacity: 0
-          }, {
-            y: '0',
-            opacity: 1,
-            duration: 1,
-            ease: 'slow'
-          }, '<+=0.1')
-          tl.fromTo(this.$refs.col2, {
-            y: '48',
-            opacity: 0
-          }, {
-            y: '0',
-            opacity: 1,
-            duration: 1,
-            ease: 'customEaseOut'
-          }, '<+=0.2')
-        } else {
-          tl.fromTo(this.$refs.col2, {
-            y: '48',
-            opacity: 0
-          }, {
-            y: '0',
-            opacity: 1,
-            duration: 1,
-            ease: 'customEaseOut'
-          }, '<+=0.1')
-          tl.fromTo(this.$refs.col1, {
-            y: '48',
-            opacity: 0
-          }, {
-            y: '0',
-            opacity: 1,
-            duration: 1,
-            ease: 'slow'
-          }, '<+=0.2')
-        }
+        tl.fromTo(this.$refs.cover, {
+          width: '100%'
+        }, {
+          width: '0%',
+          duration: 2,
+          ease: 'customEaseOut'
+        }, '<+=0.1')
       })
     }
   }

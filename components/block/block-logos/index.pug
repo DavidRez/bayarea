@@ -1,0 +1,11 @@
+section.block-logos(v-if='props && loaded')
+  .block-logos__container(v-if='props.header' ref='container')
+    .block-logos__col
+      h2.block-logos__header(v-if='props.header' v-html='props.header', ref='header')
+  .block-logos__container
+    .block-logos__col
+      .block-logos__logos
+        .block-logos__logo-row(v-for='row, j in logos' :key='`row-${j}`')
+          .block-logos__logo-container(v-for='logo, i in row' :key='`logo-${i}`' ref='logos')
+            BaseIcon.block-logos__logo(v-if='logo.type === "svg"' :name='logo.svg')
+            BaseImage.block-logos__logo(v-else :name='logo.image')

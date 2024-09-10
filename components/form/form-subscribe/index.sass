@@ -1,0 +1,179 @@
+.form-subscribe
+  @include nexus
+    padding: 1rem
+  border: 1px solid var(--text)
+  padding: 2rem
+  width: 100%
+
+  &__form
+    display: flex
+    position: relative
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+
+  &__container
+    display: flex
+    position: relative
+    flex-wrap: wrap
+    justify-content: space-between
+    width: 100%
+    gap: #{$gutter}
+
+  &__content
+    .block-content__header
+      margin-bottom: 0
+
+  &__group
+    position: relative
+    flex-basis: 100%
+    flex-grow: 1
+    flex-shrink: 0
+    height: fit-content
+
+    &--button
+      display: flex
+      margin: 1rem 0 .5rem
+      width: 100%
+
+  &__label
+    position: absolute
+    top: 0.75rem
+    left: 0
+    transition: transform .2s ease, top .2s ease
+    padding-left: 1rem
+    transform-origin: left top
+    pointer-events: none
+
+    &--active
+      top: -1.25rem
+      transform: translateY(0) scale(.7)
+
+  &__input
+    border: 1px solid var(--text)
+    border-radius: 0
+    background: transparent
+    padding: .75rem
+    width: 100%
+    -webkit-appearance: none
+    appearance: none
+
+    &:focus
+      outline: rem-calc(2) solid rgba(var(--primary-rgb), 0.5)
+      outline-offset: 3px
+
+    &:active
+      outline: transparent
+
+    &:focus + .form-subscribe__label
+      top: -1.25rem
+      transform: translateY(0) scale(.7)
+
+    &--error
+      border-color: $danger
+      &:focus
+        border-color: $danger
+
+    &--error,
+    &--error + .form-subscribe__label
+      color: $danger
+
+  &__error-message
+    position: absolute
+    bottom: -1.75rem
+    left: 0
+    padding: .25rem .75rem
+    color: $danger
+    font-size: rem-calc(13)
+
+    .form-subscribe__group-message &
+      bottom: .75rem
+
+  &__submit-button
+    @include focus
+    position: relative
+
+    &--sending
+      .button-cta__button
+        background: var(--accent1)
+        pointer-events: none
+
+    &--success
+      .button-cta__button
+        background: $success
+        pointer-events: none
+
+  &__submit-check
+    display: flex
+    position: absolute
+    top: 0
+    left: 0
+    align-items: center
+    justify-content: center
+    transform: translateY(.5rem) scale(0)
+    transition: transform .25s ease
+    z-index: 9
+    width: 100%
+    height: 100%
+
+    &--showing
+      transform: translateY(0) scale(1)
+      transition-delay: .4s
+
+  &__disclaimer
+    font-size: rem-calc(12)
+
+  &__modal
+    position: fixed
+    top: 0
+    left: 0
+    transition: opacity .25s ease-in
+    opacity: 0
+    z-index: 99999
+    width: 100%
+    height: 100vh
+    pointer-events: none
+
+    &--open
+      opacity: 1
+      pointer-events: all
+
+    &-overlay
+      @extend %absolute
+      background: rgba($black, .15)
+
+    &-container
+      @extend %centered
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      background: $white
+      padding: 5rem
+      text-align: center
+
+    &-text
+      font-size: rem-calc(18)
+
+    &-close
+      @include hover-supported
+        color: var(--primary)
+      @include phone-lg
+        right: 1rem
+      position: absolute
+      top: 1rem
+      right: 2rem
+      border: none
+      background: transparent
+      cursor: pointer
+      padding: 0
+
+    &-title
+      color: var(--primary)
+
+    // Place styles below here for slotted content
+    &-body
+      padding-top: 1rem
+
+    &-button
+      padding-top: 1rem

@@ -1,0 +1,148 @@
+.block-testimonials
+  position: relative
+  overflow: hidden
+
+  &__container
+    @include container
+    flex-direction: column
+    overflow: visible
+
+  &__title
+    @extend %margin-bottom--md
+    @include nexus
+      max-width: unset
+    @include phone-land-lg
+      max-width: unset
+    max-width: 65%
+
+  &__col
+    @include tablet
+      width: 100%
+    display: flex
+    flex-direction: column
+    margin: 0 auto
+    width: 75%
+
+  &__slider
+    position: relative
+    border: 1px solid var(--text)
+    background: $white
+    width: 100%
+    overflow: hidden
+
+  &__slide
+    display: flex
+    position: absolute
+    top: 0
+    left: 0
+    flex-direction: column
+    gap: 1rem
+    transition: opacity .3s ease, transform .3s ease
+    opacity: 0
+    pointer-events: none
+    padding: 1rem
+    width: 100%
+  
+    &--current
+      transition-delay: .3s
+      opacity: 1
+      pointer-events: auto
+
+  &__stars
+    display: flex
+    gap: 0.35rem
+
+  &__star-icon
+    &.base-icon
+      display: flex
+      align-items: center
+      justify-content: center
+      width: rem-calc(18)
+      height: rem-calc(18)
+
+      svg
+        width: 100%
+        height: auto
+
+  &__body
+    @extend %body
+    width: 100%
+
+  &__name
+    @extend %margin-bottom--sm
+    @extend %body
+    line-height: 1
+    font-weight: 500
+
+  &__controls
+    @extend %margin-top--md
+    @include nexus
+      flex-direction: column
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 1rem
+
+  &__buttons
+    @include nexus
+      display: none
+    display: flex
+
+  &__button
+    @include hover-supported
+      rect
+        fill: var(--primary)
+    display: inline-flex
+    align-items: center
+    border: none
+    background: none
+    cursor: pointer
+    width: 3rem
+    height: 3rem
+
+    &:focus-visible
+      @include focus
+
+  &__icon
+    width: 100%
+
+    &.base-icon
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 100%
+
+    svg
+      width: 100%
+
+    svg,
+    path,
+    rect
+      transition: all .2s ease
+
+    .block-testimonials__button--next &
+      transform: scale(-1)
+
+  &__dots
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    gap: 1rem
+    height: fit-content
+
+  &__dot
+    display: inline-block
+    transform: scale(0.65)
+    transition: all 0.25s ease
+    border-radius: 50%
+    background: var(--accent1)
+    cursor: pointer
+    width: rem-calc(15)
+    height: rem-calc(15)
+
+    &:hover
+      transform: scale(0.8)
+
+    &--active
+      transform: scale(1)

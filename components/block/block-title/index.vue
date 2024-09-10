@@ -1,10 +1,10 @@
 <template lang="pug" src="./index.pug"></template>
 
 <script>
-import { debounce } from '~/resources/mixins'
+import { debounce, fadeIn } from '~/resources/mixins'
 
 export default {
-  mixins: [debounce],
+  mixins: [debounce, fadeIn],
   props: {
     props: {
       type: Object,
@@ -57,14 +57,32 @@ export default {
     },
     handleAnimation () {
       this.$nextTick(() => {
-        // const container = this.$refs.container
-        // const tl = this.$gsap.timeline({
-        //   scrollTrigger: {
-        //     trigger: container,
-        //     start: 'center bottom',
-        //     toggleActions: 'play none play none'
-        //   }
-        // })
+        const tl = this.$gsap.timeline({
+          scrollTrigger: {
+            trigger: this.$refs.title,
+            start: 'top+=48 bottom',
+            toggleActions: 'play none play none'
+          }
+        })
+
+        if (this.$refs.title) {
+          const childTitle = new this.$SplitText(this.$refs.title, {
+            type: 'lines',
+            linesClass: 'split-child'
+          })
+          const parentTitle = new this.$SplitText(this.$refs.title, {
+            linesClass: 'split-parent'
+          })
+          if (childTitle && parentTitle) {
+            tl.from(childTitle.lines, {
+              yPercent: 100,
+              opacity: 0,
+              duration: 2,
+              stagger: 0.115,
+              ease: 'customEaseOut'
+            })
+          }
+        }
       })
     }
   }

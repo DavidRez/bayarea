@@ -1,0 +1,181 @@
+.block-locations-map-multiple-mobile
+  &__container
+    @include container
+    flex-direction: column
+    align-items: flex-end
+
+  &__title
+    margin-bottom: 1rem
+    width: 100%
+    text-align: left
+
+  // accordion styling
+
+  &__items
+    display: flex
+    flex-direction: column
+    width: 100%
+
+  &__item-container
+    @include tablet
+      padding: 1rem
+    @include phone-lg
+      padding: .5rem
+    position: relative
+    transition: border-color .2s ease
+    border: solid rem-calc(2) var(--bg-1)
+    background-color: var(--bg-1)
+    cursor: pointer
+    padding: 1rem 0
+    width: 100%
+    overflow: hidden
+
+    &:focus,
+    &:focus-visible,
+    &:hover
+      outline: none
+
+    &:not(:last-of-type)
+      border-bottom: 2px solid var(--text)
+
+  &__item
+    display: flex
+    position: relative
+    flex-wrap: nowrap
+    align-items: center
+    justify-content: space-between
+    width: 100%
+
+  &__item-title
+    text-align: left
+    font-weight: 700
+
+  &__cross
+    @include tablet-md
+      transform: translateY(0)
+      margin-left: 1rem
+    @include tablet
+      width: 1rem
+      height: 1rem
+    @include phone-land-lg
+      margin-left: 1rem
+    @include phone-lg
+      width: rem-calc(18)
+      height: rem-calc(18)
+    display: inline-block
+    position: relative
+    flex-shrink: 0
+    margin: auto 0 auto 2rem
+    width: 1.25rem
+    height: 1.25rem
+
+    span
+      @include tablet
+        height: 2px
+      @include phone-land-lg
+        height: 2px
+      display: block
+      position: absolute
+      top: 50%
+      transform: translate(0, -50%)
+      transition: transform .2s ease-in-out, background-color .3s ease
+      background-color: var(--text)
+      width: 100%
+      height: rem-calc(2)
+
+      &:last-child
+        transform: translate(0, -50%) rotate(90deg)
+        transform-origin: center
+
+      .block-locations-map-multiple-mobile__item-container:focus-visible &,
+      .block-locations-map-multiple-mobile__item-container:hover &
+        background-color: $black
+
+    .block-locations-map-multiple-mobile__item-container--active &
+      span
+        &:last-child
+          transform: translate(0, -50%) rotate(0deg)
+
+  &__drawer
+    transition: height 1s cubic-bezier(.39, .575, .28, .995), padding .3s ease-in-out
+    margin: 0 auto
+    background: transparent
+    width: 100%
+    height: 0
+    pointer-events: none
+    font-weight: 300
+
+    .block-locations-map-multiple-mobile__item-container--active &
+      pointer-events: all
+
+  &__content
+    position: relative
+    transition: opacity .2s ease
+    opacity: 0
+
+    .block-locations-map-multiple-mobile__item-container--active &
+      transition-delay: .2s
+      opacity: 1
+
+  // location styling
+
+  &__locations
+    @include nexus
+      padding: 1rem
+    display: flex
+    position: relative
+    flex-direction: column
+    align-items: flex-start
+    gap: 1rem
+    border: 1px solid var(--text)
+    background: var(--bg-1)
+    padding: 2rem
+    width: 100%
+    height: fit-content
+  
+  &__location
+    @extend %margin-top--sm
+    @include nexus
+      gap: 1rem
+    display: flex
+    position: relative
+    flex-direction: column
+    gap: 2rem
+    z-index: 1
+    width: 100%
+
+    &-info
+      &-title
+        display: flex
+        gap: 0.75rem
+
+        .base-icon
+          @include nexus
+            height: 1.25rem
+          display: flex
+          width: 1.25rem
+          height: 2rem
+
+          svg
+            width: 100%
+            height: 100%
+
+        span
+          @extend %h3
+          display: inline-block
+          font-weight: 500
+      
+      &-link,
+      &-text
+        @extend %button
+        display: block
+        text-align: left
+        line-height: 1.25
+        font-weight: 400
+
+      &-text
+        cursor: default
+
+    &-map
+      width: 100%
+      height: 50vw

@@ -1,0 +1,46 @@
+section.block-post(:style='{ marginTop: navHeight }')
+  BaseImage.block-post__hero(v-if='props.hero.url' :src='props.hero.url' ref='hero')
+  .block-post__container(ref='container')
+    h1.block-post__title(v-html='props.title' :style='{ transform: `translateY(${translateY})`, marginBottom: marginBottom }' ref='title')
+    //- .block-post__top
+    //-   .block-post__headers
+        //- .block-post__btn(aria-label='Back' tabindex='0' @click='$router.back()' ref='button')
+        //-   .block-post__btn-icon-container.block-post__btn-icon-container--prev
+        //-     BaseIcon.block-post__btn-icon(name='arrow')
+        //-   span Back
+        
+        //- .block-post__date(v-html='props.date' ref='date')
+        //- .block-post__social-group(ref='social')
+        //-   a.block-post__social-circle(:href='`https://www.facebook.com/sharer/sharer.php?u=${ postUrl }`' target="_blank" rel="noopener noreferrer" aria-label='post blog post on Facebook')
+        //-     BaseIcon.block-post__social-icon(name='facebook')
+          
+        //-   a.block-post__social-circle(:href='`https://www.linkedin.com/shareArticle?url=${ postUrl }`' target="_blank" rel="noopener noreferrer" aria-label='post blog post on LinkedIn')
+        //-     BaseIcon.block-post__social-icon(name='linkedin')
+
+        //-   a.block-post__social-circle(:href='`https://twitter.com/share?url=${ postUrl }`' target="_blank" rel="noopener noreferrer" aria-label='post blog post on Twitter')
+        //-     BaseIcon.block-post__social-icon(name='twitter')
+    BlockContent.block-post__intro(v-if='props.intro.content' :props='props.intro.content' animate)
+    BaseImage.block-post__image(v-if='props.intro.image.url' :src='props.intro.image.url' ref='image')
+    .block-post__body(v-for='(body, i) in props.body',
+        :key='`body-${i}`' ref='paragraphs')
+      .block-post__paragraph(v-html='body.text' :class='{ "block-post__paragraph--highlight": body.highlight_text }')
+
+    FormSubscribe.block-post__subscription(v-if='props.add_form' :disclaimer='props.form_content.disclaimer' :props='props' ref='form')
+    
+    .block-post__writer(v-if='props.add_author_info')
+      BaseImage.block-post__writer-image(v-if='props.author.image' :src='props.author.image.url')
+      .block-post__writer-title(v-if='props.author.name')
+        .block-post__writer-name(v-if='props.author.name' v-html='props.author.name')
+        .block-post__writer-position(v-if='props.author.position' v-html='props.author.position')
+
+    .block-post__btns(:class='{ "block-post__btns--right": !prevPost && nextPost }')
+    
+      nuxt-link.block-post__btn(v-if='prevPost', :to='{ path: prevPost }' aria-label='Previous Article' tabindex='0' ref='left')
+        .block-post__btn-icon-container.block-post__btn-icon-container--prev
+          BaseIcon.block-post__btn-icon(name='caret')
+        span Previous
+
+      nuxt-link.block-post__btn(v-if='nextPost', :to='{ path: nextPost }' aria-label='Next Article' role='button' tabindex='0' ref='right')
+        span Next
+        .block-post__btn-icon-container.block-post__btn-icon-container--next
+          BaseIcon.block-post__btn-icon(name='caret')

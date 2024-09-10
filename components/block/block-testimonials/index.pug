@@ -1,0 +1,43 @@
+.block-testimonials
+  .block-testimonials__container(ref='container')
+    h2.block-testimonials__title(v-if='props.title' v-html='props.title', ref='title')
+  .block-testimonials__container
+    .block-testimonials__col
+      .block-testimonials__slider(
+        aria-label='testimonial carousel',
+        aria-live='polite',
+        role='region',
+        :style=" { height: maxHeight }"
+        ref='slider'
+      )
+        .block-testimonials__slide.block-testimonials__slide--content(
+          v-for='(slide, i) in $store.state.testimonials',
+          :key='`testimonial-slide-content-${i}`',
+          :aria-hidden='currIndex === i ? null : "true"',
+          :aria-label='`slide ${ i + 1 } of ${sliderLength}`',
+          :class="{ 'block-testimonials__slide--current': currIndex === i }",
+          role='group'
+          ref='content'
+        )
+          .block-testimonials__stars
+            BaseIcon.block-testimonials__star-icon(v-for='j in 5' :key='`star-${j}`' name='star')
+          .block-testimonials__body(v-html='slide.body', v-if='slide.body')
+          .block-testimonials__name(v-html='slide.name', v-if='slide.name')
+          
+      // Controls //////////////////////////////////////////////
+      .block-testimonials__controls
+        .block-testimonials__dots
+          .block-testimonials__dot(
+            v-for='(dot, i) in $store.state.testimonials',
+            :key='`testimonial-dot-${i}`',
+            :aria-label='`click dot to go to testimonials ${ i + 1 } of ${sliderLength}`',
+            :class="{ 'block-testimonials__dot--active': currIndex === i }",
+            @click='makeActive(i)' @keyup.enter='makeActive(i)'
+            tabindex='0'
+            role='button'
+          )
+        .block-testimonials__buttons
+          button.block-testimonials__button.block-testimonials__button--prev(@click='throttlePrevSlide()' @keyup.enter='throttlePrevSlide()' aria-label='read the previous testimonial')
+            BaseIcon.block-testimonials__icon(name='arrow')
+          button.block-testimonials__button.block-testimonials__button--next(@click='throttleNextSlide()' @keyup.enter='throttleNextSlide()' aria-label='read the next testimonial')
+            BaseIcon.block-testimonials__icon(name='arrow')

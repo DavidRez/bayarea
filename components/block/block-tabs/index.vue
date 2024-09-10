@@ -18,10 +18,10 @@ export default {
   }),
   mounted () {
     this.$nextTick(() => {
-      this.toggleAccordion(0)
       this.handleResize()
       setTimeout(() => {
         this.handleResize()
+        this.toggleAccordion(0)
       }, 1000)
     })
     window.addEventListener('resize', this.debounceFunc)
@@ -73,13 +73,11 @@ export default {
         })
 
         if (this.props.reverse) {
-          tl.fromTo(this.$refs.image, {
-            y: '48',
-            opacity: 0
+          tl.fromTo(this.$refs.cover, {
+            width: '100%'
           }, {
-            y: '0',
-            opacity: 1,
-            duration: 1,
+            width: '0%',
+            duration: 2,
             ease: 'customEaseOut'
           }, '<+=0.1')
           tl.fromTo(this.$refs.contentCol, {
@@ -101,13 +99,11 @@ export default {
             duration: 1,
             ease: 'customEaseOut'
           }, '<+=0.1')
-          tl.fromTo(this.$refs.image, {
-            y: '48',
-            opacity: 0
+          tl.fromTo(this.$refs.cover, {
+            width: '100%'
           }, {
-            y: '0',
-            opacity: 1,
-            duration: 1,
+            width: '0%',
+            duration: 2,
             ease: 'customEaseOut'
           }, '<+=0.2')
         }

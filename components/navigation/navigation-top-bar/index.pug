@@ -1,7 +1,7 @@
 .navigation-top-bar(ref='main'
   :class='{ "navigation-top-bar--hover": props.top_bar.type === "announcement" && props.top_bar.announcement.type === "modal", "navigation-top-bar--hide": hideBar }'
   @click='props.top_bar.type === "announcement" && props.top_bar.announcement.type === "modal" ? openModal() : null'
-  @keyup.enter='props.top_bar.type === "announcement" ? openModal() : null'
+  @keyup.enter='props.top_bar.type === "announcement" && props.top_bar.announcement.type === "modal" ? openModal() : null'
   :tabindex='props.top_bar.type === "announcement" ? 0 : -1'
   :aria-label='props.top_bar.type === "announcement" ? props.top_bar.announcement.label : null'
   :aria-haspopup='props.top_bar.type === "announcement" ? true : false')

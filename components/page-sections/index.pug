@@ -14,13 +14,28 @@
         :class='`component-padding--` + section.component_padding',
         :props='section'
       )
-      //- BlockColumnTabs(
-      //-   v-else-if='section.acf_fc_layout === `column_tabs`',
-      //-   :class='`component-padding--` + section.component_padding',
-      //-   :props='section'
-      //- )
+      BlockBannerWithBackground(
+        v-else-if='section.acf_fc_layout === `banner_with_background`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockBeforeAfterGallery(
+        v-else-if='section.acf_fc_layout === `before_after_gallery`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockColumnTabs(
+        v-else-if='section.acf_fc_layout === `column_tabs`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
       BlockContactBanner(
         v-else-if='section.acf_fc_layout === `contact_banner`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockCountUpBlocks(
+        v-else-if='section.acf_fc_layout === `count_up_blocks`',
         :class='`component-padding--` + section.component_padding',
         :props='section'
       )
@@ -29,8 +44,8 @@
         :class='`component-padding--` + section.component_padding',
         :props='section'
       )
-      BlockGallerySlider(
-        v-else-if='section.acf_fc_layout === `gallery_slider`',
+      BlockGallery(
+        v-else-if='section.acf_fc_layout === `gallery`',
         :class='`component-padding--` + section.component_padding',
         :props='section'
       )
@@ -39,8 +54,39 @@
         :class='`component-padding--` + section.component_padding',
         :props='section'
       )
+      BlockInstagram(
+        v-else-if='section.acf_fc_layout === `instagram`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockLocationsMap(
+        v-else-if='section.acf_fc_layout === `locations_map`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockLogos(
+        v-else-if='section.acf_fc_layout === `logos`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockPatientForms(
+        v-else-if='section.acf_fc_layout === `patient_forms`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockPosts(v-else-if='section.acf_fc_layout === "blog_posts"', :props='section', :class='`component-padding--` + section.component_padding')
       BlockTabs(
         v-else-if='section.acf_fc_layout === `tabs`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockTeam(
+        v-else-if='section.acf_fc_layout === `team`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockTestimonials(
+        v-else-if='section.acf_fc_layout === `testimonials`',
         :class='`component-padding--` + section.component_padding',
         :props='section'
       )

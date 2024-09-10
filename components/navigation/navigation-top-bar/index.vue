@@ -1,14 +1,13 @@
 <template lang="pug" src="./index.pug"></template>
 
 <script>
-import { bodyScroll, removeFocus, trapFocus } from '~/resources/mixins'
+import { bodyScroll, removeFocus } from '~/resources/mixins'
 
 export default {
   components: {
   },
   mixins: [
     bodyScroll,
-    trapFocus,
     removeFocus
   ],
   props: {
@@ -55,8 +54,7 @@ export default {
       this.windowWidth = window.innerWidth
     },
     openModal () {
-      console.log('open')
-      this.modalOpen = true
+      this.modalOpen = !this.modalOpen
       this.$_stopBodyScroll()
       this.$_removeFocus()
     }

@@ -216,8 +216,8 @@ $spacing-mobile: 48
 // ---- header / button margins -----
 %header-margin-bottom
   @include desktop
-    margin-bottom: rem-calc(24)
-  margin-bottom: rem-calc(16)
+    margin-bottom: rem-calc(12)
+  margin-bottom: rem-calc(8)
 
 %subheader-margin-bottom
   @include desktop
@@ -225,6 +225,11 @@ $spacing-mobile: 48
   margin-bottom: rem-calc(16)
 
 %button-margin-top
-  @include tablet
-    gap: 1rem
+  @include desktop
+    margin-top: 2rem
   margin-top: rem-calc(24)
+
+.split-parent
+  overflow: hidden
+.split-child
+  display: inline-block

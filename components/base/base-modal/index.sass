@@ -22,7 +22,10 @@
     height: fit-content
     
   &__main
+    @include nexus
+      padding: 1rem
     position: relative
+    border: 1px solid var(--text)
     background: var(--bg-2)
     padding: 4rem
     width: fit-content
@@ -41,10 +44,13 @@
       width: rem-calc(24)
       height: rem-calc(24)
     position: absolute
-    top: .5rem
-    right: .5rem
+    top: 0
+    right: 0
     transition: background .2s ease, border .2s ease
-    border: none
+    border-top: none
+    border-right: none
+    border-bottom: 1px solid var(--text)
+    border-left: 1px solid var(--text)
     background: none
     cursor: pointer
     width: rem-calc(40)

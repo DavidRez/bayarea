@@ -1,0 +1,11 @@
+.block-post-pagination
+  .block-post-pagination__container
+    .block-post-pagination__button
+      nuxt-link.block-post-pagination__prev(v-if='Number($route.params.page) > 1' :to='`/blog/page/${Number($route.params.page) - 1}`'
+        ref='left')
+        BaseIcon.block-post-pagination__arrow(name='arrow')
+    .block-post-pagination__pages {{ $route.params.page + '/' + pageCount }}
+    .block-post-pagination__button
+      nuxt-link.block-post-pagination__next(v-if='Number($route.params.page) < pageCount' :to='`/blog/page/${Number($route.params.page) + 1}`'
+        ref='right')
+        BaseIcon.block-post-pagination__arrow.block-post-pagination__arrow--next(name='arrow')

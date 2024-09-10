@@ -1,0 +1,134 @@
+.block-team-slider
+  position: relative
+  width: 100%
+  overflow: hidden
+
+  &__container
+    @include container
+
+    &:first-of-type
+      @extend %margin-bottom--md
+
+  &__slider
+    display: flex
+    position: absolute
+    top: 0
+    left: 0
+    gap: 2rem
+
+    &-container
+      position: relative
+      width: 100%
+      overflow-x: scroll
+      overflow-y: hidden
+
+      &::-webkit-scrollbar
+        cursor: pointer
+        width: rem-calc(5)
+        height: rem-calc(12)
+
+      &::-webkit-scrollbar-track
+        background: rgba(var(--text-rgb), .3)
+
+      &::-webkit-scrollbar-thumb
+        background: var(--text)
+
+  &__item
+    position: relative
+    margin-bottom: 2rem
+
+    &-box
+      position: relative
+      border: 1px solid var(--text)
+      cursor: pointer
+      padding: 1rem
+      width: 100%
+
+      &:hover
+        outline: none
+
+      &:focus-visible
+        @include focus
+
+    &-image
+      @extend %absolute
+
+      &-container
+        position: relative
+        border: 1px solid var(--text)
+        padding-top: 100%
+        width: 100%
+
+      .base-image__image
+        position: absolute
+        object-fit: cover
+
+    &-overlay
+      @include nexus
+        padding: 1rem 0.5rem
+      @include phone-land-lg
+        padding: 1rem 0.5rem
+      display: flex
+      position: absolute
+      top: 0
+      left: 0
+      flex-direction: column
+      justify-content: center
+      transition: opacity .2s ease
+      opacity: 0
+      background-color: rgba(var(--text-rgb), .85)
+      padding: 1rem
+      width: 100%
+      height: 100%
+      overflow-y: scroll
+
+      .block-team-slider__item-box:focus-visible &,
+      .block-team-slider__item-box:hover &,
+      .block-team-slider__item--active &
+        opacity: 1
+
+    &-bio
+      width: 100%
+      color: $white
+
+    &-content
+      @extend %margin-top--sm
+      display: flex
+      flex-direction: column
+      justify-content: center
+
+    &-name
+      @extend %body
+      width: 100%
+      line-height: 1.1
+      font-weight: 700
+
+    &-position
+      @extend %body
+      width: 100%
+
+  &__arrow
+    @include tablet-lg
+      display: block
+    display: none
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    transform: scale(-1)
+    opacity: 0.5
+    margin: auto
+
+    &.base-icon
+      width: 2.75rem
+      height: 2.75rem
+
+    svg
+      width: 100%
+      height: auto
+
+      rect
+        fill: var(--primary)
+        stroke: rgba(var(--accent1-rgb), 0.7)
+      path
+        stroke: rgba(var(--accent1-rgb), 0.7)

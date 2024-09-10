@@ -1,0 +1,263 @@
+.block-gallery
+
+  &__container
+    @include container
+    @include tablet-lg
+      flex-wrap: wrap
+
+  &__col
+    @include col(12)
+    display: flex
+
+  &__content
+    @extend %margin-bottom--md
+
+  &__images
+    @include tablet
+      padding-top: 100%
+    position: relative
+    padding-top: 50%
+    width: 100%
+    overflow: hidden
+
+  &__image-container
+    position: absolute
+    top: 0
+    left: 150%
+    transition: top 0.5s ease 1.5s, right 0.5s ease 1.5s, left 0.5s ease 1.5s, bottom 0.5s ease 1.5s, width 0.5s ease 1.5s, padding-top 0.5s ease 1.5s, opacity 0.25s ease 1s
+    opacity: 0
+    z-index: 0
+    border: 1px solid var(--text)
+    padding-top: 100%
+    width: 100%
+
+    .block-gallery__images--half &
+      @include tablet
+        top: 0
+        left: 100%
+        padding-top: calc(100% - 2px)
+        width: 100%
+      left: 150%
+      padding-top: calc(50% - 2px)
+      width: calc(25% - 1rem)
+
+    .block-gallery__images--four &
+      @include tablet
+        top: 0
+        left: 100%
+        padding-top: calc(100% - 2px)
+        width: 100%
+      padding-top: calc(25% - 1rem)
+      width: calc(25% - 1rem)
+      max-height: calc(25% - 1rem)
+
+    &--active,
+    &--next,
+    &--next2,
+    &--next3,
+    &--next4
+      .block-gallery__images--half &,
+      .block-gallery__images--four &  
+        @include tablet
+          padding-top: calc(100% - 2px)
+          width: 100% 
+        opacity: 1
+        z-index: 1
+    
+
+    &--next,
+    &--next2,
+    &--next3,
+    &--next4
+      .block-gallery__images--half &,
+      .block-gallery__images--four &  
+        @include tablet
+          top: 0
+          right: unset
+          bottom: unset
+          left: -150% !important
+          transition: left .25s ease, opacity 0.25s ease 0.25s 
+          opacity: 0
+
+    &--active
+      .block-gallery__images--half &,
+      .block-gallery__images--four &
+        @include tablet
+          left: 0
+          transition: left .25s ease, opacity 0.25s ease 
+          opacity: 1
+          padding-top: calc(100% - 2px)
+          width: 100% 
+        top: 0
+        right: 0
+        bottom: 50%
+        left: calc(50% + 1rem)
+        transition: top 0.5s ease, right 0.5s ease, left 0.5s ease, bottom 0.5s ease, width 0.5s ease 0.5s, padding-top 0.5s ease 0.5s
+        padding-top: calc(50% - 2px)
+        width: calc(50% - 1rem)
+        transform-origin: right bottom
+
+    &--next
+      transition: top 0.5s ease 0.5s, right 0.5s ease 0.5s, left 0.5s ease 0.5s, bottom 0.5s ease 0.5s, width 0.5s ease 0.5s, padding-top 0.5s ease 0.5s, opacity 0s
+      .block-gallery__images--half &
+        top: 0
+        right: 0
+        bottom: 50%
+        left: calc(25% + 0.5rem)
+      .block-gallery__images--four &
+        top: calc(50% + 1rem - 2px)
+        right: 0
+        bottom: 0
+        left: calc(25% + 0.5rem)
+
+    &--next2
+      transition: top 0.5s ease 0.5s, right 0.5s ease 0.5s, left 0.5s ease 0.5s, bottom 0.5s ease 0.5s, width 0.5s ease 0.5s, padding-top 0.5s ease 0.5s, opacity 0s
+      .block-gallery__images--half &
+        top: 0
+        right: 50%
+        bottom: 50%
+        left: 0
+      .block-gallery__images--four &
+        top: calc(50% + 1rem - 2px)
+        right: 50%
+        bottom: 0
+        left: 0
+
+    &--next3
+      .block-gallery__images--four &
+        top: 0
+        right: 0
+        bottom: 50%
+        left: calc(25% + 0.5rem)
+        transition: top 0.5s ease 0.5s, right 0.5s ease 0.5s, left 0.5s ease 0.5s, bottom 0.5s ease 0.5s, width 0.5s ease 0.5s, padding-top 0.5s ease 0.5s, opacity 0s
+
+    &--next4
+      .block-gallery__images--four &
+        top: 0
+        right: 50%
+        bottom: 50%
+        left: 0
+        transition: top 0.5s ease 0.5s, right 0.5s ease 0.5s, left 0.5s ease 0.5s, bottom 0.5s ease 0.5s, width 0.5s ease 0.5s, padding-top 0.5s ease 0.5s, opacity 0.25s ease
+
+    &--next3,
+    &--next4
+      .block-gallery__images--half &
+        top: 0
+        right: unset
+        bottom: unset
+        left: -100%
+        transition: top 0.5s ease 0.5s, right 0.5s ease 0.5s, left 0.5s ease 0.5s, bottom 0.5s ease 0.5s, width 0.5s ease, opacity 0.25s ease 1s
+        opacity: 0
+
+  &__image
+    @extend %absolute
+
+  &__controls
+    @extend %margin-top--md
+    @include nexus
+      flex-direction: column
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 1rem
+    width: 100%
+
+  &__buttons
+    @include nexus
+      display: none
+    display: flex
+
+  &__button
+    @include hover-supported
+      rect
+        fill: var(--primary)
+    display: inline-flex
+    align-items: center
+    border: none
+    background: none
+    cursor: pointer
+    width: 3rem
+    height: 3rem
+
+    &:focus-visible
+      @include focus
+
+  &__icon
+    width: 100%
+
+    &.base-icon
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 100%
+
+    svg
+      width: 100%
+
+    svg,
+    path,
+    rect
+      transition: all .2s ease
+
+    .block-gallery__button--next &
+      transform: scale(-1)
+
+  &__dots
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    gap: 1rem
+    height: fit-content
+
+  &__dot
+    display: inline-block
+    transform: scale(0.65)
+    transition: all 0.25s ease
+    border-radius: 50%
+    background: var(--accent1)
+    cursor: pointer
+    width: rem-calc(15)
+    height: rem-calc(15)
+
+    &:hover
+      transform: scale(0.8)
+
+    &--active
+      transform: scale(1)
+
+  &__modal-image-container
+    @include tablet
+      width: 100%
+    margin: 0 auto
+    width: 50vw
+    height: 50vw
+  &__modal-image
+    &.base-image
+      position: relative
+      width: 100%
+      height: 100%
+
+    .base-image__image
+      position: relative
+      max-width: 100%
+      max-height: 100%
+
+  @keyframes fadeOut
+    0%
+      opacity: 0
+    100%
+      opacity: 1
+
+
+  @keyframes shrinkDown
+    0%
+      opacity: 0
+      transform: scale(1)
+    50%
+      transform: scale(0)
+    100%
+      opacity: 1
+      transform: scale(1)
+
+

@@ -1,0 +1,34 @@
+section.block-locations-map-single(v-if='props && global')
+  .block-locations-map-single__container
+    .block-locations-map-single__locations(ref='locations')
+      h2.block-locations-map-single__title {{ props.title }}
+      .block-locations-map-single__location(v-for='(location, k) in global.locations' :key='"map-location-" + k')
+        .block-locations-map-single__location-info
+          .block-locations-map-single__location-info-title
+            BaseIcon(name='location-pin')
+            span Office
+          a.block-locations-map-single__location-info-link(v-if='location.address.label' v-html='location.address.label' :href='location.address.href' :aria-label='location.address.aria' target='_blank')
+          
+        .block-locations-map-single__location-info
+          .block-locations-map-single__location-info-title
+            BaseIcon(name='location-phone')
+            span Phone
+          a.block-locations-map-single__location-info-link(v-if='location.phone.label' v-html='location.phone.label' :href='location.phone.href' :aria-label='`call ${location.phone.label}`') 
+          a.block-locations-map-single__location-info-link(v-else v-html='global.phone.label' :href='global.phone.href' :aria-label='`call ${global.phone.label}`')
+        
+        .block-locations-map-single__location-info
+          .block-locations-map-single__location-info-title
+            BaseIcon(name='location-mail')
+            span Email
+          a.block-locations-map-single__location-info-link(v-if='location.email.address' v-html='location.email.address' :href='location.email.href' :aria-label='`email ${location.email.address}`')
+          a.block-locations-map-single__location-info-link(v-else v-html='global.email' :href='`mailto:${global.email}`' :aria-label='`email ${global.email}`')
+        
+        .block-locations-map-single__location-info
+          .block-locations-map-single__location-info-title
+            BaseIcon(name='location-clock')
+            span Hours
+          .block-locations-map-single__location-info-text(v-if='location.hours'
+            v-for='(hours, i) in location.hours' :key='"location-hours" + i') {{ hours.day + ': ' + hours.time }}
+          .block-locations-map-single__location-info-text(v-if='location.special_note') {{ location.special_note }}
+    
+    .block-locations-map-single__map(ref='map' :style='{ width: width, height: height }')

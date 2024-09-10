@@ -1,0 +1,14 @@
+.block-instagram(v-if='instagram')
+  
+  .block-instagram__container
+    BlockContent.block-instagram__content(v-if='props.content' :props='props.content' animate)
+  
+  .block-instagram__container
+    .block-instagram__thumbs(ref='container')
+    
+      a.block-instagram__image-container(v-for='(image, i) in instagram',
+        :key='`image-${i}`',
+        :href='image.permalink',
+        target='_blank' rel='noopener noreferrer'
+        ref='images')
+        BaseImage.block-instagram__image(:src='image.source', :alt='"instagram-" + i')

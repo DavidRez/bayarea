@@ -1,0 +1,11 @@
+.block-preview-post(v-if='props')
+  .block-preview-post__number
+    span {{ number }}
+    span {{ 'Blog ' + number }}
+  .block-preview-post__content(ref='container')
+    h3.block-preview-post__title(v-if='props.title' v-html='props.title' ref='title')
+    .block-preview-post__excerpt(v-if='props.excerpt' v-html='props.excerpt' ref='excerpt')
+    .block-preview-post__images(:class='{ "block-preview-post__images--flip": index % 2 === 0 }')
+      .block-preview-post__cover(ref='cover')
+      BaseImage.block-preview-post__image.block-preview-post__image--first(v-if='props.hero' :src='props.hero.url')
+      BaseImage.block-preview-post__image.block-preview-post__image--second(v-if='props.intro.image' :src='props.intro.image.url')

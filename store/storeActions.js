@@ -7,7 +7,10 @@ import {
   IS_TABLET_LG,
   IS_TABLET_MD,
   SET_FORMS,
+  SET_BLOG,
   SET_GLOBAL,
+  SET_TESTIMONIALS,
+  SET_TEAM,
   SITE_IS_LOADED,
   VIDEO_LOADING,
   VIEW_MENU
@@ -38,8 +41,17 @@ const stateActions = () => ({
   SET_FORMS ({ commit }, data) {
     commit(SET_FORMS, data)
   },
+  SET_BLOG ({ commit }, data) {
+    commit(SET_BLOG, data)
+  },
   SET_GLOBAL ({ commit }, data) {
     commit(SET_GLOBAL, data)
+  },
+  SET_TESTIMONIALS ({ commit }, data) {
+    commit(SET_TESTIMONIALS, data)
+  },
+  SET_TEAM ({ commit }, data) {
+    commit(SET_TEAM, data)
   },
   SITE_IS_LOADED ({ commit }, data) {
     commit(SITE_IS_LOADED, data)

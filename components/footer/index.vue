@@ -6,7 +6,9 @@ import router from '~/router/index'
 export default {
   computed: {
     links () {
-      return router
+      return router.filter((link) => {
+        return link.footer
+      })
     }
   },
   methods: {

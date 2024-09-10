@@ -17,11 +17,10 @@ export default {
     height: '100%'
   }),
   mounted () {
-    this.getDimensions()
+    // this.getDimensions()
     setTimeout(() => {
       this.getDimensions()
     }, 1000)
-    window.addEventListener('resize', this.debounceFunc)
     if (this.$store.state.siteIsLoaded) {
       this.handleAnimation()
     } else {
@@ -46,9 +45,8 @@ export default {
     getDimensions () {
       this.$nextTick(() => {
         // get max width of content tab
-        const container = this.$refs.container ? this.$refs.container.clientWidth : window.innerWidth
+        const container = this.$refs.container.clientWidth
         const tabs = (this.$refs.tab[0].clientWidth * this.props.tabs.length) + this.props.tabs.length
-        console.log(this.$refs.container.clientWidth, window.innerWidth, '=', container)
         this.maxWidth = `${container - 64 - tabs}px`
 
         // get max height of content tab
@@ -70,7 +68,7 @@ export default {
     handleAnimation () {
       this.$nextTick(() => {
         if (this.props.tabs) {
-          this.$_fadeIn(this.$refs.tabs, 96, 0, 'top+=58', 2, 1)
+          this.$_fadeIn(this.$refs.tabs, 96, 0, '+58', 2, 1)
         }
       })
     }

@@ -1,0 +1,12 @@
+section.block-repeater-post
+  .block-repeater-post__container(v-if='!havePosts')
+    h2.block-repeater-post__title Loading...
+  .block-repeater-post__container(ref='container')
+    .block-repeater-post__posts(v-if='props && havePosts')
+      nuxt-link.block-repeater-post__post(v-for='(post, i) in $store.state.posts.postsPerPage[$route.params.page]',
+        :key=`$route.name + ' post ' + i`,
+        :to='`${post.path}`',
+        ref='posts')
+        BlockPreviewPost(:props='post' :index='i')
+  .block-repeater-post__container
+    BlockPagination(:pageCount='Number($store.state.posts.pageCount)')

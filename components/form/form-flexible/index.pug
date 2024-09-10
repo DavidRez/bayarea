@@ -69,19 +69,51 @@
                 span.form-flexible__radio-overlay
                 label.form-flexible__radio-label(:for='subfield._id', v-html='subfield.label')
 
+
+        // select //////////////////////////////////////////////
+        fieldset.form-flexible__group.form-flexible__group--select(
+          v-if=`['select'].includes(field.acf_fc_layout)`
+        )
+          .form-flexible__radio-title-container
+            label.form-flexible__radio-title(
+              :class=`{ 'form-flexible__label--active': formModels[field._id].model }`,
+              :for='field._id',
+              v-html='`${field.label}${field.required ? " *" : ""}`'
+            )
+          .form-flexible__select-container
+            select.form-flexible__input.form-flexible__input--select(
+              :aria-invalid=`errors.has(formModels[field._id].model) ? 'true' : 'false'`,
+              :class=`{ 'form-flexible__input--error': errors.has(field.label) }`,
+              :id='field._id',
+              :name='field.label',
+              type='select'
+              v-model='formModels[field._id].model'
+            )
+              option.form-flexible__option(v-if='field.option_title'
+                disabled,
+                selected,
+                value='null',
+                v-html='field.option_title')
+              option.form-flexible__option(
+                v-for='(option, e) in field.options',
+                :key='`option-${e}`'
+                :id='option.label._id',
+                :name=`option.label`,
+                :value='option.label',
+                v-html='option.label'
+              )
+            BaseIcon.form-flexible__arrow(name='caret')
+          .form-flexible__error-message(v-html='field.error_message', v-show='errors.has(field.label)')
+
       .form-flexible__group.form-flexible__group--button
-        button.form-flexible__submit-button(
+        ButtonButtonCta.form-flexible__submit-button(
           :class=`{
             'form-flexible__submit-button--success': formSuccess,
             'form-flexible__submit-button--sending': formSubmitted && !formSuccess
           }`,
           type='submit'
+          :props='Object.assign({}, { type: "custom", style: "secondary", label: "Send", aria: "Send form" })'
         )
-          span.form-flexible__submit-label(
-            :class=`{ 'form-flexible__submit-label--hidden': formSuccess }`,
-            v-html='selectedForm.submit_button_label'
-          )
-          span.form-flexible__submit-check(:class=`{ 'form-flexible__submit-check--showing': formSuccess }`) &#10003
 
   .form-flexible__modal(
     :aria-hidden=`modalOpen ? 'false' : 'true'`,

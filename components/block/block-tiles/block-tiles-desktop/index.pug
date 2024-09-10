@@ -1,0 +1,14 @@
+.block-tiles-desktop
+  .block-tiles-desktop__tiles
+    .block-tiles-desktop__tile(
+      v-for='(tile, i) in props.tiles',
+      :key='`tile-${i}`'
+      ref='tiles'
+    )
+      .block-tiles-desktop__image-container(v-if='tile.image')
+        BaseImage.block-tiles-desktop__image(
+          v-bind='tile.image',
+          forceVisible,
+          imageBackground
+        )
+      ButtonButtonCta.block-tiles-desktop__button(:props='Object.assign({}, tile.button, { style: "tile", label: tile.title })')

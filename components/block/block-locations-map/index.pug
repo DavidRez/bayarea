@@ -1,0 +1,4 @@
+section.block-locations-map
+  BlockLocationsMapSingle(v-if='$store.state.global.locations.length === 1' :props='props' :global='$store.state.global')
+  BlockLocationsMapMultiple(v-else-if='$store.state.global.locations.length > 1 && !$store.state.isTablet' :props='props' :global='$store.state.global')
+  BlockLocationsMapMultipleMobile(v-else-if='$store.state.global.locations.length > 1 && $store.state.isTablet' :props='props' :global='$store.state.global')

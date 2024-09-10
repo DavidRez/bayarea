@@ -5,8 +5,16 @@
     @include container
     justify-content: center
 
+  &__row
+    @include col (12)
+
+  &__title
+    @extend %subheader-margin-bottom
+    width: 100%
+    text-align: left
+
   &__col
-    @include col (8)
+    @include col (12)
 
     .block-accordion--2-columns &
       @include col (6)
@@ -21,15 +29,6 @@
     gap: #{$gutter}
     width: 100%
 
-    .block-accordion__container--line &
-      background-color: var(--bg-1)
-      gap: 0
-
-  &__title
-    margin-bottom: rem-calc(32)
-    width: 100%
-    text-align: center
-
   &__item-container
     @include tablet
       padding: 1rem
@@ -37,56 +36,19 @@
       padding: .5rem
     position: relative
     transition: border-color .2s ease
-    border: solid rem-calc(2) var(--bg-1)
-    background-color: var(--bg-1)
+    border: solid 1px var(--text)
+    background-color: $white
     cursor: pointer
     padding: rem-calc(24) rem-calc(32)
     width: 100%
-
-    .block-accordion__container--line &
-      @include tablet
-        padding: 2rem
-      @include phone-lg
-        padding: 1rem
-      padding: #{$gutter}
-
-    &:first-child
-      .block-accordion__container--line &
-        @include tablet
-          padding-top: 4rem
-        @include phone-lg
-          padding-top: 2rem
-        padding-top: #{$gutter * 2}
-
-    &:last-child
-      .block-accordion__container--line &
-        @include tablet
-          padding-bottom: 4rem
-        @include phone-lg
-          padding-bottom: 2rem
-        padding-bottom: #{$gutter * 2}
-
-    &:focus-visible,
-    &:hover
-      border-color: #777
-
-      .block-accordion__container--line &
-        border-color: var(--bg-1)
-
-        //.block-accordion__line
-        //  background-color: #777
-
-        .block-accordion__item-title
-          -webkit-text-stroke-width: rem-calc(.25)
-
-        //.block-accordion__cross
-        //  span
-        //    background-color: #777
 
     &:focus,
     &:focus-visible,
     &:hover
       outline: none
+    
+    &:focus-visible
+      @include focus
 
   &__item
     display: flex
@@ -97,38 +59,26 @@
     width: 100%
 
   &__item-title
+    @extend %subtext
     text-align: left
 
   &__cross
-    @include desktop
-      width: rem-calc(32)
-      height: rem-calc(32)
-    @include tablet-lg
-      width: rem-calc(23)
-      height: rem-calc(23)
     @include tablet-md
-      transform: translateY(0)
       margin-left: 1rem
     @include tablet
-      width: rem-calc(21)
-      height: rem-calc(21)
+      width: 1.25rem
+      height: 1.25rem
     @include phone-land-lg
       margin-left: 1rem
     @include nexus
-      width: rem-calc(19)
-      height: rem-calc(19)
-    @include phone-lg
-      width: rem-calc(18)
-      height: rem-calc(18)
-    @include phone
-      width: rem-calc(17)
-      height: rem-calc(17)
+      width: 1rem
+      height: 1rem
     display: inline-block
     position: relative
     flex-shrink: 0
     margin: auto 0 auto 2rem
-    width: rem-calc(28)
-    height: rem-calc(28)
+    width: 2rem
+    height: 2rem
 
     span
       @include tablet
@@ -140,7 +90,7 @@
       top: 50%
       transform: translate(0, -50%)
       transition: transform .2s ease-in-out, background-color .3s ease
-      background-color: #777
+      background-color: var(--text)
       width: 100%
       height: rem-calc(3)
 
@@ -174,81 +124,46 @@
     width: 100%
     text-align: left
 
-  &__image
-    width: 100%
-    height: 100%
-
-    &-container
-      position: relative
-      margin-top: rem-calc(12)
-      padding-bottom: 60%
+  &__image-container
+    @include tablet
       width: 100%
+    position: relative
+    margin-top: rem-calc(12)
+    width: 50%
+
+  &__image
+    &.base-image
+      position: relative
+      width: 100%
+      height: 100%
+
+    .base-image__image
+      position: relative
+      width: 100%
+      height: auto
+
+  &__video-container
+    @include phone-land-lg
+      width: 60%
+      height: 60vh
+    @include nexus
+      height: 50vw
+    position: relative
+    transition: opacity .3s ease
+    opacity: 0
+    margin-top: rem-calc(12)
+    background: var(--text)
+    width: 100%
+    max-width: rem-calc(600)
+    height: rem-calc(450)
+
+    .block-accordion__item-container--active &
+      transition-delay: .2s
+      opacity: 1
 
   &__video
     width: 100%
-
-    .block-accordion__video-container--embedded &
-      @include desktop
-        min-height: rem-calc(340)
-      @include laptop
-        min-height: rem-calc(380)
-      @include laptop-sm
-        min-height: rem-calc(340)
-      @include tablet-md
-        min-height: rem-calc(260)
-      @include tablet
-        min-height: rem-calc(360)
-      @include phone-land-lg
-        min-height: rem-calc(240)
-      @include nexus
-        min-height: rem-calc(280)
-      @include phone-lg
-        min-height: rem-calc(240)
-      @include phone
-        min-height: rem-calc(170)
-      height: 100%
-      min-height: rem-calc(260)
-
-    &-container
-      transition: opacity .3s ease
-      opacity: 0
-
-      &--file
-        @extend %absolute
-
-      &--embedded
-        @include desktop
-          min-height: rem-calc(340)
-        @include laptop
-          min-height: rem-calc(380)
-        @include laptop-sm
-          min-height: rem-calc(340)
-        @include tablet-md
-          min-height: rem-calc(260)
-        @include tablet
-          min-height: rem-calc(360)
-        @include phone-land-lg
-          min-height: rem-calc(240)
-        @include nexus
-          min-height: rem-calc(280)
-        @include phone-lg
-          min-height: rem-calc(240)
-        @include phone
-          min-height: rem-calc(170)
-        position: relative
-        margin-top: rem-calc(12)
-        height: 100%
-        min-height: rem-calc(260)
-
-      .block-accordion__item-container--active &
-        transition-delay: .2s
-        opacity: 1
-
-      &-outer
-        position: relative
-        margin-top: rem-calc(12)
-        padding-bottom: 66.6667%
-        width: 100%
+    height: 100%
 
   &__drawer
     transition: height .3s cubic-bezier(.39, .575, .28, .995), padding .3s ease-in-out
@@ -261,21 +176,3 @@
 
     .block-accordion__item-container--active &
       pointer-events: all
-
-  &__line
-    transition: background-color .2s ease
-    background-color: #bdbdbd
-    width: 100%
-    height: 100%
-
-    &-container
-      @include tablet
-        padding: 0 2rem
-      @include phone-lg
-        padding: 0 1rem
-      position: absolute
-      bottom: 0
-      left: 0
-      padding: 0 #{$gutter}
-      width: 100%
-      height: rem-calc(3)

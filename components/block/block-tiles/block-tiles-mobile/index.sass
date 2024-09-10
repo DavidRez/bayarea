@@ -1,0 +1,88 @@
+.block-tiles-mobile
+  &__tiles
+    position: relative
+    width: 100%
+
+  &__tile
+    display: flex
+    position: absolute
+    bottom: 0
+    left: 50%
+    flex-direction: column
+    transform: translateX(150%)
+    transition: transform .6s ease, opacity .1s ease
+    opacity: 0
+    width: 100%
+    overflow: hidden
+
+    &--active
+      transform: translateX(-50%)
+      opacity: 1
+
+    &--next
+      transform: translateX(150%)
+      transition: transform .6s ease, opacity .1s ease .6s
+      opacity: 0
+
+    &--prev
+      transform: translateX(-150%)
+      transition: transform .6s ease, opacity .1s ease .6s
+      opacity: 0
+
+  &__image-container
+    position: relative
+    border-top: 1px solid var(--text)
+    border-right: 1px solid var(--text)
+    border-left: 1px solid var(--text)
+    background: var(--bg-1)
+    padding-top: 70%
+    width: 100%
+
+  &__image
+    &.base-image
+      @extend %absolute
+
+    .base-image__image
+      position: absolute
+      object-fit: cover
+
+  &__button
+    width: 100%
+
+    &.button-cta,
+    .button-cta__button
+      width: 100%
+      height: 100%
+
+      span
+        @include nexus
+          padding: 1rem
+          font-size: 1.25rem
+        text-align: center !important
+        color: $white
+        font-size: 1.25rem
+
+  &__dots
+    @extend %margin-top--md
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    gap: 1rem
+    height: fit-content
+
+  &__dot
+    display: inline-block
+    transform: scale(0.65)
+    transition: all 0.25s ease
+    border-radius: 50%
+    background: var(--accent1)
+    cursor: pointer
+    width: rem-calc(15)
+    height: rem-calc(15)
+
+    &:hover
+      transform: scale(0.8)
+
+    &--active
+      transform: scale(1)

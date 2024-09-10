@@ -1,0 +1,71 @@
+.block-banner-with-background
+  position: relative
+  overflow: visible
+
+  &__bg
+    @extend %absolute
+    z-index: -1
+    background-repeat: repeat
+    background-position: left top
+    background-size: 100% auto
+
+  &__container
+    @include container
+    @include tablet
+      flex-direction: column-reverse
+    justify-content: space-between
+    gap: 0
+    margin: 2rem auto
+
+  &__col
+    display: flex
+    flex-direction: column
+    justify-content: center
+    width: 100%
+
+    &--media
+      @include tablet
+        padding-top: 50%
+        width: 100%
+      @include phone-land-lg
+        padding-top: unset
+        width: 50%
+      @include nexus
+        padding-top: 50%
+        width: 100%
+      display: flex
+      position: relative
+      align-items: center
+      width: 50%
+      overflow: hidden
+
+    &--content
+      @include tablet
+        padding: 2rem 3rem
+        width: 100%
+      @include phone-land-lg
+        padding: 2rem 1rem
+        width: 50%
+      @include nexus
+        padding: 2rem 1rem
+        width: 100%
+      display: flex
+      flex-direction: column
+      justify-content: center
+      background: var(--primary)
+      padding: 3rem 4rem
+      width: 50%
+
+  &__image-container
+    width: 100%
+    overflow: hidden
+
+  &__image
+    @extend %absolute
+
+    &.base-image
+      position: absolute
+      overflow: hidden
+
+    .base-image__image
+      object-fit: cover

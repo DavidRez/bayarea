@@ -18,7 +18,9 @@ export default {
   },
   data: () => ({
     forms: null,
+    posts: null,
     global: null,
+    testimonials: null,
     showDevModeBanner: false
   }),
   watch: {
@@ -26,8 +28,14 @@ export default {
   },
   async fetch () {
     this.forms = await getCustomPosts('forms')
+    this.posts = await getCustomPosts('posts', 4)
     this.global = await setData('global', 'globalData')
+    this.testimonials = await setData('testimonials', 'globalData')
+    this.team = await setData('team', 'globalData')
 
+    this.$store.dispatch('SET_TEAM', this.team.team)
+    this.$store.dispatch('SET_BLOG', this.posts)
+    this.$store.dispatch('SET_TESTIMONIALS', this.testimonials.testimonials)
     this.$store.dispatch('SET_GLOBAL', this.global)
     this.$store.dispatch('SET_FORMS', this.forms)
   },

@@ -1,0 +1,24 @@
+.block-tiles-mobile
+  .block-tiles-mobile__tiles(:style='{ height: height }' ref='tilesContainer')
+    .block-tiles-mobile__tile(
+      v-for='(tile, i) in props.tiles',
+      :key='`tile-${i}`',
+      :class='setClasses(i)',
+      ref='tiles'
+    )
+      .block-tiles-mobile__image-container(v-if='tile.image')
+        BaseImage.block-tiles-mobile__image(
+          v-bind='tile.image',
+          forceVisible,
+          imageBackground
+        )
+      ButtonButtonCta.block-tiles-mobile__button(
+        :props='Object.assign({}, tile.button, { style: "tile", label: tile.title })')
+  .block-tiles-mobile__dots
+    .block-tiles-mobile__dot(
+      v-for='(dot, i) in props.tiles',
+      :key='`dot-${i}`',
+      :class='{ "block-tiles-mobile__dot--active": active === i }',
+      @click='makeActive(i)',
+      tabindex='0'
+    )

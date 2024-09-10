@@ -20,6 +20,12 @@
     justify-content: space-between
   
     &--reverse
+      @include tablet
+        flex-direction: column
+      @include phone-land-lg
+        flex-direction: column
+      @include nexus
+        flex-direction: column
       flex-direction: row-reverse
 
   &__media
@@ -37,6 +43,10 @@
     border: 1px solid $black
     background: var(--bg-1)
     padding: 1rem
+
+  &__cover
+    @extend %absolute
+    z-index: 2
 
   &__image-container
     display: flex

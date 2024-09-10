@@ -2,20 +2,22 @@
   @include phone-lg
     padding: 4rem 0
   position: relative
+  margin-top: rem-calc(150)
   padding: 3rem 0
 
   &__container
     @include container
+    position: relative
+    flex-direction: column
+    justify-content: center
 
   &__title
     @include col (8)
-    @include col--offset (2)
     @extend %h2
     margin-bottom: 1rem
 
   &__col
     @include col (8)
-    @include col--offset (2)
 
     p
       &:not(:last-child)
