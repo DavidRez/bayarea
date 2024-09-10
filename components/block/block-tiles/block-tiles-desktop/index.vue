@@ -11,11 +11,11 @@ export default {
     }
   },
   mounted () {
-    if (this.$store.state.siteLoaded) {
+    if (this.$store.state.siteIsLoaded) {
       this.handleAnimation()
     } else {
       this.$store.watch(
-        state => this.$store.state.siteLoaded,
+        state => this.$store.state.siteIsLoaded,
         (newVal) => {
           if (newVal) {
             this.handleAnimation()
@@ -28,8 +28,8 @@ export default {
     handleAnimation () {
       if (this.props.tiles) {
         this.$refs.tiles.forEach((tile, i) => {
-          const delay = 0.1 + (0.1 * i)
-          this.$_fadeIn(tile, 0, 48, '+58', 1, delay)
+          const delay = 0.1 + (0.2 * i)
+          this.$_fadeIn(tile, 0, 48, '+58', 2, delay)
         })
       }
     }
