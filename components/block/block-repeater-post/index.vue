@@ -3,13 +3,11 @@
 <script>
 import { fadeIn } from '~/resources/mixins'
 import BlockPagination from '~/components/block/block-post-pagination'
-import BaseImage from '~/components/base/base-image'
 import BlockPost from '~/components/block/block-post'
 
 export default {
   components: {
     BlockPagination,
-    BaseImage,
     BlockPost
   },
   mixins: [fadeIn],
@@ -48,7 +46,7 @@ export default {
         if (this.havePosts) {
           this.$refs.posts.forEach((post, i) => {
             const delay = 0.1 + (0.1 * i)
-            this.$_fadeIn(post, 0, 48, '+58', 1, delay)
+            this.$_fadeIn(post.$el, 0, 48, '+58', 1, delay)
           })
         }
       })
