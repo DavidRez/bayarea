@@ -52,7 +52,7 @@ export const siteMap = {
           console.error('SITEMAP BLOG API: ' + e)
         }
       }
-    },
+    }
   ]
 }
 
