@@ -13,7 +13,7 @@ header.navigation(:class="{ 'navigation--scrolling': isScrolling && scrollDir ==
       :setMobileWidth='setMobileWidth'
       :toggleDrawer='throttleToggleDrawer'
       :drawerOpen='drawerOpen')
-    NavigationNavigationMobile(v-else
+    NavigationNavigationMobile(v-else-if='$store.state.isTablet'
       :props='$store.state.global'
       :toggleDrawer='throttleToggleDrawer'
       :drawerOpen='drawerOpen')
