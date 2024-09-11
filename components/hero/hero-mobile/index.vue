@@ -69,7 +69,7 @@ export default {
       this.active = i
     },
     handleResize () {
-      this.paddingTop = `${document.querySelector('.navigation').clientHeight}px`
+      this.paddingTop = `${document.querySelector('.navigation').clientHeight + 25}px`
     },
     loadImage () {
       this.$refs.images[0].$el.loading = () => {
@@ -87,7 +87,7 @@ export default {
         const tl = this.$gsap.timeline({
           scrollTrigger: {
             trigger: container,
-            start: 'center bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })
