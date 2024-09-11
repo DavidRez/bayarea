@@ -80,7 +80,7 @@ export default {
     handleAnimation () {
       this.$nextTick(() => {
         if (this.$store.state.team.length > 0) {
-          this.$_fadeIn(this.$refs.container, 100, 0, '+58', 1, 3)
+          this.$_fadeIn(this.$refs.container, 100, 0, 'top+=58', 1, 3)
         }
       })
     }

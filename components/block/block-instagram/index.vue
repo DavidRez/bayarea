@@ -37,7 +37,6 @@ export default {
         state => this.$store.state.siteIsLoaded,
         (newVal) => {
           if (newVal) {
-            this.getIg()
             this.handleAnimation()
           }
         }
@@ -48,7 +47,7 @@ export default {
     handleAnimation () {
       this.$nextTick(() => {
         this.$refs.images.forEach((el, i) => {
-          this.$_fadeIn(el, 0, 48, '+58', 1, 0.5 + (0.05 * i))
+          this.$_fadeIn(el, 0, 48, 'top+=58', 1, 0.5 + (0.05 * i))
         })
       })
     }

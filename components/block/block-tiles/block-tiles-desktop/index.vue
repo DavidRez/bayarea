@@ -29,7 +29,7 @@ export default {
       if (this.props.tiles) {
         this.$refs.tiles.forEach((tile, i) => {
           const delay = 0.1 + (0.2 * i)
-          this.$_fadeIn(tile, 0, 48, '+58', 2, delay)
+          this.$_fadeIn(tile, 0, 48, 'top+=58', 2, delay)
         })
       }
     }

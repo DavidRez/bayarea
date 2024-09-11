@@ -46,7 +46,7 @@ export default {
         if (this.havePosts) {
           this.$refs.posts.forEach((post, i) => {
             const delay = 0.1 + (0.1 * i)
-            this.$_fadeIn(post.$el, 0, 48, '+58', 1, delay)
+            this.$_fadeIn(post.$el, 0, 48, 'top+=58', 1, delay)
           })
         }
       })

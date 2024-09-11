@@ -87,7 +87,7 @@ export default {
 
         if (this.$refs.logos) {
           this.$refs.logos.forEach((el, i) => {
-            this.$_fadeIn(el, 0, -48, '+58', 1, 0.5 + (0.2 * i))
+            this.$_fadeIn(el, 0, -48, 'top+=58', 1, 0.5 + (0.2 * i))
           })
         }
       })

@@ -38,10 +38,10 @@ export default {
     handleAnimation () {
       this.$nextTick(() => {
         if (this.$refs.left) {
-          this.$_fadeIn(this.$refs.left, '100', 0, '+58', 1, 0)
+          this.$_fadeIn(this.$refs.left, '100', 0, 'top+=58', 1, 0)
         }
         if (this.$refs.right) {
-          this.$_fadeIn(this.$refs.right, '100', 0, '+58', 1, 0)
+          this.$_fadeIn(this.$refs.right, '100', 0, 'top+=58', 1, 0)
         }
       })
     }

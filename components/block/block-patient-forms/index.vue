@@ -41,7 +41,7 @@ export default {
         const tl = this.$gsap.timeline({
           scrollTrigger: {
             trigger: container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })
@@ -57,11 +57,11 @@ export default {
             ease: 'slow'
           }, '<+=0.1')
           this.$refs.forms.forEach((el, i) => {
-            this.$_fadeIn(el, 0, 96, '+58', 1, 0.5 + (0.1 * i))
+            this.$_fadeIn(el, 0, 96, 'top+=58', 1, 0.5 + (0.1 * i))
           })
         } else {
           this.$refs.forms.forEach((el, i) => {
-            this.$_fadeIn(el, 0, 96, '+58', 1, 0.5 + (0.1 * i))
+            this.$_fadeIn(el, 0, 96, 'top+=58', 1, 0.5 + (0.1 * i))
           })
           tl.fromTo(this.$refs.col1, {
             y: '48',

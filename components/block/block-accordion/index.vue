@@ -64,7 +64,7 @@ export default {
 
         if (this.$refs.gsap2 && this.$refs.gsap2.length) {
           this.$refs.gsap2.forEach((el, i) => {
-            this.$_fadeIn(el, 0, 48, '+58', 1, i * 0.25)
+            this.$_fadeIn(el, 0, 48, 'top+=58', 1, i * 0.25)
           })
         }
       })

@@ -51,8 +51,8 @@ export default {
     },
     handleAnimation () {
       this.$nextTick(() => {
-        this.$_fadeIn(this.$refs.locations, -200, 0, 'top+48', 1.5, 0)
-        this.$_fadeIn(this.$refs.map, 200, 0, 'top+48', 1.5, 0)
+        this.$_fadeIn(this.$refs.locations, -200, 0, 'top+=48', 1.5, 0)
+        this.$_fadeIn(this.$refs.map, 200, 0, 'top+=48', 1.5, 0)
       })
     },
     getDimensions () {

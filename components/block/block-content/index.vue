@@ -51,21 +51,21 @@ export default {
         const tlHeader = this.$gsap.timeline({
           scrollTrigger: {
             trigger: this.$refs.container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })
         const tlSubheader = this.$gsap.timeline({
           scrollTrigger: {
             trigger: this.$refs.container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })
         const tlBody = this.$gsap.timeline({
           scrollTrigger: {
             trigger: this.$refs.container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })
@@ -110,7 +110,7 @@ export default {
 
         if (this.$refs.body) {
           const childBody = new this.$SplitText(this.$refs.body, {
-            type: 'lines',
+            type: 'words, lines',
             linesClass: 'split-child'
           })
           const parentBody = new this.$SplitText(this.$refs.body, {
@@ -121,14 +121,14 @@ export default {
               yPercent: 100,
               opacity: 0,
               duration: 2,
-              stagger: 0.115,
+              stagger: 0.0,
               ease: 'customEaseOut'
             })
           }
         }
 
         if (this.props.buttons && this.animate) {
-          this.$_fadeIn(this.$refs.buttons, 0, 24, '+58', 1, 0.75)
+          this.$_fadeIn(this.$refs.buttons, 0, 24, 'top+=58', 1, 0.75)
         }
       })
     }

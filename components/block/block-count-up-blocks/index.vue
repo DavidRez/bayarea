@@ -40,14 +40,14 @@ export default {
         const tlHeader = this.$gsap.timeline({
           scrollTrigger: {
             trigger: this.$refs.container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })
         const tlSubheader = this.$gsap.timeline({
           scrollTrigger: {
             trigger: this.$refs.container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })
@@ -94,7 +94,7 @@ export default {
           const target = +item.dataset.target
           this.$ScrollTrigger.create({
             trigger: this.$refs.container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             onEnter: () => {
               this.$gsap.to(item, {
                 innerText: target,

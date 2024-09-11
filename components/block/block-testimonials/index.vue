@@ -100,7 +100,7 @@ export default {
             })
           }
         }
-        this.$_fadeIn(this.$refs.slider, 0, '75%', '+58', 2, 0.15)
+        this.$_fadeIn(this.$refs.slider, 0, '75%', 'top+=58', 2, 0.15)
       })
     }
   }

@@ -41,7 +41,7 @@ export default {
         const tl = this.$gsap.timeline({
           scrollTrigger: {
             trigger: container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })

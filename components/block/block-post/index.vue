@@ -80,16 +80,16 @@ export default {
     handleAnimation () {
       this.$nextTick(() => {
         if (this.props.intro.image) {
-          this.$_fadeIn(this.$refs.image.$el, 0, 48, '+58', 1, 0.25)
+          this.$_fadeIn(this.$refs.image.$el, 0, 48, 'top+=58', 1, 0.25)
         }
         if (this.$refs.paragraphs) {
           this.$refs.paragraphs.forEach((paragraph, i) => {
             const delay = 0.1 + (0.1 * i)
-            this.$_fadeIn(paragraph, 0, 48, '+58', 1, delay)
+            this.$_fadeIn(paragraph, 0, 48, 'top+=58', 1, delay)
           })
         }
         if (this.$refs.form) {
-          this.$_fadeIn(this.$refs.form.$el, 0, 48, '+58', 1, 0.5)
+          this.$_fadeIn(this.$refs.form.$el, 0, 48, 'top+=58', 1, 0.5)
         }
       })
     }

@@ -60,7 +60,7 @@ export default {
     },
     handleAnimation () {
       this.$nextTick(() => {
-        this.$_fadeIn(this.$refs.locations, 0, 96, 'top+48', 1.5, 0)
+        this.$_fadeIn(this.$refs.locations, 0, 96, 'top+=48', 1.5, 0)
       })
     },
     toggleAccordion (i) {

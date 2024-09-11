@@ -31,21 +31,21 @@ export default {
         const tlHeader = this.$gsap.timeline({
           scrollTrigger: {
             trigger: this.$refs.container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })
         const tlSubheader = this.$gsap.timeline({
           scrollTrigger: {
             trigger: this.$refs.container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })
         const tlBody = this.$gsap.timeline({
           scrollTrigger: {
             trigger: this.$refs.container,
-            start: '+48 bottom',
+            start: 'top+=48 bottom',
             toggleActions: 'play none play none'
           }
         })
