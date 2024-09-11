@@ -60,7 +60,7 @@ export default {
           const parentHeader = new this.$SplitText(this.$refs.header, {
             linesClass: 'split-parent'
           })
-          if (childHeader && parentHeader && this.animate) {
+          if (childHeader && parentHeader) {
             tlHeader.from(childHeader.lines, {
               yPercent: 100,
               opacity: 0,
@@ -79,7 +79,7 @@ export default {
           const parentSubheader = new this.$SplitText(this.$refs.subheader, {
             linesClass: 'split-parent'
           })
-          if (childSubheader && parentSubheader && this.animate) {
+          if (childSubheader && parentSubheader) {
             tlSubheader.from(childSubheader.lines, {
               yPercent: 100,
               opacity: 0,
