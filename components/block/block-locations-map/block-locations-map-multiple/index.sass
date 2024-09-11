@@ -183,7 +183,14 @@
         display: block
         text-align: left
         line-height: 1.25
+        color: var(--text)
         font-weight: 400
+
+      &-link
+        @include hover-supported
+          color: var(--accent1)
+          text-decoration: underline
+        transition: all .2s ease
 
       &-text
         cursor: default
