@@ -44,20 +44,22 @@ export default {
     },
     getDimensions () {
       this.$nextTick(() => {
-        // get max width of content tab
-        const container = this.$refs.container.clientWidth
-        const tabs = (this.$refs.tab[0].clientWidth * this.props.tabs.length) + this.props.tabs.length
-        this.maxWidth = `${container - 64 - tabs}px`
+        if (this.$refs.container) {
+          // get max width of content tab
+          const container = this.$refs.container.clientWidth
+          const tabs = (this.$refs.tab[0].clientWidth * this.props.tabs.length) + this.props.tabs.length
+          this.maxWidth = `${container - 64 - tabs}px`
 
-        // get max height of content tab
-        const content = this.$refs.content
-        let contentHeights = []
-        contentHeights = content.map((a) => {
-          return a.clientHeight
-        })
-        const maxContentHeight = Math.max(...contentHeights) + 16
+          // get max height of content tab
+          const content = this.$refs.content
+          let contentHeights = []
+          contentHeights = content.map((a) => {
+            return a.clientHeight
+          })
+          const maxContentHeight = Math.max(...contentHeights) + 16
 
-        this.height = `${maxContentHeight}px`
+          this.height = `${maxContentHeight}px`
+        }
       })
     },
     toggleTabs (i) {
@@ -67,8 +69,15 @@ export default {
     },
     handleAnimation () {
       this.$nextTick(() => {
+        // const tl = this.$gsap.timeline({
+        //   scrollTrigger: {
+        //     trigger: this.$refs.container,
+        //     start: 'top+=48 bottom',
+        //     toggleActions: 'play none play none'
+        //   }
+        // })
         if (this.props.tabs) {
-          this.$_fadeIn(this.$refs.tabs, 96, 0, '+58', 2, 1)
+          this.$_fadeIn(this.$refs.tabs, 96, 0, 'top+=58', 2, 1)
         }
       })
     }

@@ -17,11 +17,13 @@ export default {
   }),
   mounted () {
     this.$nextTick(() => {
-      this.handleResize(0)
-      this.handleGsapAnimation()
-      this.expanded = 0
-      this.handleResize(500)
+      this.handleResize()
+      setTimeout(() => {
+        this.handleResize()
+        this.toggleAccordion(0)
+      }, 1000)
     })
+    this.handleGsapAnimation()
     window.addEventListener('resize', () => {
       this.handleResize()
     })
@@ -31,29 +33,38 @@ export default {
   },
   methods: {
     handleGsapAnimation () {
+      const tl = this.$gsap.timeline({
+        scrollTrigger: {
+          trigger: this.$refs.container,
+          start: 'top+=48 bottom',
+          toggleActions: 'play none play none'
+        }
+      })
       if (this.$refs.gsap1) {
-        this.$_fadeIn(this.$refs.gsap1, 0, 24, '+58', 0, 1.2)
+        this.$_fadeIn(this.$refs.gsap1, 0, 24, 'top+=58', 0, 1.2)
       }
       if (this.$refs.gsap2 && this.$refs.gsap2.length) {
         this.$refs.gsap2.forEach((el, i) => {
-          this.$_fadeIn(el, 0, 24, '+58', 0, 1.2)
+          this.$_fadeIn(el, 0, 24, 'top+=58', 0, 1.2)
         })
       }
+      tl.add(() => {
+        this.toggleAccordion(0)
+      })
     },
     handleResize (time = 300) {
       setTimeout(() => {
-        if (this.expanded !== null) {
-          this.accordionBodyHeight = this.$refs.content[this.expanded].clientHeight
-        }
+        this.accordionBodyHeight = this.$refs.content[this.expanded].clientHeight
       }, time)
     },
     toggleAccordion (i) {
-      if (this.expanded !== i) {
-        this.expanded = i
-        this.accordionBodyHeight = this.$refs.content[i].clientHeight
-        this.handleResize(200)
-      }
-      this.handleResize(200)
+      this.$nextTick(() => {
+        if (this.expanded !== i) {
+          this.expanded = i
+          this.handleResize(0)
+        }
+        this.handleResize(500)
+      })
     }
   }
 }
