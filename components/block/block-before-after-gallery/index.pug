@@ -38,12 +38,12 @@ section.block-before-after-gallery
           button.block-before-after-gallery__button.block-before-after-gallery__button--next(@click='throttleNextSlide()' @keyup.enter='throttleNextSlide()' aria-label='read the next image')
             BaseIcon.block-before-after-gallery__icon(name='arrow')
 
-  transition(name='fade')
-    BaseBaseModal.block-before-after-gallery__modal(v-if='modalOpen'
-      :modalOpen='modalOpen'
-      @closemodal='modalOpen = $event'
-      role='dialog'
-      aria-labelledby='aria-modal-title'
-      aria-modal='true')
-      BaseImage.block-before-after-gallery__modal-image(v-bind='image')
+  //- transition(name='fade')
+  //-   BaseBaseModal.block-before-after-gallery__modal(v-if='modalOpen'
+  //-     :modalOpen='modalOpen'
+  //-     @closemodal='modalOpen = $event'
+  //-     role='dialog'
+  //-     aria-labelledby='aria-modal-title'
+  //-     aria-modal='true')
+  //-     BaseImage.block-before-after-gallery__modal-image(v-bind='image')
 
