@@ -1,10 +1,10 @@
 <template lang="pug" src="./index.pug"></template>
 
 <script>
-import { debounce } from '~/resources/mixins'
+import { fadeIn, debounce } from '~/resources/mixins'
 
 export default {
-  mixins: [debounce],
+  mixins: [fadeIn, debounce],
   props: {
     props: {
       type: Object,
@@ -108,13 +108,8 @@ export default {
 
         if (this.props.social_media) {
           this.$refs.icons.forEach((icon, i) => {
-            const delay = 0.1 + (0.05 * i)
-            tl.from(icon, {
-              autoAlpha: 0,
-              delay,
-              duration: 0.15,
-              ease: 'customEaseOut'
-            }, '<+=0.3')
+            const delay = 0.1 + (0.25 * i)
+            this.$_fadeIn(icon, 0, 48, '+48', 2, delay)
           })
         }
       })
