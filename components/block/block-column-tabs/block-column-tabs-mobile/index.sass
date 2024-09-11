@@ -47,6 +47,7 @@
     font-weight: 700
 
   &__drawer
+    position: relative
     transition: height 1s cubic-bezier(.39, .575, .28, .995), padding .3s ease-in-out
     margin: 0 auto
     background: transparent
@@ -60,10 +61,13 @@
       pointer-events: all
 
   &__content
-    position: relative
+    position: absolute
+    top: 0
+    left: 0
     transition: opacity .2s ease
     opacity: 0
     padding: 1rem 0.75rem
+    width: 100%
 
     .block-column-tabs-mobile__tab-container--active &
       transition-delay: .2s
