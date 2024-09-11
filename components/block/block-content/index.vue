@@ -121,7 +121,7 @@ export default {
               yPercent: 100,
               opacity: 0,
               duration: 2,
-              stagger: 0.0,
+              stagger: 0.115,
               ease: 'customEaseOut'
             })
           }
