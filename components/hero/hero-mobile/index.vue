@@ -69,7 +69,7 @@ export default {
       this.active = i
     },
     handleResize () {
-      this.paddingTop = `${document.querySelector('.navigation').clientHeight + 25}px`
+      this.paddingTop = `${document.querySelector('.navigation').clientHeight + 16}px`
     },
     loadImage () {
       this.$refs.images[0].$el.loading = () => {
