@@ -21,8 +21,8 @@
       span
         color: $white
       
-      .button-cta__container:first-of-type
-        border-right: 1px solid $white
+      .button-cta__container:last-of-type
+        border-left: 1px solid $white
 
       svg
         path
@@ -61,8 +61,8 @@
         background: $white
         span
           color: var(--text)
-        .button-cta__container:first-of-type
-          border-right: 1px solid var(--text)
+        .button-cta__container:last-of-type
+          border-left: 1px solid var(--text)
         path
           stroke: var(--text)
 
@@ -94,10 +94,13 @@
 
     &:first-of-type
       @include nexus
-        padding: 0.5rem 1rem
+        padding: 0 1rem
+      display: flex
       flex: 2
-      border-right: 1px solid var(--text)
-      padding: 1rem 2rem
+      align-items: center
+      justify-content: center
+      // border-right: 1px solid var(--text)
+      padding: 0 2rem
   
       .button-cta--tile &
         background: var(--accent1)
@@ -106,7 +109,9 @@
       display: flex
       align-items: center
       justify-content: center
+      border-left: 1px solid var(--text)
       width: rem-calc(48)
+      min-height: rem-calc(48)
   
       .button-cta--tile &
         background: $white
@@ -115,7 +120,8 @@
     @extend %button
     display: block
     transition: all .2s ease
-    margin-bottom: -4px // modify or remove to center in container, depending on font
+    // margin-bottom: -4px // modify or remove to center in container, depending on font
+    padding-top: 0.25rem
     line-height: 1rem
 
   .base-icon
