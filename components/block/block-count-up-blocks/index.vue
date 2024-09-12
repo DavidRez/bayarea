@@ -94,7 +94,7 @@ export default {
           const target = +item.dataset.target
           this.$ScrollTrigger.create({
             trigger: this.$refs.container,
-            start: 'top+=48 bottom',
+            start: 'top+=96 bottom',
             onEnter: () => {
               this.$gsap.to(item, {
                 innerText: target,
@@ -104,7 +104,8 @@ export default {
                 modifiers: {
                   innerText: value => this.numberWithCommas(Number(value).toFixed())
                 },
-                duration: 2
+                duration: 3,
+                delay: 0.25
               })
             },
             // make animation play once
