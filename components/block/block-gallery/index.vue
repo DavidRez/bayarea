@@ -1,14 +1,14 @@
 <template lang='pug' src='./index.pug'></template>
 
 <script>
-import { fadeIn, throttle } from '~/resources/mixins'
+import { fadeIn, throttle, bodyScroll, removeFocus } from '~/resources/mixins'
 import BlockContent from '~/components/block/block-content'
 
 export default {
   components: {
     BlockContent
   },
-  mixins: [fadeIn, throttle],
+  mixins: [fadeIn, throttle, bodyScroll, removeFocus],
   props: {
     props: {
       type: Object,
@@ -48,6 +48,8 @@ export default {
       this.activeModal = i
       this.image = this.props.images[i]
       this.modalOpen = !this.modalOpen
+      this.$_stopBodyScroll()
+      this.$_removeFocus()
     },
     setClasses (i) {
       return {
