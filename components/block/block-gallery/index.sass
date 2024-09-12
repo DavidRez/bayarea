@@ -163,8 +163,6 @@
     width: 100%
 
   &__buttons
-    @include nexus
-      display: none
     display: flex
 
   &__button
@@ -229,9 +227,11 @@
   &__modal-image-container
     @include tablet
       width: 100%
+      height: unset
     margin: 0 auto
     width: 50vw
     height: 50vw
+    max-height: 70vh
   &__modal-image
     &.base-image
       position: relative
