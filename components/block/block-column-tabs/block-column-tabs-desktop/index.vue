@@ -12,15 +12,12 @@ export default {
     }
   },
   data: () => ({
-    expanded: 0,
+    expanded: null,
     maxWidth: '100%',
     height: '100%'
   }),
   mounted () {
-    // this.getDimensions()
-    setTimeout(() => {
-      this.getDimensions()
-    }, 1000)
+    this.toggleTabs(0)
     if (this.$store.state.siteIsLoaded) {
       this.handleAnimation()
     } else {
@@ -65,20 +62,27 @@ export default {
     toggleTabs (i) {
       if (this.expanded !== i) {
         this.expanded = i
+        this.getDimensions()
       }
     },
     handleAnimation () {
       this.$nextTick(() => {
-        // const tl = this.$gsap.timeline({
-        //   scrollTrigger: {
-        //     trigger: this.$refs.container,
-        //     start: 'top+=48 bottom',
-        //     toggleActions: 'play none play none'
-        //   }
-        // })
+        const tl = this.$gsap.timeline({
+          scrollTrigger: {
+            trigger: this.$refs.container,
+            start: 'top+=48 bottom',
+            toggleActions: 'play none play none'
+          }
+        })
         if (this.props.tabs) {
           this.$_fadeIn(this.$refs.tabs, 96, 0, 'top+=58', 2, 1)
         }
+        tl.add(() => {
+          setTimeout(() => {
+            console.log('animate')
+            this.getDimensions()
+          }, 1000)
+        })
       })
     }
   }
