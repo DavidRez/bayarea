@@ -35,7 +35,9 @@
     border: none
     background: none
     cursor: pointer
+    letter-spacing: 1px
     color: $white
+    font-weight: 400
 
     &:focus-visible
       @include focus
@@ -45,6 +47,8 @@
     & > *
       margin: 0 auto
     & > *:not(:last-of-type)
+      @include nexus
+        margin-bottom: 2rem
       margin-bottom: 2.5rem
 
   &__title
