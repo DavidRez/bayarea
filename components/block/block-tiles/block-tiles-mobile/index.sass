@@ -46,7 +46,7 @@
       position: absolute
       object-fit: cover
 
-  &__button
+  &__cta
     width: 100%
 
     &.button-cta,
@@ -64,6 +64,7 @@
 
   &__dots
     @extend %margin-top--md
+    @extend %margin-bottom--md
     display: flex
     flex-direction: row
     align-items: center
@@ -86,3 +87,42 @@
 
     &--active
       transform: scale(1)
+  
+  &__buttons
+    display: flex
+    justify-content: center
+
+  &__button
+    @include hover-supported
+      rect
+        fill: var(--primary)
+    display: inline-flex
+    align-items: center
+    border: none
+    background: none
+    cursor: pointer
+    width: 3rem
+    height: 3rem
+
+    &:focus-visible
+      @include focus
+
+  &__icon
+    width: 100%
+
+    &.base-icon
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 100%
+
+    svg
+      width: 100%
+
+    svg,
+    path,
+    rect
+      transition: all .2s ease
+
+    .block-tiles-mobile__button--next &
+      transform: scale(-1)

@@ -12,7 +12,7 @@
           forceVisible,
           imageBackground
         )
-      ButtonButtonCta.block-tiles-mobile__button(
+      ButtonButtonCta.block-tiles-mobile__cta(
         :props='Object.assign({}, tile.button, { style: "tile", label: tile.title })')
   .block-tiles-mobile__dots
     .block-tiles-mobile__dot(
@@ -22,3 +22,8 @@
       @click='makeActive(i)',
       tabindex='0'
     )
+  .block-tiles-mobile__buttons
+    button.block-tiles-mobile__button.block-tiles-mobile__button--prev(@click='throttlePrevSlide()' @keyup.enter='throttlePrevSlide()' aria-label='read the previous tile')
+      BaseIcon.block-tiles-mobile__icon(name='arrow')
+    button.block-tiles-mobile__button.block-tiles-mobile__button--next(@click='throttleNextSlide()' @keyup.enter='throttleNextSlide()' aria-label='read the next tile')
+      BaseIcon.block-tiles-mobile__icon(name='arrow')

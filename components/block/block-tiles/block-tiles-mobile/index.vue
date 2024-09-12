@@ -1,10 +1,10 @@
 <template lang='pug' src='./index.pug'></template>
 
 <script>
-import { debounce, fadeIn } from '~/resources/mixins'
+import { debounce, fadeIn, throttle } from '~/resources/mixins'
 
 export default {
-  mixins: [debounce, fadeIn],
+  mixins: [debounce, fadeIn, throttle],
   props: {
     props: {
       type: Object,
@@ -61,19 +61,25 @@ export default {
     },
     changeSlide (str) {
       if (str === 'prev') {
-        this.prev()
+        this.active === 0 ? this.active = this.props.tiles.length - 1 : this.active--
+        this.handlePrevNext()
       }
       if (str === 'next') {
-        this.next()
+        this.active === (this.props.tiles.length - 1) ? this.active = 0 : this.active++
+        this.handlePrevNext()
       }
     },
-    prev () {
-      this.active === 0 ? this.active = this.props.tiles.length - 1 : this.active--
-      this.handlePrevNext()
+    toPrev () {
+      this.changeSlide('prev')
     },
-    next () {
-      this.active === (this.props.tiles.length - 1) ? this.active = 0 : this.active++
-      this.handlePrevNext()
+    toNext () {
+      this.changeSlide('next')
+    },
+    throttlePrevSlide () {
+      this.throttle(this.toPrev, null, 700)
+    },
+    throttleNextSlide () {
+      this.throttle(this.toNext, null, 700)
     },
     setClasses (i) {
       return {
