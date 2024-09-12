@@ -164,6 +164,7 @@
 
   &__buttons
     display: flex
+    gap: 1rem
 
   &__button
     @include hover-supported
@@ -174,8 +175,9 @@
     border: none
     background: none
     cursor: pointer
-    width: 3rem
-    height: 3rem
+    padding: 0
+    width: rem-calc(42)
+    height: rem-calc(42)
 
     &:focus-visible
       @include focus

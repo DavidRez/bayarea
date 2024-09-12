@@ -24,24 +24,22 @@ section.block-post(:style='{ marginTop: navHeight }')
     .block-post__body(v-for='(body, i) in props.body',
         :key='`body-${i}`' ref='paragraphs')
       .block-post__paragraph(v-html='body.text' :class='{ "block-post__paragraph--highlight": body.highlight_text }')
-
+  .block-post__container
     FormSubscribe.block-post__subscription(v-if='props.add_form' :disclaimer='props.form_content.disclaimer' :props='props' ref='form')
-    
+  .block-post__container 
     .block-post__writer(v-if='props.add_author_info')
       BaseImage.block-post__writer-image(v-if='props.author.image' :src='props.author.image.url')
       .block-post__writer-title(v-if='props.author.name')
         .block-post__writer-name(v-if='props.author.name' v-html='props.author.name')
         .block-post__writer-position(v-if='props.author.position' v-html='props.author.position')
-
+  .block-post__container
     .block-post__btns(:class='{ "block-post__btns--right": !prevPost && nextPost }')
-    
       nuxt-link.block-post__btn(v-if='prevPost', :to='{ path: prevPost }' aria-label='Previous Article' tabindex='0' ref='left')
-        .block-post__btn-icon-container.block-post__btn-icon-container--prev
-          BaseIcon.block-post__btn-icon(name='caret')
+        BaseIcon.block-post__btn-icon.block-post__btn-icon--prev(name='caret')
         span Previous
 
       nuxt-link.block-post__btn(v-if='nextPost', :to='{ path: nextPost }' aria-label='Next Article' role='button' tabindex='0' ref='right')
         span Next
-        .block-post__btn-icon-container.block-post__btn-icon-container--next
-          BaseIcon.block-post__btn-icon(name='caret')
+        BaseIcon.block-post__btn-icon.block-post__btn-icon--next(name='caret')
+  .block-post__container  
     ButtonButtonCta.block-post__back(:props='Object.assign({}, { label: "Back to Blog", type: "nuxt", path: "/blog", style: "tertiary" })')
