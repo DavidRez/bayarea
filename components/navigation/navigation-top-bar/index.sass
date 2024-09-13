@@ -31,6 +31,10 @@
     @include hover-supported
       background: var(--accent2)
       cursor: pointer
+
+  &__bar
+    width: 100%
+    height: 100%
   
   &__container
     @include container--large
@@ -40,6 +44,13 @@
     align-items: center
     justify-content: flex-end
     gap: 1rem
+
+  &__overlay
+    @extend %absolute
+    left: 50%
+    transform: translateX(-50%)
+    z-index: 1
+    width: 100vw
     
   &__links
     display: flex
@@ -96,6 +107,7 @@
       @include focus
 
   &__modal
+    z-index: 999
     &-title
       @extend %h2
       margin-bottom: 2rem
