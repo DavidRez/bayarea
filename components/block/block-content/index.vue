@@ -128,7 +128,7 @@ export default {
         }
 
         if (this.props.buttons && this.animate) {
-          this.$_fadeIn(this.$refs.buttons, 0, 24, 'top+=58', 1, 0.75)
+          this.$_fadeIn(this.$refs.buttons, 0, 24, 'top', 1, 0.75)
         }
       })
     }
