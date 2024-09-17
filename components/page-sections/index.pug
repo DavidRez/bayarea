@@ -3,7 +3,7 @@
   .page-sections__section-container(
     v-for='(section, i) in props',
     :key='`section-${i}`',
-    :class='`component-margins--` + section.component_margins',
+    :class='[`component-margins--` + section.component_margins, { "page-sections__section-container--dark": section.background_color === "var(--text)" || section.background_color === "var(--accent1)" }]',
     :id='section.hash',
     :style='{ backgroundColor: section.background_color }'
   )

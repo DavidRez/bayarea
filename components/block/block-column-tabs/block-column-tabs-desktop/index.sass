@@ -11,16 +11,15 @@
     display: flex
     flex-direction: row
     gap: 0
-    border: 1px solid $white
+    transition: all .2s ease
+    border-width: 1px
+    border-style: solid
     width: fit-content
 
   &__tab-container
     display: flex
     position: relative
-    // float: left
-    // flex: auto
     flex-direction: row
-    // transition: flex 0s ease 1s
     background: none
     cursor: pointer
     width: fit-content
@@ -37,23 +36,14 @@
       outline: none
 
     &:not(:first-of-type)
-      // .block-column-tabs-desktop__drawer
-      //   border-left: 1px solid $white
       .block-column-tabs-desktop__tab
-        border-left: 1px solid $white
-
-    &:not(:last-of-type)
-      // .block-column-tabs-desktop__drawer
-      //   border-left: 1px solid $white
-      // .block-column-tabs-desktop__drawer--active
-      //   border-right: 1px solid $white
+        border-left-width: 1px
+        border-left-style: solid
+  
     &:last-of-type
       .block-column-tabs-desktop__drawer
         transition: all 1s cubic-bezier(.39, .575, .28, .995) !important
         border-left: 1px solid transparent
-      // &.block-column-tabs-desktop__tab-container--active
-      //   .block-column-tabs-desktop__tab
-      //     border-right: 1px solid $white
 
     &--active
       // flex: 1 0 auto
@@ -87,6 +77,12 @@
     text-orientation: mixed
     writing-mode: vertical-rl
     color: $white
+
+    .page-sections__section-container--dark &
+      color: $white
+
+    .block-column-tabs-desktop--primary &
+      color: var(--primary)
 
   &__drawer
     position: relative
@@ -125,6 +121,14 @@
     width: 100%
     text-align: left
     color: $white
+
+  &__title,
+  &__body
+    .page-sections__section-container--dark &
+      color: $white
+
+    .block-column-tabs-desktop--primary &
+      color: var(--primary)
 
   &__image
     @extend %margin-top

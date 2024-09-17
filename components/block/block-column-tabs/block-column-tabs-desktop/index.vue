@@ -74,12 +74,11 @@ export default {
             toggleActions: 'play none play none'
           }
         })
-        if (this.props.tabs) {
-          this.$_fadeIn(this.$refs.tabs, 96, 0, 'top+=58', 2, 1)
-        }
+        // if (this.props.tabs) {
+        //   this.$_fadeIn(this.$refs.tabs, 96, 0, 'top+=58', 2, 1)
+        // }
         tl.add(() => {
           setTimeout(() => {
-            console.log('animate')
             this.getDimensions()
           }, 1000)
         })

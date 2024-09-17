@@ -1,6 +1,6 @@
 .block-accordion
   .block-accordion__container(ref='container')
-    h2.block-accordion__title(v-if='props.title' v-html='props.title' ref='title')
+    h2.block-accordion__title(v-if='props.title' v-html='props.title' :style='{ color: props.header_color }' ref='title')
   .block-accordion__container(:class='`block-accordion__container--${props.item_spacing}`')
     .block-accordion__col
       .block-accordion__items

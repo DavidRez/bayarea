@@ -86,6 +86,13 @@
     @include hover-supported
       rect
         fill: var(--primary)
+
+        .page-sections__section-container--dark &
+          fill: var(--text)
+          stroke: var(--bg-1)
+      path
+        .page-sections__section-container--dark &
+          fill: var(--bg-1)
     display: inline-flex
     align-items: center
     border: none
@@ -114,6 +121,15 @@
     rect
       transition: all .2s ease
 
+    rect
+      .page-sections__section-container--dark &
+        fill: var(--primary)
+        stroke: var(--text)
+
+    path
+      .page-sections__section-container--dark &
+        fill: var(--text)
+
     .block-before-after-gallery__button--next &
       transform: scale(-1)
 
@@ -140,6 +156,9 @@
 
     &--active
       transform: scale(1)
+
+    .page-sections__section-container--dark &
+      background: var(--primary)
 
   &__modal-image
     &.base-image

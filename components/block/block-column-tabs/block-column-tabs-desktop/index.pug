@@ -1,7 +1,7 @@
-.block-column-tabs-desktop
+.block-column-tabs-desktop(:class='[ "block-column-tabs-desktop--" + props.body_color ]')
   .block-column-tabs-desktop__container(ref='container')
     .block-column-tabs-desktop__col
-      .block-column-tabs-desktop__tabs(:style='{ height: height }' ref='tabs')
+      .block-column-tabs-desktop__tabs(:style='{ height: height, borderColor: props.body_color }' ref='tabs')
         .block-column-tabs-desktop__tab-container(
           v-for=`(tab, i) in props.tabs`,
           :key='`${tab.title}-${i}`',
@@ -9,9 +9,9 @@
           aria-label='expand section',
           :class=`{ 'block-column-tabs-desktop__tab-container--active': expanded === i }`
         )
-          .block-column-tabs-desktop__tab(@click='toggleTabs(i)' ref='tab')
-            span {{ '0' + (1 + i) }}
-            .block-column-tabs-desktop__tab-title(v-html='tab.title')
+          .block-column-tabs-desktop__tab(:style='{ borderLeftColor: props.body_color }' @click='toggleTabs(i)' ref='tab')
+            span(:style='{ color: props.body_color }') {{ '0' + (1 + i) }}
+            .block-column-tabs-desktop__tab-title(:style='{ color: props.body_color }' v-html='tab.title')
           .block-column-tabs-desktop__drawer(:aria-hidden=`expanded !== i ? 'true' : 'false'`,
             aria-live='polite',
             :id=`'block-column-tabs-desktop__drawer--' + i`,
@@ -20,9 +20,9 @@
             :style='{ minWidth: expanded === i ? maxWidth : "0px" }'
           )
             .block-column-tabs-desktop__content-container
-              .block-column-tabs-desktop__content(:style='{ width: maxWidth}' ref='content')
-                h4.block-column-tabs-desktop__title(v-html='tab.title')
-                .block-column-tabs-desktop__body(v-html='tab.body')
+              .block-column-tabs-desktop__content(:style='{ width: maxWidth, color: props.body_color }' ref='content')
+                h4.block-column-tabs-desktop__title(:style='{ color: props.body_color }' v-html='tab.title')
+                .block-column-tabs-desktop__body(:style='{ color: props.body_color }' v-html='tab.body')
                 BaseImage.block-column-tabs-desktop__image(v-if=`tab.graphic_type === 'image' && tab.image.src`
                   v-bind='tab.image'
                 )

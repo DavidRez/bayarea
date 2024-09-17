@@ -1,12 +1,12 @@
 section.block-count-up-blocks(ref='container')
   .block-count-up-blocks__container
     .block-count-up-blocks__col
-      h2.block-count-up-blocks__header(v-if='props.header', v-html='props.header' ref='header')
-      h3.block-count-up-blocks__subheader(v-if='props.subheader', v-html='props.subheader' ref='subheader')
+      h2.block-count-up-blocks__header(v-if='props.header', v-html='props.header' :style='{ color: props.header_color }' ref='header')
+      h3.block-count-up-blocks__subheader(v-if='props.subheader', v-html='props.subheader' :style='{ color: props.header_color }' ref='subheader')
   .block-count-up-blocks__container
-    .block-count-up-blocks__blocks
-      .block-count-up-blocks__block(v-for='(block, i) in props.blocks' :key='`blocks-${i}`' ref='blocks')
-        h2.block-count-up-blocks__block-label
-          span(v-html='0' ref='numbers' :data-target='block.number')
+    .block-count-up-blocks__blocks(:style='{ borderColor: props.body_color }')
+      .block-count-up-blocks__block(v-for='(block, i) in props.blocks' :key='`blocks-${i}`' :style='{ borderColor: props.body_color }' ref='blocks')
+        h2.block-count-up-blocks__block-label(:style='{ color: `${props.numbers_color} !important` }')
+          span(v-html='0' :data-target='block.number' ref='numbers' )
           span(v-if='block.inline_label') {{ block.inline_label }}
-        h2.block-count-up-blocks__block-label(v-if='block.label' v-html='block.label')
+        h2.block-count-up-blocks__block-label(v-if='block.label' v-html='block.label' :style='{ color: props.body_color }')
