@@ -92,7 +92,7 @@ export default {
           }
         })
 
-        if (this.props.images.length > 1) {
+        if (this.props.media_type === 'image' && this.props.images.length > 1) {
           this.$refs.dots.forEach((dot, i) => {
             const delay = 0.1 + (0.05 * i)
             tl.fromTo(dot, {

@@ -14,7 +14,7 @@ section.hero-mobile(:style='{ opacity: compOpacity, paddingTop: paddingTop }' re
         muted defaultMuted loop playsinline controls=false
         ref='video')
       BaseIcon.hero-mobile__control(v-if='props.media_type === "video"' :name='play ? "pause" : "play"' @click.native='toggleVideo()')
-    .hero-mobile__row.hero-mobile__row--dots(v-if='props.images.length > 1')
+    .hero-mobile__row.hero-mobile__row--dots(v-if='props.media_type === "image" && props.images.length > 1')
       .hero-mobile__dot(v-for='(dot, i) in props.images'
         :key='`dot-${i}`'
         :class='{ "hero-mobile__dot--active": active === i }'
