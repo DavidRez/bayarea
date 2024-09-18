@@ -1,10 +1,10 @@
 <template lang='pug' src='./index.pug'></template>
 
 <script>
-import { debounce, fadeIn } from '~/resources/mixins'
+import { debounce } from '~/resources/mixins'
 
 export default {
-  mixins: [debounce, fadeIn],
+  mixins: [debounce],
   props: {
     props: {
       type: Object,
@@ -14,17 +14,18 @@ export default {
   data: () => ({
     expanded: null,
     maxWidth: '100%',
-    height: '100%'
+    height: '50vh'
   }),
   mounted () {
-    this.toggleTabs(0)
     if (this.$store.state.siteIsLoaded) {
+      this.toggleTabs(0)
       this.handleAnimation()
     } else {
       this.$store.watch(
         state => this.$store.state.siteIsLoaded,
         (newVal) => {
           if (newVal) {
+            this.toggleTabs(0)
             this.handleAnimation()
           }
         }
@@ -44,8 +45,15 @@ export default {
         if (this.$refs.container) {
           // get max width of content tab
           const container = this.$refs.container.clientWidth
-          const tabs = (this.$refs.tab[0].clientWidth * this.props.tabs.length) + this.props.tabs.length
-          this.maxWidth = `${container - 64 - tabs}px`
+
+          const tabs = this.$refs.tab
+          let tabsWidths = []
+          tabsWidths = tabs.map((a) => {
+            return a.clientWidth
+          })
+          console.log(tabsWidths)
+          const maxTabsWidth = (Math.max(...tabsWidths) * this.props.tabs.length) + this.props.tabs.length
+          this.maxWidth = `${container - 64 - maxTabsWidth}px`
 
           // get max height of content tab
           const content = this.$refs.content
@@ -74,14 +82,22 @@ export default {
             toggleActions: 'play none play none'
           }
         })
-        // if (this.props.tabs) {
-        //   this.$_fadeIn(this.$refs.tabs, 96, 0, 'top+=58', 2, 1)
-        // }
         tl.add(() => {
           setTimeout(() => {
             this.getDimensions()
           }, 1000)
         })
+        if (this.props.tabs) {
+          tl.fromTo(this.$refs.tabs, {
+            y: 96,
+            opacity: 0
+          }, {
+            y: 0,
+            opacity: 1,
+            duration: 0.25,
+            delay: 1
+          })
+        }
       })
     }
   }
