@@ -1,7 +1,7 @@
 section.block-tabs(ref='parent')
   .block-tabs__container(:class="{ 'block-tabs__container--reverse': props.reverse }" ref='container')
     .block-tabs__media(ref='image')
-      .block-tabs__cover(:style='{ background: (props.background_color === "unset" ? "#fff" : props.background_color) }' ref='cover')
+      .block-tabs__cover(:style='{ background: (props.background_color.label === "unset" ? "#fff" : props.background_color.value) }' ref='cover')
       .block-tabs__image-container
         BaseImage.block-tabs__image(v-if='props.image_options === "single"'
           v-bind='props.image')

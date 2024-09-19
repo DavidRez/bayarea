@@ -3,9 +3,9 @@
   .page-sections__section-container(
     v-for='(section, i) in props',
     :key='`section-${i}`',
-    :class='[`component-margins--` + section.component_margins, { "page-sections__section-container--dark": section.background_color === "var(--text)" || section.background_color === "var(--accent1)" }]',
+    :class='[`component-margins--` + section.component_margins, `page-sections__section-container--` + section.background_color.label ]',
     :id='section.hash',
-    :style='{ backgroundColor: section.background_color }'
+    :style='{ backgroundColor: section.background_color.value }'
   )
     .page-sections__section(:id='`${section.acf_fc_layout}-${i}`')
       div(v-if='section.acf_fc_layout === null')
