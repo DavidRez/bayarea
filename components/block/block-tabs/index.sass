@@ -124,7 +124,8 @@
     align-items: center
     justify-content: center
     margin-right: 1rem
-    border: 1px solid $black
+    border-width: 1px
+    border-style: solid
     padding: 0.5rem
 
     span
@@ -142,13 +143,15 @@
         font-size: 1.25rem
       width: rem-calc(30)
       height: rem-calc(30)
-      color: var(--text)
       font-family: var(--font-header)
       font-size: rem-calc(30)
     
   &__tab-title
     position: relative
     text-align: left
+
+    .block-tabs__tab--active &
+      font-weight: 600
 
   &__tab-bottom
     transition: height .3s cubic-bezier(.39, .575, .28, .995), padding .3s ease-in-out
@@ -164,4 +167,3 @@
     position: relative
     height: fit-content
     text-align: left
-    color: var(--text)
