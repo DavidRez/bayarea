@@ -1,7 +1,7 @@
 .block-column-tabs-desktop(:class='[ "block-column-tabs-desktop--" + props.body_color ]')
   .block-column-tabs-desktop__container(ref='container')
     .block-column-tabs-desktop__col
-      .block-column-tabs-desktop__tabs(:style='{ height: height, borderColor: props.body_color }' ref='tabs')
+      .block-column-tabs-desktop__tabs(:style='{ height: height, borderColor: props.body_color, maxWidth: maxContainerWidth }' ref='tabs')
         .block-column-tabs-desktop__tab-container(
           v-for=`(tab, i) in props.tabs`,
           :key='`${tab.title}-${i}`',

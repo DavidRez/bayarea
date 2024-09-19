@@ -17,13 +17,24 @@ export default {
   }),
   mounted () {
     this.$nextTick(() => {
-      this.handleResize()
-      setTimeout(() => {
-        this.handleResize()
-        this.toggleAccordion(0)
-      }, 1000)
+      this.toggleAccordion(0)
+      this.handleResize(1000)
     })
-    this.handleGsapAnimation()
+
+    if (this.$store.state.siteIsLoaded) {
+      this.handleAnimation()
+    } else {
+      this.$store.watch(
+        state => this.$store.state.siteIsLoaded,
+        (newVal) => {
+          if (newVal) {
+            this.handleAnimation()
+          }
+        }
+      )
+    }
+    this.handleAnimation()
+
     window.addEventListener('resize', () => {
       this.handleResize()
     })
@@ -32,7 +43,7 @@ export default {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
-    handleGsapAnimation () {
+    handleAnimation () {
       const tl = this.$gsap.timeline({
         scrollTrigger: {
           trigger: this.$refs.container,

@@ -14,11 +14,13 @@ export default {
   data: () => ({
     expanded: null,
     maxWidth: '100%',
+    maxContainerWidth: '100%',
     height: '50vh'
   }),
   mounted () {
     if (this.$store.state.siteIsLoaded) {
       this.toggleTabs(0)
+      this.getDimensions()
       this.handleAnimation()
     } else {
       this.$store.watch(
@@ -26,6 +28,7 @@ export default {
         (newVal) => {
           if (newVal) {
             this.toggleTabs(0)
+            this.getDimensions()
             this.handleAnimation()
           }
         }
@@ -53,7 +56,8 @@ export default {
           })
           console.log(tabsWidths)
           const maxTabsWidth = (Math.max(...tabsWidths) * this.props.tabs.length) + this.props.tabs.length
-          this.maxWidth = `${container - 64 - maxTabsWidth}px`
+          this.maxWidth = `${container - 48 - maxTabsWidth}px`
+          this.maxContainerWidth = `${container - 48}px`
 
           // get max height of content tab
           const content = this.$refs.content
@@ -70,7 +74,6 @@ export default {
     toggleTabs (i) {
       if (this.expanded !== i) {
         this.expanded = i
-        this.getDimensions()
       }
     },
     handleAnimation () {
