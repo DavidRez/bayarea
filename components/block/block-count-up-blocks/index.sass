@@ -52,8 +52,11 @@
 
     &-label
       &:first-of-type
+        @include tablet-lg
+          font-size: rem-calc(70)
         @include nexus
           font-size: 3rem
+        font-size: rem-calc(80)
         font-weight: 500
       &:last-of-type
         @extend %h3
