@@ -46,6 +46,10 @@
         stroke-width: 3px
       span
         text-shadow: 0 0 0.75px var(--text), 0 0 0.75px var(--text), 0 0 0.75px var(--text)
+          
+        .page-sections__section-container--dark &,
+        .page-sections__section-container--medium &
+          text-shadow: 0 0 0.75px $white, 0 0 0.75px $white, 0 0 0.75px $white
     width: fit-content
 
     .base-icon
@@ -60,12 +64,20 @@
         path,
         line
           transition: all .2s ease
+          
+          .page-sections__section-container--dark &,
+          .page-sections__section-container--medium &
+            stroke: $white
 
     span
       @extend %body
       transition: all .2s ease
       margin: 0 auto
       text-align: center
+          
+      .page-sections__section-container--dark &,
+      .page-sections__section-container--medium &
+        color: $white
 
     &:focus-visible
       @include focus
