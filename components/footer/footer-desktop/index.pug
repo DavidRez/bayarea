@@ -20,7 +20,8 @@
         BlockSingleContact.footer-desktop__location-info(v-if='location.address.label'
           :props='location.address'
           light
-          center)
+          center
+          external)
     .footer-desktop__col.footer-desktop__col--social
       .footer-desktop__title(v-if='props.social_media_title') {{ props.social_media_title }}
       MenuMenuSocialMedia.footer-desktop__social(:props='props.social_media' light)
