@@ -25,9 +25,16 @@
     border: 1px solid var(--text)
     padding-top: 100%
     width: 100%
+    overflow: hidden
+
+    &:focus-visible
+      @include focus
 
   &__image
     @extend %absolute
+    @include hover-supported
+      transform: scale(1.1)
+    transition: all .3s ease-in
 
     .base-image__image
       object-fit: cover
