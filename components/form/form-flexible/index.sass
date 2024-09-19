@@ -60,7 +60,7 @@
       display: flex
       justify-content: center
       margin: 0 auto
-      width: 100%
+      width: fit-content
 
   &__label
     position: absolute
@@ -308,6 +308,9 @@
     &:disabled,
     &:selected
       color: var(--text) !important
+      .page-sections__section-container--medium &,
+      .page-sections__section-container--dark &
+        color: $white !important
 
   &__submit-button
     @include focus
@@ -394,3 +397,98 @@
 
     &-button
       padding-top: 1rem
+
+  // styling for different background colors
+  &__input
+    .page-sections__section-container--primary &
+      border-bottom: rem-calc(2) solid var(--text)
+
+      &:focus
+        outline: rem-calc(2) solid rgba(var(--text-rgb), 0.5)
+    
+    .page-sections__section-container--medium &,
+    .page-sections__section-container--dark &
+      color: $white
+  
+      &--select
+        color: $white
+      
+      &--error
+        border-color: coral
+        &:focus
+          border-color: coral
+      &--error + .form-flexible__label
+        color: coral
+
+  &__label
+    .page-sections__section-container--medium &,
+    .page-sections__section-container--dark &
+      color: $white
+
+  &__arrow
+    .page-sections__section-container--medium &,
+    .page-sections__section-container--dark &
+      path
+        stroke: $white
+
+  &__radio
+    .page-sections__section-container--primary &
+      &-input
+        &:hover ~ .form-flexible__radio-overlay,
+        &:focus-visible ~ .form-flexible__radio-overlay
+          border: rem-calc(3) solid var(--text)
+
+        &:checked ~ .form-flexible__radio-overlay
+          background: var(--text)
+
+        &:checked.form-flexible__radio-input:hover ~ .form-flexible__radio-overlay,
+        &:checked.form-flexible__radio-input:focus-visible ~ .form-flexible__radio-overlay
+          border-color: var(--accent1)
+
+      &-overlay
+        border: rem-calc(2) solid var(--text)
+
+        &:after
+          background: var(--text)
+
+    .page-sections__section-container--medium &,
+    .page-sections__section-container--dark &
+      &-title,
+      &-label
+        color: $white
+
+  &__checkbox
+    .page-sections__section-container--primary &
+      &:hover ~ .form-flexible__checkbox-overlay,
+      &:focus-visible ~ .form-flexible__checkbox-overlay
+        border-color: var(--text)
+
+        &:after
+          transition: opacity .3s ease
+          opacity: 1
+
+      &:checked ~ .form-flexible__checkbox-overlay
+        border-color: var(--text)
+        background: var(--text)
+
+        .form-flexible__checkbox-label
+          color: $white
+
+      &:checked.form-flexible__checkbox-input:hover ~ .form-flexible__checkbox-overlay,
+      &:checked.form-flexible__checkbox-input:focus-visible ~ .form-flexible__checkbox-overlay
+        border-color: var(--bg-2)
+
+      &-overlay
+        display: flex
+        align-items: center
+        justify-content: center
+        transition: border-color .25s ease
+        border: rem-calc(2) solid var(--bg-2)
+        background-color: var(--bg-2)
+        padding: 0 rem-calc(10)
+        width: 100%
+
+  &__error-message
+    .page-sections__section-container--medium &,
+    .page-sections__section-container--dark &
+      color: coral !important
