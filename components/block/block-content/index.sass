@@ -29,6 +29,10 @@
     .block-content--header-color-white &
       color: $white
 
+    sup
+      vertical-align: super
+      font-size: rem-calc(12)
+
   &__header
     @extend %header-margin-bottom
 
@@ -76,7 +80,10 @@
       justify-content: center
 
     &--right
-      justify-content: flex-end
+      align-items: flex-end
+
+      &.block-content__buttons--inline
+        justify-content: flex-end
 
     &--forceLeft
       justify-content: flex-start !important
