@@ -21,6 +21,11 @@ export default {
       // make true to center align label
       type: Boolean,
       default: false
+    },
+    external: {
+      // make true to open new tab
+      type: Boolean,
+      default: false
     }
   }
 }
