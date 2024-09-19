@@ -5,17 +5,6 @@
   background-color: $black
   color: #f2f2f2
 
-  a,
-  &__userway
-    @include hover-focus
-      color: var(--primary)
-    cursor: pointer
-    text-decoration: none
-    color: $white
-
-    &:focus-visible
-      @include focus
-
   &__col
     @include col(12)
     @include tablet
@@ -42,3 +31,15 @@
 
     &--mobile
       display: none
+
+  a,
+  &__userway
+    @include hover-focus
+      color: var(--primary)
+    transition: all .2s ease
+    cursor: pointer
+    text-decoration: none
+    color: $white
+
+    &:focus-visible
+      @include focus
