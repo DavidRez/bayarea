@@ -26,7 +26,7 @@ const router = [
   {
     name: 'Blog',
     path: '/blog',
-    navigation: false,
+    navigation: true,
     footer: false
   },
   {
