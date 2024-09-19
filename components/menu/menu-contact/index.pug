@@ -12,11 +12,13 @@
     BlockSingleContact.menu-contact__location-info(v-if='address && location.address.label'
       :props='location.address'
       :icon='icon ? "pin" : null'
-      :light='light')
+      :light='light'
+      external)
     BlockSingleContact.menu-contact__location-info(v-if='email && location.email.label'
       :props='location.email'
       :icon='icon ? "mail" : null'
-      :light='light')
+      :light='light'
+      external)
     BlockSingleContact.menu-contact__location-info(v-if='hours && location.hours && locations[i]'
       :props='{ label: locations[i] }'
       :icon='icon ? "clock" : null'
