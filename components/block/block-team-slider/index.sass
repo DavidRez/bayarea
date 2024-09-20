@@ -15,6 +15,7 @@
     top: 0
     left: 0
     gap: 2rem
+    min-width: 100%
 
     &-container
       position: relative
@@ -28,17 +29,53 @@
         height: rem-calc(12)
 
       &::-webkit-scrollbar-track
-        background: rgba(var(--text-rgb), .3)
+        background: rgba(var(--text-rgb), .23)
+
+        .page-sections__section-container--medium &,
+        .page-sections__section-container--dark &
+          background: rgba($white, .5)
 
       &::-webkit-scrollbar-thumb
         background: var(--text)
 
+        .page-sections__section-container--medium &,
+        .page-sections__section-container--dark &
+          background: var(--primary)
+  
+  &__items
+    @include tablet
+      grid-template-columns: 1fr 1fr
+    @include phone-land-lg
+      grid-template-columns: 1fr 1fr
+    @include nexus
+      grid-template-columns: 1fr
+    @include phone-land
+      grid-template-columns: 1fr 1fr
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr 1fr
+    gap: 2rem
+    width: 100%
+
   &__item
+    display: flex
     position: relative
-    margin-bottom: 2rem
+    min-width: 25%
+
+    .block-team-slider__items
+      width: 100%
+      min-width: unset
 
     &-box
+      @include phone-land-lg
+        padding: 0.5rem
+      @include nexus
+        padding: 1rem
+      @include phone-land
+        padding: 0.5rem
+      display: flex
       position: relative
+      flex: 2
+      flex-direction: column
       border: 1px solid var(--text)
       cursor: pointer
       padding: 1rem
@@ -50,6 +87,10 @@
       &:focus-visible
         @include focus
 
+      .page-sections__section-container--medium &,
+      .page-sections__section-container--dark &
+        border: 1px solid $white
+
     &-image
       @extend %absolute
 
@@ -59,21 +100,25 @@
         padding-top: 100%
         width: 100%
 
+        .page-sections__section-container--medium &,
+        .page-sections__section-container--dark &
+          border: 1px solid $white
+
       .base-image__image
         position: absolute
         object-fit: cover
 
     &-overlay
+      @include phone-land-lg
+        padding: 1rem 0.5rem
       @include nexus
         padding: 1rem 0.5rem
-      @include phone-land-lg
+      @include phone-land
         padding: 1rem 0.5rem
       display: flex
       position: absolute
       top: 0
       left: 0
-      flex-direction: column
-      justify-content: center
       transition: opacity .2s ease
       opacity: 0
       background-color: rgba(var(--text-rgb), .85)
@@ -96,6 +141,7 @@
       display: flex
       flex-direction: column
       justify-content: center
+      text-align: center
 
     &-name
       @extend %body
@@ -106,6 +152,14 @@
     &-position
       @extend %body
       width: 100%
+
+    &-name,
+    &-position
+      color: var(--text)
+
+      .page-sections__section-container--medium &,
+      .page-sections__section-container--dark &
+        color: $white
 
   &__arrow
     @include tablet-lg

@@ -1,16 +1,14 @@
 <template lang="pug" src="./index.pug"></template>
 
 <script>
-import { fadeIn } from '~/resources/mixins'
+import { fadeIn, debounce } from '~/resources/mixins'
 import BaseImage from '~/components/base/base-image'
 
 export default {
   components: {
     BaseImage
   },
-  mixins: [
-    fadeIn
-  ],
+  mixins: [fadeIn, debounce],
   props: {
     props: {
       type: Object,
@@ -19,14 +17,16 @@ export default {
   },
   data: () => ({
     active: null,
-    height: '',
-    width: ''
+    height: ''
   }),
   mounted () {
-    this.setDimensions()
-    setTimeout(() => {
+    if (this.$store.state.team.length > 4) {
       this.setDimensions()
-    }, 500)
+      setTimeout(() => {
+        this.setDimensions()
+      }, 500)
+      window.addEventListener('resize', this.debounceFunc)
+    }
     if (this.$store.state.siteLoaded) {
       this.handleAnimation()
     } else {
@@ -39,42 +39,26 @@ export default {
         }
       )
     }
-    window.addEventListener('resize', () => {
-      this.setDimensions()
-      setTimeout(() => {
-        this.setDimensions()
-      }, 1000)
-    })
   },
-  destroyed () {
-    window.removeEventListener('resize', this.setDimensions)
-    window.removeEventListener('resize', setTimeout)
+  beforeDestroy () {
+    window.removeEventListener('resize', this.debounceFunc)
   },
   methods: {
+    debounceFunc () {
+      this.debounce(this.setDimensions, null, 200)
+    },
     makeActive (i) {
       this.active = this.active === i ? null : i
     },
     setDimensions () {
       this.$nextTick(() => {
-        let columns = 4
-        if (window.innerWidth <= 1100) {
-          columns = 3
-        }
-        if (window.innerWidth <= 768) {
-          columns = 2
-        }
-        if (window.innerWidth <= 600) {
-          columns = 1
-        }
-        const widthRef = this.$refs.getWidth
-        const heightRefs = this.$refs.getHeight
-        if (widthRef && heightRefs) {
-          this.height = heightRefs.scrollHeight + 'px'
-          // this.width = widthRef.clientWidth / columns + 'px'
-
-          // The 12px will offset the end of the slider
-          this.width = columns === 1 ? widthRef.clientWidth / columns - 48 + 'px' : widthRef.clientWidth / columns - 12 + 'px'
-        }
+        // get max height of cards
+        const card = this.$refs.items
+        let cardHeights = []
+        cardHeights = card.map((a) => {
+          return a.clientHeight
+        })
+        this.height = Math.max(...cardHeights) + 48 + 'px'
       })
     },
     handleAnimation () {
