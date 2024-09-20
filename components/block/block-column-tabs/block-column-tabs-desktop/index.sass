@@ -75,9 +75,11 @@
     writing-mode: vertical-rl
     color: $white
 
+    .page-sections__section-container--medium &,
     .page-sections__section-container--dark &
       color: $white
 
+    .page-sections__section-container--medium &,
     .block-column-tabs-desktop--primary &
       color: var(--primary)
 
@@ -110,22 +112,12 @@
   &__title
     @extend %h3
     text-align: left
-    color: $white
     font-weight: 700
 
   &__body
     padding-top: rem-calc(8)
     width: 100%
     text-align: left
-    color: $white
-
-  &__title,
-  &__body
-    .page-sections__section-container--dark &
-      color: $white
-
-    .block-column-tabs-desktop--primary &
-      color: var(--primary)
 
   &__image
     @extend %margin-top

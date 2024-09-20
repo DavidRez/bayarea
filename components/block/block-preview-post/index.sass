@@ -1,6 +1,16 @@
 .block-preview-post
+  @include hover-supported
+    .block-preview-post__number
+      background: var(--primary)
+      .page-sections__section-container--light &,
+      .page-sections__section-container--primary &
+        background: rgba(var(--accent1-rgb), 0.1)
+      .page-sections__section-container--medium &,
+      .page-sections__section-container--dark &
+        background: var(--primary)
   @include nexus
     flex-direction: column
+    padding: 0.5rem
   display: flex
   position: relative
   gap: 1rem
@@ -17,10 +27,19 @@
     flex-direction: column
     align-items: center
     justify-content: space-between
+    transition: all .2s ease
     border-right: 1px solid var(--text)
     background: var(--bg-1)
     padding: 1rem 2rem
     width: 3rem
+
+    .page-sections__section-container--light &
+      background: var(--primary)
+
+    .page-sections__section-container--medium &,
+    .page-sections__section-container--dark &
+      border-right: 1px solid $white
+      background: var(--bg-1)
 
     span
       @extend %subtext
@@ -48,6 +67,12 @@
   &__excerpt
     @extend %margin-bottom
 
+  &__title,
+  &__excerpt
+    .page-sections__section-container--medium &,
+    .page-sections__section-container--dark &
+      color: $white
+
   &__content
     width: 100%
 
@@ -65,16 +90,20 @@
     height: 100%
 
     &--first
+      flex: 1 1 25%
+      
+      .block-preview-post__images--flip &
+        flex: 1
+
+    &--second
       flex: 1
       
       .block-preview-post__images--flip &
         flex: 1 1 25%
 
-    &--second
-      flex: 1 1 25%
-      
-      .block-preview-post__images--flip &
-        flex: 1
+    .page-sections__section-container--medium &,
+    .page-sections__section-container--dark &
+      border: 1px solid $white
 
     .base-image__image
       position: absolute

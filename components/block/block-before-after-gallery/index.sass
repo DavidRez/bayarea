@@ -87,10 +87,12 @@
       rect
         fill: var(--primary)
 
+        .page-sections__section-container--medium &,
         .page-sections__section-container--dark &
           fill: var(--text)
           stroke: var(--bg-1)
       path
+        .page-sections__section-container--medium &,
         .page-sections__section-container--dark &
           fill: var(--bg-1)
     display: inline-flex
@@ -122,11 +124,13 @@
       transition: all .2s ease
 
     rect
+      .page-sections__section-container--medium &,
       .page-sections__section-container--dark &
         fill: var(--primary)
         stroke: var(--text)
 
     path
+      .page-sections__section-container--medium &,
       .page-sections__section-container--dark &
         fill: var(--text)
 
@@ -157,6 +161,7 @@
     &--active
       transform: scale(1)
 
+    .page-sections__section-container--medium &,
     .page-sections__section-container--dark &
       background: var(--primary)
 
