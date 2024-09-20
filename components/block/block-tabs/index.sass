@@ -58,8 +58,11 @@
     width: 100%
 
   &__image
-    position: relative
-    width: 100%
+    @extend %absolute
+
+    .base-image__image
+      position: absolute
+      object-fit: cover
 
   &__image-dynamic
     position: absolute
