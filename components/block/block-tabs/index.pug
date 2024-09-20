@@ -16,7 +16,7 @@ section.block-tabs(ref='parent')
           :class='{ "block-tabs__tab--active": expanded === i }'
           @click='toggleAccordion(i)'
           ref='content')
-          .block-tabs__tab-top
+          .block-tabs__tab-top(:id='tab.hash')
             .block-tabs__tab-number(:style='{ borderColor: props.body_color }' ref='numbers')
               span(:style='{ color: props.body_color }') {{ i + 1 }}
             h3.block-tabs__tab-title(v-html='tab.title' :style='{ color: props.body_color }')

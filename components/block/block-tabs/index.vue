@@ -18,13 +18,20 @@ export default {
   }),
   mounted () {
     this.$nextTick(() => {
+      this.props.tabs.forEach((tab, i) => {
+        if (`#${tab.hash}` === this.$route.hash) {
+          this.expanded = i
+        }
+      })
       this.handleResize()
       setTimeout(() => {
         this.handleResize()
-        this.toggleAccordion(0)
+        this.toggleAccordion(this.expanded ? this.expanded : 0)
       }, 1000)
     })
+
     window.addEventListener('resize', this.debounceFunc)
+
     if (this.$store.state.siteIsLoaded) {
       this.handleAnimation()
     } else {
