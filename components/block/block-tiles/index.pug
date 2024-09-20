@@ -1,8 +1,8 @@
 section.block-tiles
   .block-tiles__container(ref='container')
     .block-tiles__col.block-tiles__col--full
-      h2.block-tiles__header(v-if='props.header', v-html='props.header' ref='header')
-      h3.block-tiles__subheader(v-if='props.subheader', v-html='props.subheader' ref='subheader')
+      h2.block-tiles__header(v-if='props.header', v-html='props.header' :style='{ color: props.header_color }' ref='header')
+      h3.block-tiles__subheader(v-if='props.subheader', v-html='props.subheader' :style='{ color: props.subheader_color }' ref='subheader')
   .block-tiles__container
     .block-tiles__col.block-tiles__col--full
       BlockTilesMobile(v-if='$store.state.isPhoneLg' :props='props')
