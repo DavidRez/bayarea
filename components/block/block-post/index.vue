@@ -72,8 +72,8 @@ export default {
         // get title height
         if (this.$refs.title) {
           const title = this.$refs.title.clientHeight
-          this.translateY = window.innerWidth > 1200 ? `${title * -0.65}px` : `${title * -0.25}px`
-          this.marginBottom = window.innerWidth > 1200 ? `${title * -0.55}px` : `${title * -0.15}px`
+          this.translateY = window.innerWidth > 1200 ? `${title * -0.45}px` : `${title * -0.25}px`
+          this.marginBottom = window.innerWidth > 1200 ? `${title * -0.35}px` : `${title * -0.15}px`
         }
       })
     },
