@@ -5,6 +5,7 @@
     align-items: flex-end
 
   &__title
+    @extend %h1
     margin-bottom: 1rem
     width: 100%
     text-align: left
@@ -89,7 +90,7 @@
 
       .block-locations-map-multiple-mobile__item-container:focus-visible &,
       .block-locations-map-multiple-mobile__item-container:hover &
-        background-color: $black
+        background-color: var(--text)
 
     .block-locations-map-multiple-mobile__item-container--active &
       span
