@@ -1,12 +1,5 @@
 .block-tabs
-  @include tablet
-    margin-top: 0
-  @include phone-land-lg
-    margin-top: 4rem
-  @include nexus
-    margin-top: 0
   position: relative
-  margin-top: 4rem
 
   &__container
     @include container
@@ -40,7 +33,7 @@
     @include nexus
       width: 100%
     position: relative
-    border: 1px solid $black
+    border: 1px solid var(--text)
     background: var(--bg-1)
     padding: 1rem
 
@@ -53,7 +46,7 @@
     position: relative
     align-items: flex-start
     justify-content: center
-    border: 1px solid $black
+    border: 1px solid var(--text)
     padding-top: 82%
     width: 100%
 
@@ -102,7 +95,7 @@
   
   &__tabs
     display: flex
-    flex-wrap: wrap
+    flex-direction: column
 
   &__tab
     display: flex
@@ -119,6 +112,17 @@
       @include focus
 
   &__tab-top
+    @include hover-supported
+      .block-tabs__tab-number
+        background: var(--primary)
+
+        .page-sections__section-container--primary &
+          background: rgba(var(--accent1-rgb), 0.1)
+        .page-sections__section-container--medium &
+          background: rgba(var(--text-rgb), 0.25)
+        .page-sections__section-container--dark &
+          background: var(--accent1)
+
     display: flex
     align-items: center
 
@@ -126,6 +130,7 @@
     display: flex
     align-items: center
     justify-content: center
+    transition: all .3s ease
     margin-right: 1rem
     border-width: 1px
     border-style: solid
