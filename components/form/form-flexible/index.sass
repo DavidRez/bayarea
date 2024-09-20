@@ -17,6 +17,8 @@
     gap: #{$gutter}
 
   &__group
+    @include nexus
+      margin-bottom: 1rem
     position: relative
     flex-basis: 100%
     flex-grow: 1
@@ -72,7 +74,7 @@
     pointer-events: none
 
     &--textarea
-      top: 20%
+      top: 0
 
     &--active
       top: -1.25rem
@@ -360,7 +362,7 @@
 
     &-overlay
       @extend %absolute
-      background: rgba($black, .15)
+      background: rgba(var(--text), .15)
 
     &-container
       @extend %centered
