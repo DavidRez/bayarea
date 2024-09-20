@@ -15,12 +15,24 @@
     width: rem-calc(42)
     height: rem-calc(42)
 
+  &__pages
+    .page-sections__section-container--medium &,
+    .page-sections__section-container--dark &
+      color: $white
+
   &__arrow
     @include hover-supported
-      svg
-        fill: $black
+      rect
+        fill: var(--primary)
+
+        .page-sections__section-container--medium &,
+        .page-sections__section-container--dark &
+          fill: var(--text)
+          stroke: var(--bg-1)
       path
-        fill: $white
+        .page-sections__section-container--medium &,
+        .page-sections__section-container--dark &
+          fill: var(--bg-1)
     cursor: pointer
     width: 100%
     height: 100%
@@ -29,5 +41,17 @@
       transform: rotate(180deg)
 
     svg,
-    path
+    path,
+    rect
       transition: all .2s ease
+
+    rect
+      .page-sections__section-container--medium &,
+      .page-sections__section-container--dark &
+        fill: var(--primary)
+        stroke: var(--text)
+
+    path
+      .page-sections__section-container--medium &,
+      .page-sections__section-container--dark &
+        fill: var(--text)
