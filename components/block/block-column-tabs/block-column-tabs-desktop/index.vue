@@ -13,6 +13,7 @@ export default {
   },
   data: () => ({
     expanded: null,
+    maxTabsWidth: 'fit-content',
     maxWidth: '100%',
     maxContainerWidth: '100%',
     height: '50vh'
@@ -54,9 +55,8 @@ export default {
           tabsWidths = tabs.map((a) => {
             return a.clientWidth
           })
-          console.log(tabsWidths)
-          const maxTabsWidth = (Math.max(...tabsWidths) * this.props.tabs.length) + this.props.tabs.length
-          this.maxWidth = `${container - 48 - maxTabsWidth}px`
+          this.maxTabsWidth = (Math.max(...tabsWidths) * this.props.tabs.length) + this.props.tabs.length
+          this.maxWidth = `${container - 48 - this.maxTabsWidth}px`
           this.maxContainerWidth = `${container - 48}px`
 
           // get max height of content tab
