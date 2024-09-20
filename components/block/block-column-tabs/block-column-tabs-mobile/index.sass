@@ -83,8 +83,14 @@
     @extend %margin-top
 
     &.base-image
+      @include phone-land-lg
+        width: 50%
+      @include nexus
+        width: 100%
+      @include phone-land
+        width: 50%
       position: relative
-      border: 1px solid $black
+      border: 1px solid var(--text)
       background: var(--bg-1)
       padding: 1rem
       width: 80%
@@ -93,7 +99,7 @@
 
     .base-image__image
       position: relative
-      border: 1px solid $black
+      border: 1px solid var(--text)
       width: 100%
       height: auto
 
