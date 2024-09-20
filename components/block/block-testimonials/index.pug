@@ -1,6 +1,6 @@
 .block-testimonials
   .block-testimonials__container(ref='container')
-    h2.block-testimonials__title(v-if='props.title' v-html='props.title', ref='title')
+    h2.block-testimonials__title(v-if='props.title' v-html='props.title' :style='{ color: props.header_color }' ref='title')
   .block-testimonials__container
     .block-testimonials__col
       .block-testimonials__slider(
