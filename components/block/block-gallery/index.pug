@@ -15,7 +15,7 @@ section.block-gallery
         .block-gallery__image-container(v-for='(image, i) in props.images'
           :key='`current image is ${1 + i} of ${props.images.length}`'
           :class='setClasses(i)'
-          @click='openImage(i)')
+          @click='$store.state.isTablet ? null : openImage(i)')
           BaseImage.block-gallery__image(v-bind='image' forceVisible imageBackground)
           
   .block-gallery__container

@@ -6,12 +6,26 @@
     @include tablet
       flex-direction: column
       gap: 2rem
+    @include phone-land-lg
+      flex-direction: unset
+      gap: 1rem
+    @include nexus
+      flex-direction: column
+      gap: 1rem
+    @include phone-land
+      flex-direction: unset
     justify-content: space-between
     gap: 4rem
 
     &--reverse
       @include tablet
         flex-direction: column
+      @include phone-land-lg
+        flex-direction: unset
+      @include nexus
+        flex-direction: column
+      @include phone-land
+        flex-direction: unset
       flex-direction: row-reverse
 
   &__col
@@ -20,21 +34,31 @@
     &--content
       @include col (6)
       @include phone-land-lg
+        justify-content: flex-start
         width: 45%
       @include nexus
+        justify-content: center
         width: 100%
+      @include phone-land
+        justify-content: flex-start
+        width: 45%
       flex-direction: column
       justify-content: center
 
     &--forms
       @include col (6)
       @include phone-land-lg
+        gap: 1rem
         width: 45%
       @include nexus
+        gap: 1rem
         width: 100%
+      @include phone-land
+        gap: 1rem
+        width: 45%
       position: relative
       flex-wrap: wrap
-      align-items: center
+      align-items: flex-start
       justify-content: center
       gap: 2rem
 
@@ -50,9 +74,21 @@
         .page-sections__section-container--dark &,
         .page-sections__section-container--medium &
           text-shadow: 0 0 0.75px $white, 0 0 0.75px $white, 0 0 0.75px $white
+    @include phone-land-lg
+      max-width: 45%
+    @include nexus
+      max-width: 45%
+    @include phone-land
+      max-width: 45%
     width: fit-content
 
     .base-icon
+      @include phone-land-lg
+        height: rem-calc(85)
+      @include nexus
+        height: rem-calc(85)
+      @include phone-land
+        height: rem-calc(85)
       margin: 0 auto 1rem
       width: fit-content
       height: rem-calc(115)
@@ -71,6 +107,7 @@
 
     span
       @extend %body
+      display: block
       transition: all .2s ease
       margin: 0 auto
       text-align: center

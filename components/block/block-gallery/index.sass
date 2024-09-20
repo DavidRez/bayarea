@@ -15,6 +15,13 @@
   &__images
     @include tablet
       padding-top: 100%
+    @include nexus
+      padding-top: 100%
+      width: 100%
+    @include phone-land-lg
+      margin: 0 auto
+      padding-top: 70vh
+      width: 70vh
     position: relative
     padding-top: 50%
     width: 100%
@@ -25,7 +32,6 @@
       top: 0
       right: unset
       bottom: unset
-      left: -150%
     position: absolute
     top: 0
     left: 150%
@@ -46,15 +52,21 @@
       width: calc(25% - 1rem)
       max-height: calc(25% - 1rem)
 
-      .block-gallery__images--half &,
-      .block-gallery__images--four &
-        @include tablet
-          top: 0
-          right: unset
-          bottom: unset
-          padding-top: calc(100% - 2px)
-          width: 100%
-          max-height: unset
+    .block-gallery__images--half &,
+    .block-gallery__images--four &
+      @include tablet
+        left: -150%
+        padding-top: calc(100% - 2px)
+        width: 100%
+        max-height: unset
+      @include nexus
+        left: -150%
+        padding-top: calc(100% - 2px)
+        width: 100%
+      @include phone-land-lg
+        left: -150%
+        padding-top: calc(70vh - 2px)
+        width: 70vh
 
     &--active,
     &--next,
@@ -62,10 +74,7 @@
     &--next3,
     &--next4
       .block-gallery__images--half &,
-      .block-gallery__images--four &  
-        @include tablet
-          padding-top: calc(100% - 2px)
-          width: 100% 
+      .block-gallery__images--four &
         opacity: 1
         z-index: 1
 
@@ -79,6 +88,18 @@
           opacity: 1
           padding-top: calc(100% - 2px)
           width: 100% 
+        @include nexus
+          right: unset
+          bottom: unset
+          left: 0
+          padding-top: calc(100% - 2px)
+          width: 100%
+        @include phone-land-lg
+          right: unset
+          bottom: unset
+          left: 0
+          padding-top: calc(70vh - 2px)
+          width: 70vh
         top: 0
         right: 0
         bottom: 50%
@@ -157,6 +178,20 @@
           opacity: 0
           padding-top: calc(100% - 2px)
           width: 100%
+        @include nexus
+          top: 0
+          right: unset
+          bottom: unset
+          left: 100%
+          padding-top: calc(100% - 2px)
+          width: 100%
+        @include phone-land-lg
+          top: 0
+          right: unset
+          bottom: unset
+          left: 150%
+          padding-top: calc(70vh - 2px)
+          width: 70vh
 
   &__image
     @extend %absolute
@@ -180,10 +215,12 @@
       rect
         fill: var(--primary)
 
+        .page-sections__section-container--medium &,
         .page-sections__section-container--dark &
           fill: var(--text)
           stroke: var(--bg-1)
       path
+        .page-sections__section-container--medium &,
         .page-sections__section-container--dark &
           fill: var(--bg-1)
     display: inline-flex
@@ -216,11 +253,13 @@
       transition: all .2s ease
 
     rect
+      .page-sections__section-container--medium &,
       .page-sections__section-container--dark &
         fill: var(--primary)
         stroke: var(--text)
 
     path
+      .page-sections__section-container--medium &,
       .page-sections__section-container--dark &
         fill: var(--text)
 
@@ -253,6 +292,7 @@
     &--active
       transform: scale(1)
 
+    .page-sections__section-container--medium &,
     .page-sections__section-container--dark &
       background: var(--primary)
 
@@ -261,10 +301,11 @@
       width: 100%
       height: unset
     margin: 0 auto
-    width: 50vw
-    height: 50vw
-    max-height: 70vh
+    width: 100%
+    height: 70vh
+
   &__modal-image
+    animation: fadeOut forwards 1s
     &.base-image
       position: relative
       width: 100%
