@@ -1,12 +1,14 @@
 .block-tiles
   &__container
     @include container
+    justify-content: center
 
   &__col
+    @include col (8)
+    @extend %margin-top--md
+    position: relative
     &--full
       @include col (12)
-      @extend %margin-top--md
-      position: relative
 
   &__content
     @extend %margin-bottom--md
