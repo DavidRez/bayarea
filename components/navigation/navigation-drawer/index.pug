@@ -1,5 +1,5 @@
 nav.navigation-drawer
-  nuxt-link.navigation-drawer__logo(to='/' aria-hidden='true' aria-label='link to home')
+  nuxt-link.navigation-drawer__logo(to='/' aria-hidden='true' aria-label='link to home' @click.native='closeDrawer')
     BaseIcon(name='logo-white')
   button.navigation-drawer__exit(aria-label='close menu', @click='closeDrawer') Exit
   .navigation-drawer__group
