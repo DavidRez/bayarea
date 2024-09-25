@@ -49,6 +49,11 @@
         :class='`component-padding--` + section.component_padding',
         :props='section'
       )
+      BlockImage(
+        v-else-if='section.acf_fc_layout === `image`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
       BlockImageText(
         v-else-if='section.acf_fc_layout === `image_text`',
         :class='`component-padding--` + section.component_padding',
@@ -87,6 +92,11 @@
       )
       BlockTestimonials(
         v-else-if='section.acf_fc_layout === `testimonials`',
+        :class='`component-padding--` + section.component_padding',
+        :props='section'
+      )
+      BlockText(
+        v-else-if='section.acf_fc_layout === `text`',
         :class='`component-padding--` + section.component_padding',
         :props='section'
       )

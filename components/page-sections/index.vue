@@ -9,6 +9,7 @@ import BlockContactBanner from '~/components/block/block-contact-banner'
 import BlockCountUpBlocks from '~/components/block/block-count-up-blocks'
 import BlockForm from '~/components/block/block-form'
 import BlockGallery from '~/components/block/block-gallery'
+import BlockImage from '~/components/block/block-image'
 import BlockImageText from '~/components/block/block-image-text'
 import BlockInstagram from '~/components/block/block-instagram'
 import BlockLocationsMap from '~/components/block/block-locations-map'
@@ -18,6 +19,7 @@ import BlockPosts from '~/components/block/block-repeater-post'
 import BlockTabs from '~/components/block/block-tabs'
 import BlockTeam from '~/components/block/block-team-slider'
 import BlockTestimonials from '~/components/block/block-testimonials'
+import BlockText from '~/components/block/block-text'
 import BlockTiles from '~/components/block/block-tiles'
 import BlockTitle from '~/components/block/block-title'
 import DevModeTools from '~/components/dev-mode/dev-mode-tools'
@@ -34,6 +36,7 @@ export default {
     BlockCountUpBlocks,
     BlockForm,
     BlockGallery,
+    BlockImage,
     BlockImageText,
     BlockInstagram,
     BlockLocationsMap,
@@ -43,6 +46,7 @@ export default {
     BlockTabs,
     BlockTeam,
     BlockTestimonials,
+    BlockText,
     BlockTiles,
     BlockTitle,
     DevModeTools,
