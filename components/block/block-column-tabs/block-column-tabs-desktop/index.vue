@@ -22,6 +22,9 @@ export default {
     if (this.$store.state.siteIsLoaded) {
       this.toggleTabs(0)
       this.getDimensions()
+      setTimeout(() => {
+        this.getDimensions()
+      }, 1000)
       this.handleAnimation()
     } else {
       this.$store.watch(
@@ -30,6 +33,9 @@ export default {
           if (newVal) {
             this.toggleTabs(0)
             this.getDimensions()
+            setTimeout(() => {
+              this.getDimensions()
+            }, 1000)
             this.handleAnimation()
           }
         }

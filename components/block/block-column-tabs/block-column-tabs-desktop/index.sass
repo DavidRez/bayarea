@@ -105,12 +105,19 @@
       // float: right
       transition: min-width 1s cubic-bezier(.39, .575, .28, .995)
       // border-right: 1px solid $white
-      padding: 1rem 0.5rem
+      // padding: 1rem 0.5rem
       pointer-events: all
 
   &__content-container
     @extend %absolute
+    transition: position 0s ease, opacity 1s ease
+    opacity: 0
     height: fit-content
+
+    .block-column-tabs-desktop__drawer--active &
+      // position: relative
+      transition: position 0s ease, opacity 1s ease
+      opacity: 1
 
   &__content
     padding: 1rem 0.75rem
