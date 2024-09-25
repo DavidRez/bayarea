@@ -7,6 +7,7 @@
         :class='{ "menu-links__link--subnav": link.children, "menu-links__link--active": $route.path.includes(link.href) && link.href !== "/", "menu-links__link--active": $route.path === link.href, "menu-links__link--active": $route.path === link.href || (link.href.includes("blog") && $route.path.includes(link.href))}'
         :href='link.href'
         v-html='link.label'
+        target='_blank'
         @click='[closeDrawer(), top()]'
         @keyup.enter='[closeDrawer(), top()]')
       nuxt-link.menu-links__link(v-else
@@ -24,7 +25,7 @@
       @mouseleave='toggleSubnav()')
       nuxt-link.menu-links__subnav-link(v-for='(sublink, j) in link.children',
         :key='`${link.name} link-${j}`'
-        :to='link.path + sublink.hash'
+        :to='{ path: link.path, hash: sublink.hash }'
         v-html='sublink.name'
-        @click.native='[closeDrawer(), top()]'
-        @keyup.enter='[closeDrawer(), top()]')
+        @click.native='[closeDrawer()]'
+        @keyup.enter='[closeDrawer()]')
