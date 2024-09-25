@@ -19,35 +19,35 @@ const router = [
     children: [
       {
         name: 'All Ages',
-        hash: '#all-ages'
+        hash: 'all-ages'
       },
       {
         name: 'Braces',
-        hash: '#braces'
+        hash: 'braces'
       },
       {
         name: 'Invisalign',
-        hash: '#invisalign'
+        hash: 'invisalign'
       },
       {
         name: 'TMJ Treatment',
-        hash: '#tmj'
+        hash: 'tmj'
       },
       {
         name: 'Smile Gallery',
-        hash: '#before-after'
+        hash: 'before-after'
       },
       {
         name: 'Orthognathic Surgery',
-        hash: '#orthognathic-surgery'
+        hash: 'orthognathic-surgery'
       },
       {
         name: 'Palatal Expanders',
-        hash: '#expanders'
+        hash: 'expanders'
       },
       {
         name: 'Technology',
-        hash: '#technology'
+        hash: 'technology'
       }
     ]
   },
