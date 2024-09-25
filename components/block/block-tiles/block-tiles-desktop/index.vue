@@ -28,8 +28,8 @@ export default {
     handleAnimation () {
       if (this.props.tiles) {
         this.$refs.tiles.forEach((tile, i) => {
-          const delay = 0.1 + (0.2 * i)
-          this.$_fadeIn(tile, 0, 48, 'top+=58', 2, delay)
+          const delay = 0.1 + (0.05 * i)
+          this.$_fadeIn(tile, 0, 48, 'top', 2, delay)
         })
       }
     }
