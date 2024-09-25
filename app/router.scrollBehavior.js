@@ -1,6 +1,6 @@
 export default function (to) {
   // the navigation class needs to be adjusted per project based on the nav placement and height
-  const navOffset = document.querySelector('.navigation__main').offsetTop
+  const navOffset = document.querySelector('.navigation').offsetTop
   let topDistance = 0
   // the following fires off when navigating to a hash on the same page
   if (to.hash && document.querySelector(to.hash)) {
