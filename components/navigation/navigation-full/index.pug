@@ -1,24 +1,20 @@
 nav.navigation-full
   .navigation-full__container(ref='container')
-    .navigation-full__left(ref='left')
-      .navigation-full__links
-        nuxt-link.navigation-full__link(v-for='(link, i) in first'
-          :key='`left nav link ${i}`'
-          :to='{ path: link.path, hash: link.hash }'
-          :class='{ "navigation-full__link--active": $route.path == link.path }'
-          v-on:click.native='$route.path === link.path ? top() : null'
-          @key.enter='$route.path === link.path ? top() : null') {{ link.name }}
     nuxt-link.navigation-full__logo(to='/'
       aria-label='links to homepage'
       v-on:click.native='$route.path === "/" ? top() : null'
       @key.enter='$route.path === "/" ? top() : null'
       ref='logo')
       BaseIcon(name='logo')
-    .navigation-full__right(ref='right')
-      .navigation-full__links
-        nuxt-link.navigation-full__link(v-for='(link, i) in second'
-          :key='`right nav link ${i}`'
-          :to='{ path: link.path, hash: link.hash }'
-          :class='{ "navigation-full__link--active": $route.path == link.path }'
-          v-on:click.native='$route.path === link.path ? top() : null'
-          @key.enter='$route.path === link.path ? top() : null') {{ link.name }}
+    //- .navigation-full__links(ref='right')
+    //-   .navigation-full__link-container(v-for='(link, i) in links'
+    //-     :key='`nav link ${i}`')
+    //-     nuxt-link.navigation-full__link(
+    //-       :to='{ path: link.path, hash: link.hash }'
+    //-       :class='{ "navigation-full__link--active": $route.path == link.path, "navigation-full__link--subnav": link.children }'
+    //-       v-on:click.native='$route.path === link.path ? top() : null'
+    //-       @key.enter='$route.path === link.path ? top() : null') {{ link.name }}
+    //-     .navigation-full__subnav(v-if='link.children')
+    //-       nuxt-link.navigation-full__subnav-link(v-for='(sublink, j) in link.children', :key='`${link.name} link-${j}`' :to='link.path + sublink.hash' v-html='sublink.name')
+    MenuMenuLinks(:props='links' :top='top' ref='links')
+    Button(v-if='props.navigation.include_button' :props='props.navigation.button' ref='button')

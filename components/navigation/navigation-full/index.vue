@@ -35,8 +35,8 @@ export default {
   }),
   mounted () {
     // split routes in half
-    this.first = this.links.slice(0, this.links.length / 2)
-    this.second = this.links.slice(this.links.length / 2)
+    // this.first = this.links.slice(0, this.links.length / 2)
+    // this.second = this.links.slice(this.links.length / 2)
 
     this.calculateSpacing()
 
@@ -54,17 +54,19 @@ export default {
       this.debounce(this.calculateSpacing, null, 200)
     },
     calculateSpacing () {
-      const container = this.$refs.container.clientWidth
-      const logo = this.$refs.logo.$el.clientWidth
-      const left = this.$refs.left.clientWidth
-      const right = this.$refs.right.clientWidth
+      this.$nextTick(() => {
+        const container = this.$refs.container ? this.$refs.container.clientWidth : 0
+        const logo = this.$refs.logo ? this.$refs.logo.$el.clientWidth : 0
+        const links = this.$refs.links ? this.$refs.links.$el.clientWidth : 0
+        const button = this.$refs.button ? this.$refs.button.$el.clientWidth : 0
 
-      // turn mobile breakpoint before routes reach logo
-      if ((container - logo) <= (left + right + 150)) {
-        this.mobileOn(true)
-      } else {
-        this.mobileOn(false)
-      }
+        // turn mobile breakpoint before routes reach logo
+        if ((container - logo) <= (links + button + 100)) {
+          this.mobileOn(true)
+        } else {
+          this.mobileOn(false)
+        }
+      })
     }
   }
 }
