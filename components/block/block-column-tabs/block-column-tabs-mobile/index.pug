@@ -19,7 +19,6 @@
             aria-live='polite',
             :id=`'block-column-tabs-mobile__drawer--' + i`,
             role='region',
-            :style=`{ height: expanded === i ? accordionBodyHeight + 'px' : 0 }`
           )
             .block-column-tabs-mobile__content(:aria-hidden=`expanded !== i ? 'true' : 'false'`, ref='content')
               .block-column-tabs-mobile__body(v-html='tab.body')
