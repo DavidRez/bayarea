@@ -57,6 +57,7 @@
   color: var(--text)
   font-family: $font-header
   font-size: rem-calc(56)
+  font-weight: 500
 
 %h2
   @include desktop
@@ -75,6 +76,7 @@
   color: var(--text)
   font-family: $font-header
   font-size: rem-calc(44)
+  font-weight: 500
 
 %h3
   @include desktop
@@ -149,7 +151,8 @@
   margin: 0
 
 %wysiwyg-text
-  p:not(:last-child)
+  p:not(:last-child),
+  .split-parent:not(:last-child)
     @include laptop-lg
       margin-bottom: .75rem
     margin-bottom: .5rem
