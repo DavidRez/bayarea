@@ -1,6 +1,19 @@
 .button-cta
   width: fit-content
 
+  &--all-caps
+    span
+      text-transform: uppercase
+
+  &--title
+    span
+      text-transform: capitalize
+
+  &--sentence
+    span
+      &::first-letter
+        text-transform: uppercase
+
   &__button
     display: flex
     position: relative
@@ -123,11 +136,7 @@
     // margin-bottom: -4px // modify or remove to center in container, depending on font
     padding: 1.25rem 1rem 1rem
     height: 100%
-    text-transform: lowercase
     line-height: 1rem
-
-    &::first-letter
-      text-transform: uppercase
 
   .base-icon
     display: flex

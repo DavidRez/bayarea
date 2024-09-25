@@ -1,13 +1,14 @@
-.button-cta(:class='[ "button-cta--" + props.style ]')
+.button-cta(:class='[ "button-cta--" + props.style, "button-cta--" + props.case ]')
 
   //- Nuxt Link ============================================
   nuxt-link.button-cta__button(
     v-if='props.type === `nuxt`',
     :to=`{ path: props.path, hash: props.hash }`,
+    :tabindex='tabindex',
     :aria-label='props.aria',
   )
     .button-cta__container
-      span(v-html='props.label')
+      span(v-html='label')
     .button-cta__container
       BaseIcon(name='caret')
 
@@ -16,10 +17,11 @@
     v-else-if='props.type === `anchor`',
     :href='props.href',
     :aria-label='props.aria',
+    :tabindex='tabindex',
     :target='props.external ? `_blank` : null'
   )
     .button-cta__container
-      span(v-html='props.label')
+      span(v-html='label')
     .button-cta__container
       BaseIcon(name='caret')
 
@@ -27,9 +29,10 @@
   button.button-cta__button(
     v-else-if='props.type === `custom`',
     @click='handleClick',
+    :tabindex='tabindex',
     :aria-label='props.aria'
   )
     .button-cta__container
-      span(v-html='props.label')
+      span(v-html='label')
     .button-cta__container
       BaseIcon(name='caret')

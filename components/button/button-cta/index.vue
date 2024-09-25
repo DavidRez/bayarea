@@ -14,6 +14,15 @@ export default {
     color: {
       type: String,
       default: 'dark'
+    },
+    tabindex: {
+      type: String,
+      default: '0'
+    }
+  },
+  computed: {
+    label () {
+      return this.props.case === 'sentence' ? this.props.label.toLowerCase() : this.props.label
     }
   }
 }
