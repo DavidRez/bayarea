@@ -29,6 +29,10 @@ export default {
     animate: {
       type: Boolean,
       default: false
+    },
+    tabindex: {
+      type: String,
+      default: '0'
     }
   },
   mounted () {
@@ -55,7 +59,7 @@ export default {
             toggleActions: 'play none play none'
           }
         })
-        const tlSubheader = this.$gsap.timeline({
+        const tlPreheader = this.$gsap.timeline({
           scrollTrigger: {
             trigger: this.$refs.container,
             start: 'top+=48 bottom',
@@ -70,16 +74,16 @@ export default {
           }
         })
 
-        if (this.$refs.header) {
-          const childHeader = new this.$SplitText(this.$refs.header, {
+        if (this.$refs.preheader) {
+          const childPreheader = new this.$SplitText(this.$refs.preheader, {
             type: 'lines',
             linesClass: 'split-child'
           })
-          const parentHeader = new this.$SplitText(this.$refs.header, {
+          const parentPreheader = new this.$SplitText(this.$refs.preheader, {
             linesClass: 'split-parent'
           })
-          if (childHeader && parentHeader && this.animate) {
-            tlHeader.from(childHeader.lines, {
+          if (childPreheader && parentPreheader && this.animate) {
+            tlPreheader.from(childPreheader.lines, {
               yPercent: 100,
               opacity: 0,
               duration: 2,
@@ -89,19 +93,19 @@ export default {
           }
         }
 
-        if (this.$refs.subheader) {
-          const childSubheader = new this.$SplitText(this.$refs.subheader, {
-            type: 'lines',
+        if (this.$refs.header) {
+          const childHeader = new this.$SplitText(this.$refs.header, {
+            type: 'words, lines',
             linesClass: 'split-child'
           })
-          const parentSubheader = new this.$SplitText(this.$refs.subheader, {
+          const parentHeader = new this.$SplitText(this.$refs.header, {
             linesClass: 'split-parent'
           })
-          if (childSubheader && parentSubheader && this.animate) {
-            tlSubheader.from(childSubheader.lines, {
+          if (childHeader && parentHeader && this.animate) {
+            tlHeader.from(childHeader.lines, {
               yPercent: 100,
               opacity: 0,
-              duration: 2,
+              duration: 1.5,
               stagger: 0.115,
               ease: 'customEaseOut'
             })

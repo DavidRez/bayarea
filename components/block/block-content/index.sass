@@ -21,8 +21,15 @@
   &--primary
     color: var(--primary)
 
+  &__preheader
+    @extend %margin-bottom--sm
+    @extend %subtext
+
+    &--no-margin
+      margin-bottom: 0
+
   &__header,
-  &__subheader
+  &__preheader
     .block-content--header-color-primary &
       color: var(--primary)
 
@@ -30,17 +37,14 @@
       color: $white
 
     sup
-      vertical-align: super
-      font-size: rem-calc(12)
+      display: inline
+      position: relative
+      top: 0.75rem
+      vertical-align: top
+      font-size: rem-calc(14)
 
   &__header
     @extend %header-margin-bottom
-
-    &--no-margin
-      margin-bottom: 0
-
-  &__subheader
-    @extend %subheader-margin-bottom
 
     &--no-margin
       margin-bottom: 0
