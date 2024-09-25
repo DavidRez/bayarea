@@ -6,14 +6,16 @@
       @key.enter='$route.path === "/" ? top() : null'
       ref='logo')
       BaseIcon(name='logo')
-    .navigation-mobile__hamburger(:aria-hidden='drawerOpen',
-      aria-label='open menu',
-      :class="{ 'navigation-mobile__hamburger--active': drawerOpen }",
-      @click='toggleDrawer',
-      :tabindex="drawerOpen ? '-1' : '0'"
-      role='button'
-    )
-      span
-      span 
-      span
-      span
+    .navigation-mobile__right
+      Button.navigation-mobile__cta.navigation-mobile__cta--tablet(v-if='props.navigation.include_button' :props='props.navigation.button' ref='button')
+      .navigation-mobile__hamburger(:aria-hidden='drawerOpen',
+        aria-label='open menu',
+        :class="{ 'navigation-mobile__hamburger--active': drawerOpen }",
+        @click='toggleDrawer',
+        :tabindex="drawerOpen ? '-1' : '0'"
+        role='button'
+      )
+        span
+        span 
+        span
+        span

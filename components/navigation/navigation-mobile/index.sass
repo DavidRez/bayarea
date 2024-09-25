@@ -26,6 +26,20 @@
         width: auto
         height: 100%
 
+  &__right
+    display: flex
+    align-items: center
+    gap: 2rem
+
+  &__cta
+    &--tablet
+      @include phone-land-lg
+        display: block
+      @include nexus
+        display: none
+      @include phone-land
+        display: none
+
   &__hamburger
     @include hamburger-basic(var(--text), .25s, 2rem, 1.25rem)
     cursor: pointer
