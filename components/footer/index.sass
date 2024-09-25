@@ -32,14 +32,30 @@
     &--mobile
       display: none
 
-  a,
-  &__userway
+  &__text,
+  &__userway,
+  &__link
+    color: $white
+
+    a
+      @include hover-focus
+        color: var(--primary)
+      transition: all .2s ease
+      cursor: pointer
+      text-decoration: underline
+      color: $white
+
+      &:focus-visible
+        @include focus
+
+  &__userway,
+  &__link
     @include hover-focus
       color: var(--primary)
     transition: all .2s ease
     cursor: pointer
-    text-decoration: none
-    color: $white
+    text-decoration: underline
 
     &:focus-visible
       @include focus
+
