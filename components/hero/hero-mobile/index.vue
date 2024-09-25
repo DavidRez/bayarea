@@ -47,7 +47,7 @@ export default {
         }
         this.compOpacity = 1
         this.handleAnimation()
-        // this.toggleVideo()
+        this.toggleVideo()
       })
     }
     if (!this.$refs.video && !this.props.images[0].mobile_image.src) {
