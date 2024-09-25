@@ -50,14 +50,18 @@ export default {
           // get max width of content tab
           const container = this.$refs.container.clientWidth
 
+          // get max width of tabs
           const tabs = this.$refs.tab
           let tabsWidths = []
           tabsWidths = tabs.map((a) => {
             return a.clientWidth
           })
           this.maxTabsWidth = (Math.max(...tabsWidths) * this.props.tabs.length) + this.props.tabs.length
-          this.maxWidth = `${container - 48 - this.maxTabsWidth}px`
-          this.maxContainerWidth = `${container - 48}px`
+
+          // max width for open drawer
+          this.maxWidth = `${container - this.maxTabsWidth}px`
+
+          this.maxContainerWidth = `${container}px` // container width
 
           // get max height of content tab
           const content = this.$refs.content
