@@ -2,13 +2,11 @@
 
 <script>
 import { fadeIn } from '~/resources/mixins'
-import BaseIcon from '~/components/base/base-icon'
 import BaseImage from '~/components/base/base-image'
 import BlockContent from '~/components/block/block-content'
 
 export default {
   components: {
-    BaseIcon,
     BaseImage,
     BlockContent
   },
