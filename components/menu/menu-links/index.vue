@@ -27,6 +27,21 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  data: () => ({
+    active: null
+  }),
+  methods: {
+    toggleSubnav (i) {
+      if (this.active === i) {
+        this.active = null
+      } else {
+        this.active = i
+      }
+    },
+    closeSubnav (i) {
+      this.active = null
+    }
   }
 }
 </script>

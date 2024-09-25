@@ -1,11 +1,24 @@
 .menu-links(:class='{ "menu-links--light": light, "menu-links--stacked": stacked }' role='menu')
-  .menu-links__link-container(v-for='(link, i) in props'
+  .menu-links__group(v-for='(link, i) in props'
     :key='`${i}`'
     role='menuitem')
-    nuxt-link.menu-links__link(
-      :class='{ "menu-links__link--active": $route.path.includes(link.path) && link.path !== "/", "menu-links__link--active": $route.path === link.path, "menu-links__link--active": $route.path === link.path || (link.path.includes("events") && $route.path.includes(link.path)) || (link.path.includes("blog") && $route.path.includes(link.path))}'
-      :to='{ path: link.path, hash: link.hash }'
-      v-html='link.name'
-      @click.native='[closeDrawer(), top()]'
-      @keyup.enter='[closeDrawer(), top()]'
-      role='menuitem')
+    .menu-links__link-container
+      nuxt-link.menu-links__link(
+        :class='{ "menu-links__link--subnav": link.children, "menu-links__link--active": $route.path.includes(link.path) && link.path !== "/", "menu-links__link--active": $route.path === link.path, "menu-links__link--active": $route.path === link.path || (link.path.includes("events") && $route.path.includes(link.path)) || (link.path.includes("blog") && $route.path.includes(link.path))}'
+        :to='{ path: link.path, hash: link.hash }'
+        v-html='link.name'
+        @click.native='[closeDrawer(), top()]'
+        @keyup.enter='[closeDrawer(), top()]')
+      BaseIcon.menu-links__caret(v-if='link.children' 
+        name='caret'
+        :class='{ "menu-links__caret--active": i === active }'
+        @click.native='toggleSubnav(i)')
+    .menu-links__subnav(v-if='link.children'
+      :class='{ "menu-links__subnav--active": i === active }'
+      @mouseleave='toggleSubnav()')
+      nuxt-link.menu-links__subnav-link(v-for='(sublink, j) in link.children',
+        :key='`${link.name} link-${j}`'
+        :to='link.path + sublink.hash'
+        v-html='sublink.name'
+        @click.native='[closeDrawer(), top()]'
+        @keyup.enter='[closeDrawer(), top()]')

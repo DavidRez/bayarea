@@ -10,16 +10,42 @@
   &--stacked
     flex-direction: column
 
+  &__group,
   &__link-container
+    position: relative
+    margin: 0 auto
     width: fit-content
+    
+    // @include hover-supported
+    //   .menu-links__subnav
+    //     visibility: visible
+    //     opacity: 1
+    //     z-index: 1
+    //     padding: 1.5rem 1rem
+    //     max-height: 100vh
 
-  &__link
+  &__link,
+  &__subnav-link
     @extend %nav
+    display: block
     position: relative
     transition: all .3s ease-in
+    margin: 0 auto
     white-space: nowrap
     color: var(--text)
     
+    @include hover-supported
+      color: var(--accent1)
+
+    .menu-links--light &
+      color: $white
+
+  &__subnav-link
+    .menu-links--light &
+      .navigation-drawer &
+        color: var(--primary)
+
+  &__link
     &::before
       position: absolute
       right: 0
@@ -35,35 +61,172 @@
       height: rem-calc(5)
       content: ''
 
-    .menu-links--light &
-      color: $white
-
-      &::before
+      .menu-links--light &
         border: 2px solid $white
+
+    &--subnav
+      &::before
+        display: none // hide everywhere except footer
+        transform: rotate(45deg)
+        opacity: 1
+        border: unset
+        border-right: 2px solid var(--secondary)
+        border-bottom: 2px solid var(--secondary)
+        border-radius: unset
+
+        .menu-links--light &
+          border: unset
+          border-right: 2px solid var(--accent1)
+          border-bottom: 2px solid var(--accent1)
+
+        .footer &
+          display: block // unhide in footer
+          transform: unset
+          opacity: 0
+          border-top: 2px solid var(--secondary)
+          border-right: 2px solid var(--secondary)
+          border-bottom: 2px solid var(--secondary)
+          border-left: 2px solid var(--secondary)
+          border-radius: 50%
+
+          .menu-links--light &
+            border-color: var(--accent1)
 
     &--active
       color: var(--accent1)
 
-      &::before
-        opacity: 1 !important
-        border: 2px solid var(--accent1)
-
       .menu-links--light &
         color: var(--primary)
 
+      &::before
+        opacity: 1
+        border-color: (--accent1)
+
+        .menu-links--light &
+          border-color: (--primary)
+
+      &.menu-links__link--subnav
         &::before
-          border: 2px solid var(--primary)
+          border-color: var(--accent1)
+
+          .menu-links--light &
+            border-color: var(--primary)
+
+          .footer &
+            opacity: 1
+            border-color: (--secondary)
+
+            .menu-links--light &
+              border-color: var(--primary)
+
+        & + .menu-links__caret
+          path
+            stroke: var(--accent1)
+
+          .menu-links--light &
+            path
+              stroke: $white
+
 
     @include hover-supported
-      color: var(--accent1)
-
       &::before
         transition: opacity .3s ease
         opacity: 1
-        border: 2px solid var(--accent1)
+        border-color: var(--accent1)
+
+        .menu-links--light &
+          border-color: var(--primary)
 
       .menu-links--light &
         color: var(--primary)
-
+      
+      &.menu-links__link--subnav
         &::before
-          border: 2px solid var(--primary)
+          border-color: var(--accent1)
+
+          .menu-links--light &
+            border-color: var(--primary)
+
+  &__caret
+    position: absolute
+    top: 50%
+    right: 0
+    left: 0
+    transition: all .3s ease
+    z-index: 2
+    margin: auto
+    cursor: pointer
+
+    &.base-icon
+      display: flex
+      align-items: center
+      justify-content: center
+      transform: rotate(90deg)
+      width: rem-calc(42)
+      height: rem-calc(42)
+      
+      svg
+        width: 100%
+        max-width: 0.5rem
+
+        path
+          stroke-width: 2px
+          stroke: var(--secondary)
+
+          .menu-links--light &
+            stroke: var(--primary)
+
+    .footer &
+      display: none
+
+    &--active
+      rotate: (180deg)
+
+    @include hover-supported
+      path
+        stroke: var(--accent1)
+
+      .menu-links--light &
+        path
+          stroke: var(--primary)
+
+  &__subnav
+    position: relative
+    transition: all .3s ease
+    visibility: hidden
+    opacity: 0
+    z-index: -1
+    margin: auto
+    padding: 0
+    width: fit-content
+    max-height: 0
+
+    .footer &
+      display: none
+
+    .navigation-full &
+      position: absolute
+      top: 200%
+      left: 50%
+      transform: translateX(-50%)
+      background: rgba(var(--bg-2-rgb), 0.9)
+      padding: 1rem
+
+    &--active
+      visibility: visible
+      opacity: 1
+      z-index: 1
+      padding: 1.5rem 1rem
+      max-height: 100vh
+
+      .navigation-full &
+        padding: 1rem
+        height: fit-content
+        max-height: unset
+
+  &__subnav-link
+    display: block
+    margin: 0 auto
+
+    &:not(:last-of-type)
+      margin-bottom: 1rem
