@@ -15,7 +15,6 @@ section.block-team-slider(
           :class='{ "block-team-slider__item--active": active === i }'
           @click='$store.state.isTabletLg || $store.state.isPhoneLandLg ? makeActive(i) : null'
           role='group',
-          :style='{ width }'
           ref='items'
         )
           .block-team-slider__item-box(tabindex='0')
@@ -39,7 +38,6 @@ section.block-team-slider(
           :class='{ "block-team-slider__item--active": active === i }'
           @click='$store.state.isTabletLg || $store.state.isPhoneLandLg ? makeActive(i) : null'
           role='group',
-          :style='{ width }'
           ref='items'
         )
           .block-team-slider__item-box(tabindex='0')
