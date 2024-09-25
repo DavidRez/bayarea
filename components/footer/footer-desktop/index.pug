@@ -3,8 +3,8 @@
     nuxt-link.footer-desktop__logo(to='/' aria-label='link to home')
       BaseIcon(name='logo-white')
     .footer-desktop__links
-      MenuMenuLinks(:props='links' :top='top' light)
-      MenuMenuQuickLinks(:props='props.quick_links' :top='top' light)
+      MenuMenuLinks(:props='[...links, ...props.quick_links]' :top='top' light wrap)
+      //- MenuMenuQuickLinks(:props='props.quick_links' :top='top' light)
   .footer-desktop__cols
     .footer-desktop__col.footer-desktop__col--location
       .footer-desktop__location(v-for='(location, i) in props.locations' :key='`location-${i}`')

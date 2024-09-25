@@ -26,6 +26,11 @@ export default {
       // make true to stack links
       type: Boolean,
       default: false
+    },
+    wrap: {
+      // make true to wrap links
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({

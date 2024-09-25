@@ -2,19 +2,26 @@
   @include nexus
     gap: 2rem
   display: flex
-  flex-direction: row
-  align-items: center
+  // flex-direction: row
+  justify-content: flex-end
   gap: 2.5rem
   width: fit-content
 
   &--stacked
     flex-direction: column
+    flex-wrap: unset
+    align-items: center
+
+  &--wrap
+    flex-wrap: wrap
 
   &__group,
   &__link-container
     position: relative
-    margin: 0 auto
     width: fit-content
+
+    .menu-links--stacked &
+      margin: 0 auto
     
     // @include hover-supported
     //   .menu-links__subnav
@@ -30,7 +37,6 @@
     display: block
     position: relative
     transition: all .3s ease-in
-    margin: 0 auto
     white-space: nowrap
     color: var(--text)
     
@@ -216,7 +222,7 @@
       visibility: visible
       opacity: 1
       z-index: 1
-      padding: 1.5rem 1rem
+      padding: 2rem 1rem 0
       max-height: 100vh
 
       .navigation-full &

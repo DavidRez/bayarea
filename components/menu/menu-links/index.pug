@@ -1,10 +1,16 @@
-.menu-links(:class='{ "menu-links--light": light, "menu-links--stacked": stacked }' role='menu')
+.menu-links(:class='{ "menu-links--light": light, "menu-links--stacked": stacked, "menu-links--wrap": wrap }' role='menu')
   .menu-links__group(v-for='(link, i) in props'
     :key='`${i}`'
     role='menuitem')
     .menu-links__link-container
-      nuxt-link.menu-links__link(
-        :class='{ "menu-links__link--subnav": link.children, "menu-links__link--active": $route.path.includes(link.path) && link.path !== "/", "menu-links__link--active": $route.path === link.path, "menu-links__link--active": $route.path === link.path || (link.path.includes("events") && $route.path.includes(link.path)) || (link.path.includes("blog") && $route.path.includes(link.path))}'
+      a.menu-links__link(v-if='link.type === "ext"'
+        :class='{ "menu-links__link--subnav": link.children, "menu-links__link--active": $route.path.includes(link.href) && link.href !== "/", "menu-links__link--active": $route.path === link.href, "menu-links__link--active": $route.path === link.href || (link.href.includes("blog") && $route.path.includes(link.href))}'
+        :href='link.href'
+        v-html='link.label'
+        @click.native='[closeDrawer(), top()]'
+        @keyup.enter='[closeDrawer(), top()]')
+      nuxt-link.menu-links__link(v-else
+        :class='{ "menu-links__link--subnav": link.children, "menu-links__link--active": $route.path.includes(link.path) && link.path !== "/", "menu-links__link--active": $route.path === link.path, "menu-links__link--active": $route.path === link.path || (link.path.includes("blog") && $route.path.includes(link.path))}'
         :to='{ path: link.path, hash: link.hash }'
         v-html='link.name'
         @click.native='[closeDrawer(), top()]'
