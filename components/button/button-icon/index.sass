@@ -1,11 +1,39 @@
 .button-icon
 
+  &--all-caps
+    span
+      text-transform: uppercase
+
+  &--title
+    span
+      text-transform: capitalize
+
+  &--sentence
+    span
+      &::first-letter
+        text-transform: uppercase
+
   &__container
+    @include hover-supported
+      .button-icon__icon
+        path
+          stroke: var(--accent1) !important
+      .button-icon__label
+        color: var(--accent1)
+
+      .button-icon--light &
+        .button-icon__icon
+          path
+            stroke: var(--secondary) !important
+        .button-icon__label
+          color: var(--secondary)
     @include nexus
       height: rem-calc(42)
     display: flex
     align-items: center
     justify-content: center
+    transition: all .25s ease-in
+    cursor: pointer
     padding: .15rem
     width: fit-content
     color: var(--primary)
@@ -17,26 +45,9 @@
 
     .button-icon--light &
       color: $white
-
-    &--link
-      @include hover-supported
-        .button-icon__icon
-          path
-            stroke: var(--accent1) !important
-        .button-icon__label
-          color: var(--accent1)
-
-        .button-icon--light &
-          .button-icon__icon
-            path
-              stroke: var(--secondary) !important
-          .button-icon__label
-            color: var(--secondary)
-      transition: all .25s ease-in
-      cursor: pointer
       
-      &:focus-visible
-        @include focus
+    &:focus-visible
+      @include focus
 
   &__icon
     display: flex

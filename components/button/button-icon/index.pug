@@ -1,7 +1,23 @@
-.button-icon(:class='[ "button-icon--" + props.color ]')
-  a.button-icon__container.button-icon__container--link(v-if='props.href' :href='props.href' :aria-label='props.aria')
+.button-icon(:class='[ "button-icon--" + props.color, "button-icon--" + props.case ]')
+  nuxt-link.button-icon__container(
+    v-if='props.type === `nuxt`'
+    :to=`{ path: props.path, hash: props.hash }`
+    :tabindex='tabindex'
+    :aria-label='props.aria')
     BaseIcon.button-icon__icon(v-if='props.include_icon && props.icon' :name='props.icon')
-    span.button-icon__label(v-html='props.label')
-  .button-icon__container(v-else)
+    span.button-icon__label(v-html='label')
+  a.button-icon__container(
+    v-else-if='props.type === `anchor`'
+    :href='props.href'
+    :target='props.external ? `_blank` : null'
+    :tabindex='tabindex' 
+    :aria-label='props.aria')
+    BaseIcon.button-icon__icon(v-if='props.include_icon && props.icon' :name='props.icon')
+    span.button-icon__label(v-html='label')
+  button.button-icon__container(
+    v-else-if='props.type === `custom`'
+    @click='handleClick()'
+    :tabindex='tabindex',
+    :aria-label='props.aria')
     BaseIcon.button-icon__icon(v-if='icon' :name='icon')
-    span.button-icon__label(v-html='props.label')
+    span.button-icon__label(v-html='label')

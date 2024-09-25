@@ -20,6 +20,11 @@ export default {
       type: String,
       default: 'dark'
     }
+  },
+  computed: {
+    label () {
+      return this.props.case === 'sentence' ? this.props.label.toLowerCase() : this.props.label
+    }
   }
 }
 </script>
