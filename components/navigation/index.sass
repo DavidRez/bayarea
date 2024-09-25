@@ -16,6 +16,9 @@
     width: 100vw
     height: rem-calc(100)
 
+  &__nav
+    animation: fadeIn fowards 1s 
+
   &__overlay
     position: fixed
     top: 0
@@ -34,3 +37,9 @@
     width: 100%
     max-width: rem-calc(600)
     height: 100vh
+
+  @keyframes fadeIn
+    0%
+      opacity: 0
+    100%
+      opacity: 1

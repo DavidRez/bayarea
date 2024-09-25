@@ -1,19 +1,19 @@
 header.navigation(:class="{ 'navigation--scrolling': isScrolling && scrollDir === 'down' }", ref='navbar')
   NavigationNavigationTopBar(v-if='$store.state.global.add_top_bar' :props='$store.state.global')
   .navigation__main
-    NavigationNavigationFull(v-if='!$store.state.isTablet && $store.state.global.navigation.layout === "full" && windowWidth > mobileWidth'
-      :links='links'
+    NavigationNavigationFull.navigation__nav(v-if='loaded && $store.state.global.navigation.layout === "full" && windowWidth > mobileWidth'
+      :links='navLinks'
       :props='$store.state.global'
       :setMobileWidth='setMobileWidth'
       :mobileOn='mobileOn')
-    NavigationNavigationMinimal(v-if='!$store.state.isTablet && $store.state.global.navigation.layout === "minimal" && windowWidth > mobileWidth'
-      :links='links'
+    NavigationNavigationMinimal.navigation__nav(v-if='loaded && $store.state.global.navigation.layout === "minimal" && windowWidth > mobileWidth'
+      :links='navLinks'
       :props='$store.state.global'
       :mobileOn='mobileOn'
       :setMobileWidth='setMobileWidth'
       :toggleDrawer='throttleToggleDrawer'
       :drawerOpen='drawerOpen')
-    NavigationNavigationMobile(v-else-if='$store.state.isTablet || windowWidth <= mobileWidth'
+    NavigationNavigationMobile.navigation__nav(v-else-if='loaded && windowWidth <= mobileWidth'
       :props='$store.state.global'
       :toggleDrawer='throttleToggleDrawer'
       :drawerOpen='drawerOpen')
@@ -29,6 +29,6 @@ header.navigation(:class="{ 'navigation--scrolling': isScrolling && scrollDir ==
       :closeDrawer='closeDrawer'
       :top='top'
       :props='$store.state.global'
-      :links='links'
+      :links='mobileLinks'
       ref='navDrawer'
     )

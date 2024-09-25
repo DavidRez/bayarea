@@ -3,10 +3,6 @@
 <script>
 import { removeFocus, throttle, trapFocus, debounce } from '~/resources/mixins'
 import router from '~/router/index'
-// import NavigationDrawer from '~/components/navigation/navigation-drawer'
-// import NavigationFull from '~/components/navigation/navigation-full'
-// import NavigationMinimal from '~/components/navigation/navigation-minimal'
-// import NavigationTopBar from '~/components/navigation/navigation-top-bar'
 
 export default {
   components: {
@@ -19,12 +15,18 @@ export default {
     windowWidth: 0,
     mobileWidth: 0,
     setMobileWidth: false,
-    drawerOpen: false
+    drawerOpen: false,
+    loaded: false
   }),
   computed: {
-    links () {
+    navLinks () {
       return router.filter((link) => {
         return link.navigation
+      })
+    },
+    mobileLinks () {
+      return router.filter((link) => {
+        return link
       })
     },
     isScrolling () {
@@ -58,6 +60,7 @@ export default {
     },
     setWidth () {
       this.windowWidth = window.innerWidth
+      this.loaded = true
     },
     top () {
       window.scrollTo({ top: 0, behavior: 'smooth' })
