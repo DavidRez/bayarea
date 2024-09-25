@@ -1,0 +1,8 @@
+section.block-image(ref='container')
+  .block-image__container
+    .block-image__col(ref='col2')
+      BlockContent(:props='props.content' animate)
+    .block-image__col(ref='media')
+      .block-image__cover(:style='{ background: (props.background_color.label === "unset" ? "#fff" : props.background_color.value ) }' ref='cover')
+      .block-image__image-container(v-if='props.image')
+        BaseImage.block-image__image(v-bind='props.image' forceVisible)
