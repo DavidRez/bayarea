@@ -78,8 +78,6 @@
     width: 100%
 
   &__buttons
-    @include nexus
-      display: none
     display: flex
 
   &__button
@@ -138,6 +136,8 @@
       transform: scale(-1)
 
   &__dots
+    @include phone-lg
+      display: none
     display: flex
     flex-direction: row
     align-items: center

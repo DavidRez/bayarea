@@ -19,7 +19,7 @@ export default {
     active: 0,
     next: null,
     prev: null,
-    height: '100%',
+    height: '300px',
     loaded: false
   }),
   mounted () {
