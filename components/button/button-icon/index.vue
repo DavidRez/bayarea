@@ -19,6 +19,10 @@ export default {
     color: {
       type: String,
       default: 'dark'
+    },
+    tabindex: {
+      type: String,
+      default: '0'
     }
   },
   computed: {
