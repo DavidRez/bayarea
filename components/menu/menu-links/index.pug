@@ -7,7 +7,7 @@
         :class='{ "menu-links__link--subnav": link.children, "menu-links__link--active": $route.path.includes(link.href) && link.href !== "/", "menu-links__link--active": $route.path === link.href, "menu-links__link--active": $route.path === link.href || (link.href.includes("blog") && $route.path.includes(link.href))}'
         :href='link.href'
         v-html='link.label'
-        @click.native='[closeDrawer(), top()]'
+        @click='[closeDrawer(), top()]'
         @keyup.enter='[closeDrawer(), top()]')
       nuxt-link.menu-links__link(v-else
         :class='{ "menu-links__link--subnav": link.children, "menu-links__link--active": $route.path.includes(link.path) && link.path !== "/", "menu-links__link--active": $route.path === link.path, "menu-links__link--active": $route.path === link.path || (link.path.includes("blog") && $route.path.includes(link.path))}'
