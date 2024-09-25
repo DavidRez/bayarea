@@ -4,9 +4,9 @@
   .navigation-top-bar__bar(
     @click='props.top_bar.type === "announcement" && props.top_bar.announcement.type === "modal" && !modalOpen? openModal() : null'
     @keyup.enter='props.top_bar.type === "announcement" && props.top_bar.announcement.type === "modal" && !modalOpen ? openModal() : null'
-    :tabindex='props.top_bar.type === "announcement" ? 0 : -1'
+    :tabindex='props.top_bar.type === "announcement" ? "0" : "-1"'
     :aria-label='props.top_bar.type === "announcement" ? props.top_bar.announcement.label : null'
-    :aria-haspopup='props.top_bar.type === "announcement" ? true : false')
+    :aria-haspopup='props.top_bar.type === "announcement" && props.top_bar.announcement.type === "modal" ? true : false')
     .navigation-top-bar__container
       .navigation-top-bar__links(v-if='props.top_bar.type === "links"')
         // single location
