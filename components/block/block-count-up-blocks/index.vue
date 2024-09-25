@@ -37,59 +37,6 @@ export default {
     },
     handleAnimation () {
       this.$nextTick(() => {
-        const tlHeader = this.$gsap.timeline({
-          scrollTrigger: {
-            trigger: this.$refs.container,
-            start: 'top+=48 bottom',
-            toggleActions: 'play none play none'
-          }
-        })
-        const tlSubheader = this.$gsap.timeline({
-          scrollTrigger: {
-            trigger: this.$refs.container,
-            start: 'top+=48 bottom',
-            toggleActions: 'play none play none'
-          }
-        })
-
-        if (this.$refs.header) {
-          const childHeader = new this.$SplitText(this.$refs.header, {
-            type: 'lines',
-            linesClass: 'split-child'
-          })
-          const parentHeader = new this.$SplitText(this.$refs.header, {
-            linesClass: 'split-parent'
-          })
-          if (childHeader && parentHeader) {
-            tlHeader.from(childHeader.lines, {
-              yPercent: 100,
-              opacity: 0,
-              duration: 2,
-              stagger: 0.115,
-              ease: 'customEaseOut'
-            })
-          }
-        }
-
-        if (this.$refs.subheader) {
-          const childSubheader = new this.$SplitText(this.$refs.subheader, {
-            type: 'lines',
-            linesClass: 'split-child'
-          })
-          const parentSubheader = new this.$SplitText(this.$refs.subheader, {
-            linesClass: 'split-parent'
-          })
-          if (childSubheader && parentSubheader) {
-            tlSubheader.from(childSubheader.lines, {
-              yPercent: 100,
-              opacity: 0,
-              duration: 2,
-              stagger: 0.115,
-              ease: 'customEaseOut'
-            })
-          }
-        }
-
         this.$refs.numbers.forEach((item) => {
           const target = +item.dataset.target
           this.$ScrollTrigger.create({

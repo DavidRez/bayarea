@@ -13,7 +13,7 @@ export default {
   },
   data: () => ({
     currIndex: 0,
-    maxHeight: '100%',
+    maxHeight: '175px',
     sliderLength: null
   }),
   mounted () {
@@ -74,32 +74,6 @@ export default {
     },
     handleAnimation () {
       this.$nextTick(() => {
-        const tl = this.$gsap.timeline({
-          scrollTrigger: {
-            trigger: this.$refs.container,
-            start: 'top+=48 bottom',
-            toggleActions: 'play none play none'
-          }
-        })
-
-        if (this.$refs.title) {
-          const childTitle = new this.$SplitText(this.$refs.title, {
-            type: 'lines',
-            linesClass: 'split-child'
-          })
-          const parentTitle = new this.$SplitText(this.$refs.title, {
-            linesClass: 'split-parent'
-          })
-          if (childTitle && parentTitle) {
-            tl.from(childTitle.lines, {
-              yPercent: 100,
-              opacity: 0,
-              duration: 2,
-              stagger: 0.115,
-              ease: 'customEaseOut'
-            })
-          }
-        }
         this.$_fadeIn(this.$refs.slider, 0, '75%', 'top+=58', 2, 0.15)
       })
     }

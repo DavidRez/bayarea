@@ -1,7 +1,6 @@
 section.block-column-tabs(v-if='props')
-  .block-column-tabs__container(v-if='props.header || props.subheader' ref='container')
+  .block-column-tabs__container(v-if='props.content' ref='container')
     .block-column-tabs__col
-      h2.block-column-tabs__header(v-if='props.header' v-html='props.header', :style='{ color: props.header_color }', ref='header')
-      h3.block-column-tabs__subheader(v-if='props.subheader' v-html='props.subheader', :style='{ color: props.subheader_color }', ref='subheader')
+      BlockContent.block-column-tabs__content(v-if='props.content' :props='props.content' animate)
   ColumnTabsMobile(v-if='$store.state.isTabletLg || $store.state.isPhoneLandLg' :props='props')
   ColumnTabsDesktop(v-else :props='props')

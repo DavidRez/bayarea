@@ -10,7 +10,7 @@ section.block-tabs(ref='parent')
           :class='{ "block-tabs__image-dynamic--active": i === expanded }',
           v-bind='tab.image' forceVisible imageBackground)
     .block-tabs__content(ref='contentCol')
-      h2.block-tabs__header(v-html='props.header' :style='{ color: props.header_color }')
+      BlockContent.block-tabs__content(v-if='props.content' :props='props.content' animate)
       .block-tabs__tabs
         button.block-tabs__tab(v-for='(tab, i) in props.tabs', :key='`tab-${i}`'
           :class='{ "block-tabs__tab--active": expanded === i }'

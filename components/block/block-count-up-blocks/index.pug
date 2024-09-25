@@ -1,8 +1,7 @@
 section.block-count-up-blocks(ref='container')
   .block-count-up-blocks__container
     .block-count-up-blocks__col
-      h2.block-count-up-blocks__header(v-if='props.header', v-html='props.header' :style='{ color: props.header_color }' ref='header')
-      h3.block-count-up-blocks__subheader(v-if='props.subheader', v-html='props.subheader' :style='{ color: props.header_color }' ref='subheader')
+      BlockContent.block-count-up-blocks__content(v-if='props.content' :props='props.content' animate)
   .block-count-up-blocks__container
     .block-count-up-blocks__blocks(:style='{ borderColor: props.body_color }')
       .block-count-up-blocks__block(v-for='(block, i) in props.blocks' :key='`blocks-${i}`' :style='{ borderColor: props.body_color }' ref='blocks')

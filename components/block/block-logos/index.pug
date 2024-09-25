@@ -1,7 +1,7 @@
 section.block-logos(v-if='props && loaded')
   .block-logos__container(v-if='props.header' ref='container')
     .block-logos__col
-      h2.block-logos__header(v-if='props.header' v-html='props.header', ref='header')
+      BlockContent.block-logos__content(v-if='props.content' :props='props.content' animate)
   .block-logos__container
     .block-logos__col
       .block-logos__logos
