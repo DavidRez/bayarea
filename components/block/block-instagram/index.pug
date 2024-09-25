@@ -10,5 +10,6 @@
         :key='`image-${i}`',
         :href='image.permalink',
         target='_blank' rel='noopener noreferrer'
+        :aria-label='"instagram-image-" + i'
         ref='images')
         BaseImage.block-instagram__image(:src='image.source', :alt='"instagram-" + i')
