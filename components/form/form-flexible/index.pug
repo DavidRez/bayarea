@@ -123,7 +123,7 @@
   )
     .form-flexible__modal-overlay
     .form-flexible__modal-container(ref='formModal')
-      button.form-flexible__modal-close(@click='closeModal()', tabindex='0') close
+      button.form-flexible__modal-close(@click='closeModal()', :tabindex=`modalOpen ? '0' : '-1'`) close
       .form-flexible__modal-title Thank you!
       .form-flexible__modal-text We will be in touch shortly!
       slot
