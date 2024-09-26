@@ -13,7 +13,7 @@ export default {
   },
   data: () => ({
     currIndex: 0,
-    maxHeight: '175px',
+    maxHeight: '200px',
     sliderLength: null
   }),
   mounted () {
