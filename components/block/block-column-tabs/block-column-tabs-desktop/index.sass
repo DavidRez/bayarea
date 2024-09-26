@@ -110,13 +110,12 @@
 
   &__content-container
     @extend %absolute
-    transition: position 0s ease, opacity 1s ease
+    transition: opacity 1s ease
     opacity: 0
     height: fit-content
 
     .block-column-tabs-desktop__drawer--active &
-      // position: relative
-      transition: position 0s ease, opacity 1s ease
+      transition: opacity 1s ease
       opacity: 1
 
   &__content

@@ -9,7 +9,7 @@
           aria-label='expand section',
           :class=`{ 'block-column-tabs-desktop__tab-container--active': expanded === i }`
         )
-          .block-column-tabs-desktop__tab(:style='{ borderLeftColor: props.body_color, minWidth: maxTabsWidth }' @click='toggleTabs(i)' ref='tab')
+          .block-column-tabs-desktop__tab(:style='{ borderLeftColor: props.body_color, maxWidth: maxTabsWidth }' @click='toggleTabs(i)' ref='tab')
             span(:style='{ color: props.body_color }') {{ '0' + (1 + i) }}
             .block-column-tabs-desktop__tab-title(:style='{ color: props.body_color }' v-html='tab.title')
           .block-column-tabs-desktop__drawer(:aria-hidden=`expanded !== i ? 'true' : 'false'`,
