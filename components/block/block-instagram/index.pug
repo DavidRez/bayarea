@@ -1,8 +1,10 @@
 .block-instagram(v-if='instagram')
   
   .block-instagram__container
-    BlockContent.block-instagram__content(v-if='props.content' :props='props.content' animate)
-  
+    .block-instagram__col
+      BlockContent.block-instagram__content(v-if='props.content' :props='props.content' animate)
+      a.block-instagram__link(v-if='props.href' :href='props.href' aria-label='go to Instagram profile in new tab' target='_blank')
+        BaseIcon(name='instagram')
   .block-instagram__container
     .block-instagram__thumbs(ref='container')
     

@@ -7,8 +7,35 @@
     flex-direction: column
     justify-content: center
 
-  &__content
+  &__col
+    @include col(8)
+    display: flex
+    flex-direction: column
+    align-items: center
+
+  // &__content
+  //   @extend %margin-bottom--sm
+
+  &__link
     @extend %margin-bottom--md
+    @include hover-supported
+      .base-icon
+        background: var(--primary)
+    display: block
+  
+    .base-icon
+      display: flex
+      align-items: center
+      justify-content: center
+      transition: all .2s ease
+      border: 1px solid var(--text)
+      border-radius: 50%
+      width: rem-calc(42)
+      height: rem-calc(42)
+
+      svg
+        width: 100%
+        max-width: 1.75rem
 
   &__thumbs
     @include tablet
