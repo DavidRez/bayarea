@@ -5,7 +5,6 @@ import BlockAccordion from '~/components/block/block-accordion'
 import BlockColumnTabs from '~/components/block/block-column-tabs'
 import BlockBannerWithBackground from '~/components/block/block-banner-with-background'
 import BlockBeforeAfterGallery from '~/components/block/block-before-after-gallery'
-import BlockContactBanner from '~/components/block/block-contact-banner'
 import BlockCountUpBlocks from '~/components/block/block-count-up-blocks'
 import BlockForm from '~/components/block/block-form'
 import BlockGallery from '~/components/block/block-gallery'
@@ -32,7 +31,6 @@ export default {
     BlockBannerWithBackground,
     BlockBeforeAfterGallery,
     BlockColumnTabs,
-    BlockContactBanner,
     BlockCountUpBlocks,
     BlockForm,
     BlockGallery,

@@ -29,11 +29,6 @@
         :class='`component-padding--` + section.component_padding',
         :props='section'
       )
-      BlockContactBanner(
-        v-else-if='section.acf_fc_layout === `contact_banner`',
-        :class='`component-padding--` + section.component_padding',
-        :props='section'
-      )
       BlockCountUpBlocks(
         v-else-if='section.acf_fc_layout === `count_up_blocks`',
         :class='`component-padding--` + section.component_padding',
