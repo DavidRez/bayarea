@@ -1,6 +1,6 @@
 export default function (to) {
   // the navigation class needs to be adjusted per project based on the nav placement and height
-  const navOffset = document.querySelector('.navigation').offsetTop
+  const navOffset = document.querySelector('.navigation__main').offsetTop
   let topDistance = 0
   // the following fires off when navigating to a hash on the same page
   if (to.hash && document.querySelector(to.hash)) {
@@ -31,7 +31,7 @@ export default function (to) {
         // can increase or decrease scroll delay as needed
         setTimeout(() => {
           window.scrollTo({
-            top: topDistance - navOffset - 150,
+            top: topDistance - navOffset - 200,
             behavior: 'smooth'
           })
         }, 750)
