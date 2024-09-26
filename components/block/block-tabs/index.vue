@@ -12,7 +12,6 @@ export default {
     }
   },
   data: () => ({
-    bodyHeight: null,
     expanded: null,
     paddingLeft: '16px'
   }),
@@ -55,16 +54,12 @@ export default {
     },
     handleResize (time = 300) {
       setTimeout(() => {
-        if (this.expanded !== null) {
-          this.bodyHeight = this.$refs.body[this.expanded].clientHeight
-        }
         this.paddingLeft = this.$refs.numbers[0].clientWidth + 16 + 'px'
       }, time)
     },
     toggleAccordion (i) {
       if (this.expanded !== i) {
         this.expanded = i
-        this.bodyHeight = this.$refs.body[i].clientHeight + 32
       }
     },
     handleAnimation () {
