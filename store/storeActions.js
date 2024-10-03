@@ -6,8 +6,10 @@ import {
   IS_TABLET,
   IS_TABLET_LG,
   IS_TABLET_MD,
-  SET_FORMS,
+  SET_ACCORDION,
+  SET_ACCORDION_DIMENSIONS,
   SET_BLOG,
+  SET_FORMS,
   SET_GLOBAL,
   SET_TESTIMONIALS,
   SET_TEAM,
@@ -38,11 +40,17 @@ const stateActions = () => ({
   IS_TABLET_MD ({ commit }, data) {
     commit(IS_TABLET_MD, data)
   },
-  SET_FORMS ({ commit }, data) {
-    commit(SET_FORMS, data)
+  SET_ACCORDION ({ commit }, data) {
+    commit(SET_ACCORDION, data)
+  },
+  SET_ACCORDION_DIMENSIONS ({ commit }, data) {
+    commit(SET_ACCORDION_DIMENSIONS, data)
   },
   SET_BLOG ({ commit }, data) {
     commit(SET_BLOG, data)
+  },
+  SET_FORMS ({ commit }, data) {
+    commit(SET_FORMS, data)
   },
   SET_GLOBAL ({ commit }, data) {
     commit(SET_GLOBAL, data)

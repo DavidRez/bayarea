@@ -6,8 +6,10 @@ import {
   IS_TABLET,
   IS_TABLET_LG,
   IS_TABLET_MD,
-  SET_FORMS,
+  SET_ACCORDION,
+  SET_ACCORDION_DIMENSIONS,
   SET_BLOG,
+  SET_FORMS,
   SET_GLOBAL,
   SET_TESTIMONIALS,
   SET_TEAM,
@@ -38,11 +40,17 @@ const stateMutations = () => ({
   [IS_TABLET_MD] (state, data) {
     state.isTabletMd = data
   },
-  [SET_FORMS] (state, data) {
-    state.forms = data
+  [SET_ACCORDION] (state, data) {
+    state.accordionSet = data
+  },
+  [SET_ACCORDION_DIMENSIONS] (state, data) {
+    state.accordionHeight = data
   },
   [SET_BLOG] (state, data) {
     state.posts = data
+  },
+  [SET_FORMS] (state, data) {
+    state.forms = data
   },
   [SET_GLOBAL] (state, data) {
     state.global = data

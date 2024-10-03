@@ -20,22 +20,12 @@ export default {
   }),
   mounted () {
     if (this.$store.state.siteIsLoaded) {
-      this.toggleTabs(0)
-      this.getDimensions()
-      setTimeout(() => {
-        this.getDimensions()
-      }, 1000)
       this.handleAnimation()
     } else {
       this.$store.watch(
         state => this.$store.state.siteIsLoaded,
         (newVal) => {
           if (newVal) {
-            this.toggleTabs(0)
-            this.getDimensions()
-            setTimeout(() => {
-              this.getDimensions()
-            }, 1000)
             this.handleAnimation()
           }
         }
@@ -78,6 +68,8 @@ export default {
           const maxContentHeight = Math.max(...contentHeights) + 16
 
           this.height = `${maxContentHeight}px`
+          this.$store.dispatch('SET_ACCORDION', true)
+          this.$store.dispatch('SET_ACCORDION_DIMENSIONS', { window: window.innerWidth, height: `${maxContentHeight}px`, width: `${container - this.maxTabsWidth}px` })
         }
       })
     },
@@ -95,10 +87,17 @@ export default {
             toggleActions: 'play none play none'
           }
         })
-        tl.add(() => {
-          setTimeout(() => {
+        tl.add(async () => {
+          if ((!this.$store.state.accordionSet) || (this.$store.state.accordionSet && this.$store.state.accordionHeight.window !== window.innerWidth)) {
             this.getDimensions()
-          }, 1000)
+            await setTimeout(() => {
+              this.getDimensions()
+            }, 1000)
+          } else if (this.$store.state.accordionSet && this.$store.state.accordionHeight.window === window.innerWidth) {
+            this.height = this.$store.state.accordionHeight.height
+            this.maxWidth = this.$store.state.accordionHeight.width
+          }
+          this.toggleTabs(0)
         })
         if (this.props.tabs) {
           tl.fromTo(this.$refs.tabs, {

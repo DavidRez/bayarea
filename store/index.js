@@ -16,7 +16,9 @@ export const state = () => ({
   isTabletMd: false,
   menu: false,
   siteIsLoaded: false,
-  videoIsLoading: true
+  videoIsLoading: true,
+  accordionSet: false,
+  accordionHeight: {}
 })
 
 export const actions = storeActions()
