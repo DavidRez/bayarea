@@ -21,11 +21,6 @@ export default {
     instagram: null,
     windowWidth: 0
   }),
-  // created () {
-  //   this.instagram = this.$axios.$get(`${api}/rg-instagram/v1/get-photos`).then((response) => {
-  //     return response.data
-  //   })
-  // },
   async mounted () {
     this.instagram = await this.$axios.$get(`${api}/rg-instagram/v1/get-photos`).then((response) => {
       return response

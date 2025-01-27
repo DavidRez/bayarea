@@ -21,6 +21,7 @@ export default {
     havePosts: false
   }),
   mounted () {
+    // get posts for current page from store
     if (this.$store.state.posts.postsPerPage[this.$route.params.page]) {
       this.havePosts = true
     }

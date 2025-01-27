@@ -12,6 +12,7 @@ export default {
     }
   },
   computed: {
+    // for counting up number animation
     dataValues () {
       return this.props.block.map(block => ({ value: 0, target: block.number, inline_label: block.inline_label, label: block.label }))
     }

@@ -6,6 +6,7 @@ section.block-team-slider(
   .block-team-slider__container(v-if='props.content')
     BlockContent.block-team-slider__content(:props='props.content' animate)
   .block-team-slider__container(ref='container')
+    // if there are more than 4 members, use slider
     .block-team-slider__slider-container(v-if='$store.state.team.length > 4' :style='{ height }')
       .block-team-slider__slider
         .block-team-slider__item(
@@ -29,7 +30,7 @@ section.block-team-slider(
             .block-team-slider__item-content
               .block-team-slider__item-name(v-html='item.name')
               .block-team-slider__item-position(v-html='item.position')
-
+    // if there are 4 max members, use grid
     .block-team-slider__items(v-else)
         .block-team-slider__item(
           v-for='(item, i) in $store.state.team',

@@ -69,7 +69,7 @@ export default {
         const navHeight = document.querySelector('.navigation').clientHeight
         this.navHeight = `${navHeight}px`
 
-        // get title height
+        // get title height and set position
         if (this.$refs.title) {
           const title = this.$refs.title.clientHeight
           this.translateY = window.innerWidth > 1200 ? `${title * -0.45}px` : `${title * -0.25}px`

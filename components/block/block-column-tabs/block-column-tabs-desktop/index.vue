@@ -68,6 +68,8 @@ export default {
           const maxContentHeight = Math.max(...contentHeights) + 16
 
           this.height = `${maxContentHeight}px`
+
+          // set accordion dimensions in store
           this.$store.dispatch('SET_ACCORDION', true)
           this.$store.dispatch('SET_ACCORDION_DIMENSIONS', { window: window.innerWidth, height: `${maxContentHeight}px`, width: `${container - this.maxTabsWidth}px` })
         }
@@ -88,11 +90,13 @@ export default {
           }
         })
         tl.add(async () => {
+          // if dimensions have not been added to store, calculate
           if ((!this.$store.state.accordionSet) || (this.$store.state.accordionSet && this.$store.state.accordionHeight.window !== window.innerWidth)) {
             this.getDimensions()
             await setTimeout(() => {
               this.getDimensions()
             }, 1000)
+          // get dimensions from store
           } else if (this.$store.state.accordionSet && this.$store.state.accordionHeight.window === window.innerWidth) {
             this.height = this.$store.state.accordionHeight.height
             this.maxWidth = this.$store.state.accordionHeight.width

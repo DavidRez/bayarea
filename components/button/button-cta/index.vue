@@ -21,6 +21,7 @@ export default {
     }
   },
   computed: {
+    // set capitalization for label
     label () {
       return this.props.case === 'sentence' ? this.props.label.toLowerCase() : this.props.label
     }

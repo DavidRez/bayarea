@@ -17,6 +17,7 @@ export default {
   }),
   mounted () {
     this.$nextTick(() => {
+      // open tab that matches current hash
       this.props.tabs.forEach((tab, i) => {
         if (`#${tab.hash}` === this.$route.hash) {
           this.expanded = i
@@ -75,6 +76,7 @@ export default {
         })
 
         if (this.props.reverse) {
+          // animate image
           tl.fromTo(this.$refs.cover, {
             width: '100%'
           }, {
@@ -82,6 +84,7 @@ export default {
             duration: 2,
             ease: 'customEaseOut'
           }, '<+=0.1')
+          // animate text
           tl.fromTo(this.$refs.contentCol, {
             y: '48',
             opacity: 0
@@ -92,6 +95,7 @@ export default {
             ease: 'customEaseOut'
           }, '<+=0.2')
         } else {
+          // animate text
           tl.fromTo(this.$refs.contentCol, {
             y: '48',
             opacity: 0
@@ -101,6 +105,7 @@ export default {
             duration: 1,
             ease: 'customEaseOut'
           }, '<+=0.1')
+          // animate image
           tl.fromTo(this.$refs.cover, {
             width: '100%'
           }, {

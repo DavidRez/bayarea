@@ -13,8 +13,12 @@ section.hero-desktop(:style='{ opacity: compOpacity, paddingTop: paddingTop }' r
       muted defaultMuted loop playsinline controls=false
       ref='video')
     BaseIcon.hero-desktop__control(v-if='props.media_type === "video"' :name='play ? "pause" : "play"' @click.native='toggleVideo()')
+
+    // text
     .hero-desktop__content
       BlockContent(:props='props.content' animate)
+
+    // social media icons
     .hero-desktop__col.hero-desktop__col--social(v-if='props.social_media')
       a.hero-desktop__social(v-for='(social, i) in props.social_media'
         :key='`social-${i}`'
@@ -23,6 +27,8 @@ section.hero-desktop(:style='{ opacity: compOpacity, paddingTop: paddingTop }' r
         target='_blank'
         ref='icons')
         BaseIcon(:name='social.account')
+  
+    // pagination if multiple images
     .hero-desktop__col.hero-desktop__col--dots(v-if='props.media_type === "image" && props.images.length > 1')
       .hero-desktop__dot(v-for='(dot, i) in props.images'
         :key='`dot-${i}`'

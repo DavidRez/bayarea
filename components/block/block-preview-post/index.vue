@@ -18,8 +18,8 @@ export default {
     }
   },
   data: () => ({
-    addition: 0,
-    number: '01'
+    addition: 0, // current blog page
+    number: '01' // blog page number
   }),
   mounted () {
     this.addition = this.$store.state.posts.postsPerPage[1].length * (Number(this.$route.params.page) - 1)

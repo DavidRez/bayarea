@@ -47,6 +47,7 @@ export default {
         })
 
         if (this.props.reverse_layout) {
+          // animate text col
           tl.fromTo(this.$refs.col1, {
             y: '48',
             opacity: 0
@@ -56,13 +57,16 @@ export default {
             duration: 1,
             ease: 'slow'
           }, '<+=0.1')
+          // animate form icons
           this.$refs.forms.forEach((el, i) => {
             this.$_fadeIn(el, 0, 96, 'top+=58', 1, 0.5 + (0.1 * i))
           })
         } else {
+          // animate form icons
           this.$refs.forms.forEach((el, i) => {
             this.$_fadeIn(el, 0, 96, 'top+=58', 1, 0.5 + (0.1 * i))
           })
+          // animate text col
           tl.fromTo(this.$refs.col1, {
             y: '48',
             opacity: 0

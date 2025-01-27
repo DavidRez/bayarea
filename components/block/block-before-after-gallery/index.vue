@@ -23,7 +23,10 @@ export default {
     loaded: false
   }),
   mounted () {
+    // give default height
     this.height = window.innerWidth <= 600 ? '600px' : '300px'
+
+    // calculate height
     this.getHeight()
     setTimeout(() => {
       this.getHeight()
