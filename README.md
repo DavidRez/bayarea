@@ -11,6 +11,6 @@ Your browser does not support the video tag.
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Nuxt][Nuxt.js]]
-* [![Vue][Vue.js]]
-* [![GSAP][GSAP.com]]
+* [![Nuxt][Nuxt.js]][https://nuxt.com/]
+* [![Vue][Vue.js]][https://vuejs.org/]
+* [![GSAP][GSAP]][https://gsap.com]
