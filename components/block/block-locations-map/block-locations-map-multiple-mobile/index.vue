@@ -91,14 +91,14 @@ export default {
       this.$nextTick(() => {
         /* eslint-disable */
         const loader = new Loader({
-          apiKey: 'AIzaSyAgh0rxEUL7RjuEZgfQ8HlO2aTZelTEfRw',
+          apiKey: '',
         })
         loader.load().then(() => {
           const map = new google.maps.Map(this.$refs[`map-${index}`][0], {
             center: { lat: Number(this.global.locations[index].address.coordinates.latitude), lng: Number(this.global.locations[index].address.coordinates.longitude) },
             zoom: 12,
             disableDefaultUI: true,
-            mapId: 'e734abf95ad9490d'
+            mapId: ''
           })
 
           this.addMapMarker(this.global.locations[index].address.coordinates.latitude, this.global.locations[index].address.coordinates.longitude, '#BACAD4', index, this.global.locations[index].title, map)

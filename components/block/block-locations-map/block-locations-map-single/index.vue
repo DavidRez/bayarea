@@ -64,14 +64,14 @@ export default {
       this.$nextTick(() => {
         /* eslint-disable */
         const loader = new Loader({
-          apiKey: 'AIzaSyAgh0rxEUL7RjuEZgfQ8HlO2aTZelTEfRw',
+          apiKey: '',
         })
         loader.load().then(() => {
           this.map = new google.maps.Map(this.$refs.map, {
             center: { lat: this.mapPins[0].lat, lng: this.mapPins[0].lng },
             zoom: 10,
             disableDefaultUI: false,
-            mapId: 'e734abf95ad9490d'
+            mapId: ''
           })
 
           this.global.locations.forEach((loc, i) => {
