@@ -2,6 +2,9 @@
 
 Bay Area Ortho is a next-gen template, designed in-house. The term "next-gen" is used because it provides different options (layouts, colors, media, etc.) for each component in the Wordpress backend compared to regular templates, which are more "what you see is what you get".
 
+https://github.com/user-attachments/assets/e521d5ec-6fe7-46b0-9215-6b00273d2b8b
+
+
 ### Built With
 
 * ![Nuxt][Nuxt.js]
