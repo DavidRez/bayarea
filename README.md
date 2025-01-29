@@ -2,11 +2,6 @@
 
 Bay Area Ortho is a next-gen template, designed in-house. The term "next-gen" is used because it provides different options (layouts, colors, media, etc.) for each component in the Wordpress backend compared to regular templates, which are more "what you see is what you get".
 
-<video width="600" height="350" style="max-width: 100%; max-height: 55vw;" controls>
-  <source src="https://d3u8wdcqzha6gd.cloudfront.net/bayareaortho/bayareaortho-720.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-
 ### Built With
 
 * ![Nuxt][Nuxt.js]
