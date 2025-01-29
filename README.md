@@ -14,6 +14,7 @@ Your browser does not support the video tag.
 * ![GSAP][GSAP]
 * ![sass][sass]
 * ![wordpress][wordpress]
+* ![amazon web services][aws]
 
 
 For security, some files and ids were removed
